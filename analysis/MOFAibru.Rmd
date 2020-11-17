@@ -1,7 +1,5 @@
 ---
-title: "MOFAibru"
-author: "Jessie van Buggenum"
-date: "2020-11-17"
+title: "MOFA model of aIg stimulated cells in prescence of ibrutinib"
 output: workflowr::wflow_html
 editor_options:
   chunk_output_type: console

@@ -1,17 +1,20 @@
 name: "QuRIEseq_analysis"
 output_dir: ../docs
 navbar:
-  title: "QuRIEseq_analysis"
+  title: "QuRIE-seq manuscript"
   left:
   - text: Home
     href: index.html
-  - text: About
-    href: about.html
-  - text: License
-    href: license.html
+  - text: QC
+    href: QC.html
+  - text: MOFA aIg
+    href: MOFAaIg.html
+  - text: MOFA ibru
+    href: MOFAibru.html
+
 output:
   workflowr::wflow_html:
     toc: yes
     toc_float: yes
-    theme: cosmo
+    theme: readable
     highlight: textmate

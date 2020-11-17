@@ -1,5 +1,6 @@
 ---
-title: "Home"
+title: "Quantification of RNA and Intracellular Epitopes"
+subtitle: "This repository contains scripts and data to produce the figures of the QuRIE-seq manuscript."
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -8,6 +9,16 @@ editor_options:
   chunk_output_type: console
 ---
 
-This repository contains scripts and data to produce the figures of the QuRIE-seq manuscript.
+## Introduction
+
+*todo add abstract of paper
 
 Check the pre-print on [link to BioR].
+
+## In this repository
+
+Three pages contain code to process, analyse and create figures:
+
+* [QC](QC.html) processes count tables (available at GEO####): filter high quality cells; normalize and scale counts.   
+* [MOFA aIg](MOFAaIg.html) computes a model of cells stimulates with aIg molecule.   
+* [MOFA ibru](MOFAaIg.html) computes a model of cells stimulates with aIg molecule with or without prescence of ibrutinib.  
