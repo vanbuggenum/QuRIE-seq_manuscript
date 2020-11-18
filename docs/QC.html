@@ -23,8 +23,13 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -265,6 +270,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -360,7 +368,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">QuRIE-seq manuscript</a>
+      <a class="navbar-brand" href="index.html">QuRIE-seq_manuscript</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -378,13 +386,27 @@ div.tocify {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jessievb/QuRIEseq_analysis">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
 <div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
 
@@ -413,13 +435,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-17
+<strong>Last updated:</strong> 2020-11-18
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>QuRIEseq_analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>QuRIE-seq_manuscript/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -504,30 +526,39 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong4487750"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 4487750 </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree67539d569507cb2f30d2188677021e9b34659fa7targetblank67539d5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/67539d569507cb2f30d2188677021e9b34659fa7" target="_blank">67539d5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong4487750" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree67539d569507cb2f30d2188677021e9b34659fa7targetblank67539d5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 4487750. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/67539d569507cb2f30d2188677021e9b34659fa7" target="_blank">67539d5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
 Untracked files:
-    Untracked:  code/Import_and_create_seuratObj.R
-    Untracked:  code/load_packages.R
-    Untracked:  code/plot_QC_function.R
-    Untracked:  data/raw/
     Untracked:  data/workflow_QuRIEseq.png.png
+    Untracked:  output/metadata.csv
+    Untracked:  output/paper_figures/
+    Untracked:  output/seu_aIG_samples.rds
+    Untracked:  output/seu_combined_filtered_allsamples.rds
+    Untracked:  output/seu_combined_filtered_normalized.rds
+    Untracked:  output/seu_combined_raw.rds
+    Untracked:  output/seu_ibru_samples.rds
+
+Unstaged changes:
+    Modified:   analysis/MOFAaIg.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   code/load_packages.R
 
 </code></pre>
 <p>
@@ -571,7 +602,41 @@ Message
 Rmd
 </td>
 <td>
-4487750
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/67539d569507cb2f30d2188677021e9b34659fa7/analysis/QC.Rmd" target="_blank">67539d5</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-18
+</td>
+<td>
+QC - filter and normalize datasets and split to subset of data
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/2ffe38d8ad99572f5b5e0fdde94cbd8db50659bf/docs/QC.html" target="_blank">2ffe38d</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/4487750fd014ae3af0bfaa3cd6d581cf1ac3392c/analysis/QC.Rmd" target="_blank">4487750</a>
 </td>
 <td>
 Jessie van Buggenum
@@ -588,7 +653,7 @@ basis set-up of page display
 Rmd
 </td>
 <td>
-d9372d1
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/d9372d117842a51e92f9ba0293d6e92c8e9b29c1/analysis/QC.Rmd" target="_blank">d9372d1</a>
 </td>
 <td>
 Jessie van Buggenum
@@ -607,8 +672,1423 @@ Publish the initial files for this website
 </div>
 </div>
 </div>
+<pre class="r"><code>source(&quot;code/load_packages.R&quot;)
+source(&quot;code/plot_QC_function.R&quot;) #change settings in script to get different layout per subpanel for this figure
+dir.create(&quot;output/paper_figures&quot;) # location where paper figures are stored</code></pre>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
+<p>The inDrop-RAID data contains samples 9 timepoints of aIg stimulated BJAB, and 3 additional timepoints with ibrutinib drug. Script below extracts all metadata (sequencing sample names, adds metadata info per sample (prot or RNA library)), and reads all data tables into R. The metadata table is saved in output folder: “output/metadata.csv”</p>
+<p>For QC and filtering, cells with matching RNA and protein information are used to create a Seurat object (settings RNA: min.cells = 100, min.features = 100; proteins added as additional modality PROT). Several QC stats are calculated, and the object is saved in: “output/seu_combined_raw.rds”</p>
+<pre class="r"><code>source(&quot;code/Import_and_create_seuratObj.R&quot;)</code></pre>
+</div>
+<div id="before-qc-dataset-properties" class="section level2">
+<h2>Before QC dataset properties</h2>
+<p>Seurat object:</p>
+<pre class="r"><code>seu_combined</code></pre>
+<pre><code>An object of class Seurat 
+9300 features across 11061 samples within 2 assays 
+Active assay: RNA (9220 features, 0 variable features)
+ 1 other assay present: PROT</code></pre>
+<p><strong>Table</strong> Overview of per sample properties.</p>
+<pre class="r"><code>kable(seu_combined@meta.data %&gt;% 
+        group_by(condition) %&gt;% 
+        summarise(`Total number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  )) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))</code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+condition
+</th>
+<th style="text-align:right;">
+Total number of cells
+</th>
+<th style="text-align:right;">
+Median counts RNA
+</th>
+<th style="text-align:right;">
+Median Number genes
+</th>
+<th style="text-align:right;">
+Median Mitochondrial counts (Median %)
+</th>
+<th style="text-align:right;">
+Ribosomal counts (Median %)
+</th>
+<th style="text-align:right;">
+Median counts PROT
+</th>
+<th style="text-align:right;">
+Number proteins
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+000.aIg.contr
+</td>
+<td style="text-align:right;">
+688
+</td>
+<td style="text-align:right;">
+1379
+</td>
+<td style="text-align:right;">
+961
+</td>
+<td style="text-align:right;">
+7.24
+</td>
+<td style="text-align:right;">
+6.68
+</td>
+<td style="text-align:right;">
+1108
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+002.aIg.contr
+</td>
+<td style="text-align:right;">
+958
+</td>
+<td style="text-align:right;">
+780
+</td>
+<td style="text-align:right;">
+594
+</td>
+<td style="text-align:right;">
+7.72
+</td>
+<td style="text-align:right;">
+6.74
+</td>
+<td style="text-align:right;">
+984
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+004.aIg.contr
+</td>
+<td style="text-align:right;">
+545
+</td>
+<td style="text-align:right;">
+842
+</td>
+<td style="text-align:right;">
+628
+</td>
+<td style="text-align:right;">
+7.92
+</td>
+<td style="text-align:right;">
+5.97
+</td>
+<td style="text-align:right;">
+1035
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+006.aIg.contr
+</td>
+<td style="text-align:right;">
+820
+</td>
+<td style="text-align:right;">
+1060
+</td>
+<td style="text-align:right;">
+774
+</td>
+<td style="text-align:right;">
+8.26
+</td>
+<td style="text-align:right;">
+6.86
+</td>
+<td style="text-align:right;">
+720
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+006.aIg.ibr
+</td>
+<td style="text-align:right;">
+1148
+</td>
+<td style="text-align:right;">
+464
+</td>
+<td style="text-align:right;">
+360
+</td>
+<td style="text-align:right;">
+10.99
+</td>
+<td style="text-align:right;">
+6.04
+</td>
+<td style="text-align:right;">
+756
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+010.aIg.contr
+</td>
+<td style="text-align:right;">
+748
+</td>
+<td style="text-align:right;">
+528
+</td>
+<td style="text-align:right;">
+412
+</td>
+<td style="text-align:right;">
+11.19
+</td>
+<td style="text-align:right;">
+6.18
+</td>
+<td style="text-align:right;">
+724
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+030.aIg.contr
+</td>
+<td style="text-align:right;">
+1263
+</td>
+<td style="text-align:right;">
+753
+</td>
+<td style="text-align:right;">
+552
+</td>
+<td style="text-align:right;">
+11.89
+</td>
+<td style="text-align:right;">
+6.49
+</td>
+<td style="text-align:right;">
+813
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+030.aIg.ibr
+</td>
+<td style="text-align:right;">
+1601
+</td>
+<td style="text-align:right;">
+767
+</td>
+<td style="text-align:right;">
+563
+</td>
+<td style="text-align:right;">
+12.18
+</td>
+<td style="text-align:right;">
+5.92
+</td>
+<td style="text-align:right;">
+817
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+060.aIg.contr
+</td>
+<td style="text-align:right;">
+879
+</td>
+<td style="text-align:right;">
+642
+</td>
+<td style="text-align:right;">
+496
+</td>
+<td style="text-align:right;">
+8.74
+</td>
+<td style="text-align:right;">
+6.65
+</td>
+<td style="text-align:right;">
+891
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180.aIg.contr
+</td>
+<td style="text-align:right;">
+1121
+</td>
+<td style="text-align:right;">
+717
+</td>
+<td style="text-align:right;">
+555
+</td>
+<td style="text-align:right;">
+7.37
+</td>
+<td style="text-align:right;">
+6.79
+</td>
+<td style="text-align:right;">
+867
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180.aIg.ibr
+</td>
+<td style="text-align:right;">
+1290
+</td>
+<td style="text-align:right;">
+743
+</td>
+<td style="text-align:right;">
+580
+</td>
+<td style="text-align:right;">
+6.30
+</td>
+<td style="text-align:right;">
+6.90
+</td>
+<td style="text-align:right;">
+808
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table</strong> Overview of full dataset properties.</p>
+<pre class="r"><code>kable(seu_combined@meta.data %&gt;% 
+        summarise(`Number of cells` = round(n(),0),
+          `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  ) %&gt;%
+        t()) %&gt;%
+
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))</code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+Number of cells
+</td>
+<td style="text-align:right;">
+11061.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median counts RNA
+</td>
+<td style="text-align:right;">
+725.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median Number genes
+</td>
+<td style="text-align:right;">
+550.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median Mitochondrial counts (Median %)
+</td>
+<td style="text-align:right;">
+9.20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ribosomal counts (Median %)
+</td>
+<td style="text-align:right;">
+6.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median counts PROT
+</td>
+<td style="text-align:right;">
+835.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number proteins
+</td>
+<td style="text-align:right;">
+57.00
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="quality-control-filtering" class="section level2">
+<h2>Quality Control &amp; filtering</h2>
+<pre class="r"><code>plot_RNA_nCount &lt;- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = &quot;nCount_RNA&quot;, 
+                                 ytext = &quot;Total UMI counts per cell&quot;,
+                                 xtext = &quot;Time aIg stimulation (minutes)&quot;,
+                                 paneltitle = &quot;Keep cells &lt; 4000 RNA counts&quot;,
+                                 colorviolin = &quot;dodgerblue2&quot; ) + 
+                        geom_hline(yintercept = 4000, size = 0.3) +
+                        theme(axis.title.x = element_blank())
+
+plot_RNA_ngenes &lt;- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = &quot;nFeature_RNA&quot;, 
+                                 ytext = &quot;Total genes per cell&quot;,
+                                 xtext = &quot;Time aIg stimulation (minutes)&quot;,
+                                 paneltitle = &quot;Keep cells &gt;150 genes&quot;,
+                                 colorviolin = &quot;dodgerblue2&quot; ) + 
+                        geom_hline(yintercept = 150, size = 0.3) +
+                        theme(axis.title.x = element_blank())
+  
+plot_percent.mt &lt;- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = &quot;percent.mt&quot;, 
+                                 ytext = &quot;% Mitochondrial counts&quot;,
+                                 xtext = &quot;Time aIg stimulation (minutes)&quot;,
+                                 paneltitle = &quot;Keep cells &lt; 20 % and samples &lt; median 10 % mitochondrial&quot;,
+                                 colorviolin = &quot;dodgerblue2&quot; ) +
+                        geom_hline(yintercept = 10, size = 0.3) +
+                        geom_hline(yintercept = 15, color = &quot;grey&quot;, size = 0.3) +
+                        theme(axis.title.x = element_blank())
+
+plot_percent.rb &lt;- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = &quot;percent.rb&quot;, 
+                                 ytext = &quot;% Ribosomal counts&quot;,
+                                 xtext = &quot;Time aIg stimulation (minutes)&quot;,
+                                 paneltitle = &quot;Stable % ribosomal counts over time&quot;,
+                                 colorviolin = &quot;dodgerblue2&quot; ) +
+                        theme(axis.title.x = element_blank())
+  
+  
+plot_PROT_nCount &lt;- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = &quot;nCount_PROT&quot;, 
+                                 ytext =  &quot;Total UMI counts per cell&quot;,
+                                 xtext = &quot;Time aIg stimulation (minutes)&quot;,
+                                 paneltitle = &quot;Keep cells &lt; 3000 PROT counts&quot;,
+                                 colorviolin = &quot;deeppink3&quot; ) +
+                        geom_hline(yintercept = 3000, size = 0.3) +
+                        theme(axis.title.x = element_blank())
+
+plot_PROT_nproteins &lt;- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = &quot;nFeature_PROT&quot;, 
+                                 ytext =  &quot;Total proteins per cell&quot;,
+                                 xtext = &quot;Time aIg stimulation (minutes)&quot;,
+                                 paneltitle = &quot;Keep cells &gt;45 proteins&quot;,
+                                 colorviolin = &quot;deeppink3&quot; ) +
+                        geom_hline(yintercept = 45, size = 0.3) 
+
+plot_percent.H3 &lt;- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = &quot;percent.HisH3&quot;, 
+                                 ytext =   &quot;% Histone H3 counts&quot;,
+                                 xtext = &quot;Time aIg stimulation (minutes)&quot;,
+                                 paneltitle = &quot;Variation in % Histone H3 counts&quot;,
+                                 colorviolin = &quot;deeppink3&quot; ) 
+  
+plot.QC &lt;- plot_grid(plot_RNA_nCount, plot_RNA_ngenes,  plot_percent.mt, plot_percent.rb,plot_PROT_nCount,plot_PROT_nproteins, plot_percent.H3, labels = c(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;,&#39;d&#39; , &#39;e&#39;, &#39;f&#39;, &#39;g&#39;), label_size = 10, ncol = 2)
+
+ggsave(plot.QC, filename = &quot;output/paper_figures/Suppl_QC_filters.pdf&quot;, width = 183, height = 200, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(plot.QC, filename = &quot;output/paper_figures/Suppl_QC_filters.png&quot;, width = 183, height = 200, units = &quot;mm&quot;,  dpi = 300)</code></pre>
+<pre class="r"><code>plot.QC</code></pre>
+<p><img src="figure/QC.Rmd/Suppl_QC_filters-1.png" width="691.65312" style="display: block; margin: auto;" /> <em>Supplementary Figure</em> Thresholds for selection of high-quality samples and cells from the QuRIE-seq datasets.</p>
+<p>Based on the indicated cut-offs, high-quality cellsare filtered for further analysis. Based on the good protein quality of samples and m&lt;11% median mitochondiral counts per sample, timepoints 0, 2, 4, 6, 60 and 180 are kept for further analysis.</p>
+<pre class="r fold-show"><code>seu_combined_filtered &lt;- subset(seu_combined, subset = nFeature_RNA &gt; 150 &amp; nCount_RNA &lt; 4000 &amp; nFeature_PROT &gt; 45 &amp; nCount_PROT &lt; 3000 &amp; percent.mt &lt; 15)
+
+seu_combined_filtered &lt;- subset(seu_combined_filtered, idents = c(&quot;010.aIg.contr&quot;,&quot;030.aIg.contr&quot;,&quot;030.aIg.ibr&quot;), invert = TRUE)</code></pre>
+</div>
+<div id="normalize-and-scale" class="section level2">
+<h2>Normalize and scale</h2>
+<pre class="r fold-show"><code># run sctransform with default settings.
+seu_combined_filtered &lt;- SCTransform(seu_combined_filtered,
+                            assay = &quot;RNA&quot;,
+                            new.assay.name = &quot;SCT.RNA&quot;,
+                            do.correct.umi = TRUE,
+                            ncells = NULL,
+                            variable.features.n = 3000,
+                            vars.to.regress = c(&quot;percent.mt&quot;, &quot;nCount_RNA&quot;), # substantial variation between samples &amp; cells in mito and ncount
+                            do.scale = FALSE,
+                            do.center = TRUE,
+                            conserve.memory = FALSE,
+                            return.only.var.genes = FALSE,
+                            seed.use = 42,
+                            verbose = FALSE
+                            )
+# Add some metadata to normalized data (ncounts &amp; percent mt)
+seu_combined_filtered &lt;- AddMetaData(seu_combined_filtered, as.data.frame(seu_combined_filtered@assays$SCT.RNA@counts) %&gt;% summarise_all(funs(sum)) %&gt;% unlist(), col.name = &quot;nCount_RNA_SCT&quot;)
+
+seu_combined_filtered &lt;- PercentageFeatureSet(seu_combined_filtered, pattern = &quot;^MT\\.|^MTRN&quot;, col.name = &quot;percent.mt.aftersct&quot;, assay = &quot;SCT.RNA&quot;)
+
+## cell cycle scoring metadata
+s.genes &lt;- cc.genes$s.genes
+g2m.genes &lt;- cc.genes$g2m.genes
+seu_combined_filtered &lt;- CellCycleScoring(seu_combined_filtered, s.features = s.genes, g2m.features = g2m.genes, set.ident = FALSE, assay = &quot;SCT.RNA&quot;)
+
+seu_combined_filtered[[&quot;S.score&quot;]] &lt;- seu_combined_filtered@meta.data$S.Score
+seu_combined_filtered[[&quot;G2M.score&quot;]] &lt;- seu_combined_filtered@meta.data$G2M.Score
+seu_combined_filtered[[&quot;CCphase&quot;]] &lt;- seu_combined_filtered@meta.data$Phase</code></pre>
+<pre class="r"><code>all.prot &lt;- rownames(seu_combined_filtered[[&quot;PROT&quot;]])
+
+seu_combined_filtered &lt;- NormalizeData(seu_combined_filtered, assay = &quot;PROT&quot;, normalization.method = &quot;CLR&quot;, verbose = FALSE)
+
+seu_combined_filtered &lt;- ScaleData(seu_combined_filtered, assay = &quot;PROT&quot;, features = all.prot, vars.to.regress = c(&quot;nFeature_PROT&quot;,&quot;nCount_PROT&quot;, &quot;percent.HisH3&quot;))</code></pre>
+<pre><code>Regressing out nFeature_PROT, nCount_PROT, percent.HisH3</code></pre>
+<pre><code>Centering and scaling data matrix</code></pre>
+<p>Seurat object with filtered cells and normalized counts is stored in “output/seu_combined_filtered_normalized.rds”</p>
+<pre class="r fold-show"><code>saveRDS(seu_combined_filtered, &quot;output/seu_combined_filtered_normalized.rds&quot;)</code></pre>
+</div>
+<div id="subset-of-samples" class="section level2">
+<h2>Subset of samples</h2>
+<p>The manuscript describes two analysis of different collection of samples:<br />
+* Effect of aIg stimulation over two time-scales (see MOFA aIg <a href="MOFAaIg.html">page</a>) * Effect of ibrutinib on the cell-state at these two timescales (see MOFA ibru <a href="MOFAibru.html">page</a>)</p>
+<pre class="r fold-show"><code>seu_combined_aIg_selected &lt;- subset(seu_combined_filtered, idents = c(&quot;006.aIg.ibr&quot;, &quot;180.aIg.ibr&quot;), invert = TRUE)
+
+saveRDS(seu_combined_aIg_selected, &quot;output/seu_aIG_samples.rds&quot;)</code></pre>
+<pre class="r fold-show"><code>seu_combined_ibru_selected &lt;- subset(seu_combined_filtered, idents = c(&quot;002.aIg.contr&quot;,&quot;004.aIg.contr&quot;,&quot;060.aIg.contr&quot;), invert = TRUE)
+
+saveRDS(seu_combined_ibru_selected, &quot;output/seu_ibru_samples.rds&quot;)</code></pre>
+</div>
+<div id="filtered-dataset-properties" class="section level2 tabset">
+<h2>Filtered dataset properties</h2>
+<p>Overview of the number of cells and data properties of all samples, aIg subset of samples, or ibrutinib subset of samples.</p>
+<div id="full-dataset" class="section level3">
+<h3>Full dataset</h3>
+<pre class="r"><code>seu_combined_filtered</code></pre>
+<pre><code>An object of class Seurat 
+18520 features across 6976 samples within 3 assays 
+Active assay: SCT.RNA (9220 features, 3000 variable features)
+ 2 other assays present: RNA, PROT</code></pre>
+<p><strong>Table</strong> Overview of per sample properties after filtering</p>
+<pre class="r"><code>kable(seu_combined_filtered@meta.data %&gt;% 
+        group_by(condition) %&gt;% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  )) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))</code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+condition
+</th>
+<th style="text-align:right;">
+Number of cells
+</th>
+<th style="text-align:right;">
+Median counts RNA
+</th>
+<th style="text-align:right;">
+Median Number genes
+</th>
+<th style="text-align:right;">
+Median Mitochondrial counts (Median %)
+</th>
+<th style="text-align:right;">
+Ribosomal counts (Median %)
+</th>
+<th style="text-align:right;">
+Median counts PROT
+</th>
+<th style="text-align:right;">
+Number proteins
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+000.aIg.contr
+</td>
+<td style="text-align:right;">
+649
+</td>
+<td style="text-align:right;">
+1407
+</td>
+<td style="text-align:right;">
+977
+</td>
+<td style="text-align:right;">
+7.11
+</td>
+<td style="text-align:right;">
+6.70
+</td>
+<td style="text-align:right;">
+1108
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+002.aIg.contr
+</td>
+<td style="text-align:right;">
+927
+</td>
+<td style="text-align:right;">
+788
+</td>
+<td style="text-align:right;">
+602
+</td>
+<td style="text-align:right;">
+7.61
+</td>
+<td style="text-align:right;">
+6.76
+</td>
+<td style="text-align:right;">
+992
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+004.aIg.contr
+</td>
+<td style="text-align:right;">
+511
+</td>
+<td style="text-align:right;">
+866
+</td>
+<td style="text-align:right;">
+646
+</td>
+<td style="text-align:right;">
+7.75
+</td>
+<td style="text-align:right;">
+6.02
+</td>
+<td style="text-align:right;">
+1043
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+006.aIg.contr
+</td>
+<td style="text-align:right;">
+716
+</td>
+<td style="text-align:right;">
+1098
+</td>
+<td style="text-align:right;">
+804
+</td>
+<td style="text-align:right;">
+8.02
+</td>
+<td style="text-align:right;">
+6.93
+</td>
+<td style="text-align:right;">
+752
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+006.aIg.ibr
+</td>
+<td style="text-align:right;">
+953
+</td>
+<td style="text-align:right;">
+498
+</td>
+<td style="text-align:right;">
+390
+</td>
+<td style="text-align:right;">
+10.41
+</td>
+<td style="text-align:right;">
+5.98
+</td>
+<td style="text-align:right;">
+776
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+060.aIg.contr
+</td>
+<td style="text-align:right;">
+865
+</td>
+<td style="text-align:right;">
+644
+</td>
+<td style="text-align:right;">
+497
+</td>
+<td style="text-align:right;">
+8.72
+</td>
+<td style="text-align:right;">
+6.65
+</td>
+<td style="text-align:right;">
+894
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180.aIg.contr
+</td>
+<td style="text-align:right;">
+1099
+</td>
+<td style="text-align:right;">
+717
+</td>
+<td style="text-align:right;">
+555
+</td>
+<td style="text-align:right;">
+7.37
+</td>
+<td style="text-align:right;">
+6.79
+</td>
+<td style="text-align:right;">
+871
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180.aIg.ibr
+</td>
+<td style="text-align:right;">
+1256
+</td>
+<td style="text-align:right;">
+740
+</td>
+<td style="text-align:right;">
+578
+</td>
+<td style="text-align:right;">
+6.31
+</td>
+<td style="text-align:right;">
+6.90
+</td>
+<td style="text-align:right;">
+810
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table</strong> Overview of full filtered dataset properties.</p>
+<pre class="r"><code>kable(seu_combined_filtered@meta.data %&gt;% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  ) %&gt;%
+        t()) %&gt;%
+
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))</code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+Number of cells
+</td>
+<td style="text-align:right;">
+6976.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median counts RNA
+</td>
+<td style="text-align:right;">
+746.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median Number genes
+</td>
+<td style="text-align:right;">
+572.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median Mitochondrial counts (Median %)
+</td>
+<td style="text-align:right;">
+7.83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ribosomal counts (Median %)
+</td>
+<td style="text-align:right;">
+6.64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median counts PROT
+</td>
+<td style="text-align:right;">
+876.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number proteins
+</td>
+<td style="text-align:right;">
+58.00
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="aig-samples" class="section level3">
+<h3>aIg samples</h3>
+<pre class="r"><code>seu_combined_aIg_selected</code></pre>
+<pre><code>An object of class Seurat 
+18520 features across 4767 samples within 3 assays 
+Active assay: SCT.RNA (9220 features, 3000 variable features)
+ 2 other assays present: RNA, PROT</code></pre>
+<p><strong>Table</strong> Overview of aIg dataset properties per sample</p>
+<pre class="r"><code>kable(seu_combined_aIg_selected@meta.data %&gt;% 
+        group_by(condition) %&gt;% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  )) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))</code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+condition
+</th>
+<th style="text-align:right;">
+Number of cells
+</th>
+<th style="text-align:right;">
+Median counts RNA
+</th>
+<th style="text-align:right;">
+Median Number genes
+</th>
+<th style="text-align:right;">
+Median Mitochondrial counts (Median %)
+</th>
+<th style="text-align:right;">
+Ribosomal counts (Median %)
+</th>
+<th style="text-align:right;">
+Median counts PROT
+</th>
+<th style="text-align:right;">
+Number proteins
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+000.aIg.contr
+</td>
+<td style="text-align:right;">
+649
+</td>
+<td style="text-align:right;">
+1407
+</td>
+<td style="text-align:right;">
+977
+</td>
+<td style="text-align:right;">
+7.11
+</td>
+<td style="text-align:right;">
+6.70
+</td>
+<td style="text-align:right;">
+1108
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+002.aIg.contr
+</td>
+<td style="text-align:right;">
+927
+</td>
+<td style="text-align:right;">
+788
+</td>
+<td style="text-align:right;">
+602
+</td>
+<td style="text-align:right;">
+7.61
+</td>
+<td style="text-align:right;">
+6.76
+</td>
+<td style="text-align:right;">
+992
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+004.aIg.contr
+</td>
+<td style="text-align:right;">
+511
+</td>
+<td style="text-align:right;">
+866
+</td>
+<td style="text-align:right;">
+646
+</td>
+<td style="text-align:right;">
+7.75
+</td>
+<td style="text-align:right;">
+6.02
+</td>
+<td style="text-align:right;">
+1043
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+006.aIg.contr
+</td>
+<td style="text-align:right;">
+716
+</td>
+<td style="text-align:right;">
+1098
+</td>
+<td style="text-align:right;">
+804
+</td>
+<td style="text-align:right;">
+8.02
+</td>
+<td style="text-align:right;">
+6.93
+</td>
+<td style="text-align:right;">
+752
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+060.aIg.contr
+</td>
+<td style="text-align:right;">
+865
+</td>
+<td style="text-align:right;">
+644
+</td>
+<td style="text-align:right;">
+497
+</td>
+<td style="text-align:right;">
+8.72
+</td>
+<td style="text-align:right;">
+6.65
+</td>
+<td style="text-align:right;">
+894
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180.aIg.contr
+</td>
+<td style="text-align:right;">
+1099
+</td>
+<td style="text-align:right;">
+717
+</td>
+<td style="text-align:right;">
+555
+</td>
+<td style="text-align:right;">
+7.37
+</td>
+<td style="text-align:right;">
+6.79
+</td>
+<td style="text-align:right;">
+871
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table</strong> Overview of aIg dataset properties.</p>
+<pre class="r"><code>kable(seu_combined_aIg_selected@meta.data %&gt;% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  ) %&gt;%
+        t()) %&gt;%
+
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))</code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+Number of cells
+</td>
+<td style="text-align:right;">
+4767.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median counts RNA
+</td>
+<td style="text-align:right;">
+816.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median Number genes
+</td>
+<td style="text-align:right;">
+616.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median Mitochondrial counts (Median %)
+</td>
+<td style="text-align:right;">
+7.77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ribosomal counts (Median %)
+</td>
+<td style="text-align:right;">
+6.69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median counts PROT
+</td>
+<td style="text-align:right;">
+917.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number proteins
+</td>
+<td style="text-align:right;">
+58.00
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="aig-ibrutinib-samples" class="section level3">
+<h3>aIg + ibrutinib samples</h3>
+<pre class="r"><code>seu_combined_ibru_selected</code></pre>
+<pre><code>An object of class Seurat 
+18520 features across 4673 samples within 3 assays 
+Active assay: SCT.RNA (9220 features, 3000 variable features)
+ 2 other assays present: RNA, PROT</code></pre>
+<p><strong>Table</strong> Overview of ibru dataset properties per sample</p>
+<pre class="r"><code>kable(seu_combined_ibru_selected@meta.data %&gt;% 
+        group_by(condition) %&gt;% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  )) %&gt;%
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))</code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+condition
+</th>
+<th style="text-align:right;">
+Number of cells
+</th>
+<th style="text-align:right;">
+Median counts RNA
+</th>
+<th style="text-align:right;">
+Median Number genes
+</th>
+<th style="text-align:right;">
+Median Mitochondrial counts (Median %)
+</th>
+<th style="text-align:right;">
+Ribosomal counts (Median %)
+</th>
+<th style="text-align:right;">
+Median counts PROT
+</th>
+<th style="text-align:right;">
+Number proteins
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+000.aIg.contr
+</td>
+<td style="text-align:right;">
+649
+</td>
+<td style="text-align:right;">
+1407
+</td>
+<td style="text-align:right;">
+977
+</td>
+<td style="text-align:right;">
+7.11
+</td>
+<td style="text-align:right;">
+6.70
+</td>
+<td style="text-align:right;">
+1108
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+006.aIg.contr
+</td>
+<td style="text-align:right;">
+716
+</td>
+<td style="text-align:right;">
+1098
+</td>
+<td style="text-align:right;">
+804
+</td>
+<td style="text-align:right;">
+8.02
+</td>
+<td style="text-align:right;">
+6.93
+</td>
+<td style="text-align:right;">
+752
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+006.aIg.ibr
+</td>
+<td style="text-align:right;">
+953
+</td>
+<td style="text-align:right;">
+498
+</td>
+<td style="text-align:right;">
+390
+</td>
+<td style="text-align:right;">
+10.41
+</td>
+<td style="text-align:right;">
+5.98
+</td>
+<td style="text-align:right;">
+776
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180.aIg.contr
+</td>
+<td style="text-align:right;">
+1099
+</td>
+<td style="text-align:right;">
+717
+</td>
+<td style="text-align:right;">
+555
+</td>
+<td style="text-align:right;">
+7.37
+</td>
+<td style="text-align:right;">
+6.79
+</td>
+<td style="text-align:right;">
+871
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+180.aIg.ibr
+</td>
+<td style="text-align:right;">
+1256
+</td>
+<td style="text-align:right;">
+740
+</td>
+<td style="text-align:right;">
+578
+</td>
+<td style="text-align:right;">
+6.31
+</td>
+<td style="text-align:right;">
+6.90
+</td>
+<td style="text-align:right;">
+810
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table</strong> Overview of ibru dataset properties.</p>
+<pre class="r"><code>kable(seu_combined_ibru_selected@meta.data %&gt;% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  ) %&gt;%
+        t()) %&gt;%
+
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;))</code></pre>
+<table class="table table-striped table-hover" style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+Number of cells
+</td>
+<td style="text-align:right;">
+4673.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median counts RNA
+</td>
+<td style="text-align:right;">
+756.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median Number genes
+</td>
+<td style="text-align:right;">
+581.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median Mitochondrial counts (Median %)
+</td>
+<td style="text-align:right;">
+7.68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Ribosomal counts (Median %)
+</td>
+<td style="text-align:right;">
+6.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Median counts PROT
+</td>
+<td style="text-align:right;">
+839.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Number proteins
+</td>
+<td style="text-align:right;">
+57.00
+</td>
+</tr>
+</tbody>
+</table>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -629,18 +2109,81 @@ locale:
 [5] LC_TIME=English_Netherlands.1252    
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+ [1] parallel  stats4    grid      stats     graphics  grDevices utils    
+ [8] datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.6.1
+ [1] png_0.1-7                   forcats_0.5.0              
+ [3] clusterProfiler_3.14.3      clusterProfiler.dplyr_0.0.2
+ [5] enrichplot_1.6.1            org.Hs.eg.db_3.10.0        
+ [7] AnnotationDbi_1.48.0        IRanges_2.20.2             
+ [9] S4Vectors_0.24.4            Biobase_2.46.0             
+[11] BiocGenerics_0.32.0         magick_2.4.0               
+[13] cowplot_1.1.0               ggtext_0.1.0               
+[15] ggplotify_0.0.5             ggcorrplot_0.1.3           
+[17] ggrepel_0.8.2               ggpubr_0.4.0               
+[19] scico_1.2.0                 MOFA2_1.1                  
+[21] extrafont_0.17              patchwork_1.0.1            
+[23] RColorBrewer_1.1-2          viridis_0.5.1              
+[25] viridisLite_0.3.0           ggsci_2.9                  
+[27] sctransform_0.3.1           ggthemes_4.2.0             
+[29] matrixStats_0.57.0          kableExtra_1.2.1           
+[31] gridExtra_2.3               Seurat_3.2.2               
+[33] ggplot2_3.3.2               scales_1.1.1               
+[35] tidyr_1.1.2                 dplyr_1.0.2                
+[37] stringr_1.4.0               workflowr_1.6.1            
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.4.6     rprojroot_1.3-2  digest_0.6.26    later_1.0.0     
- [5] R6_2.4.1         backports_1.1.10 git2r_0.27.1     magrittr_1.5    
- [9] evaluate_0.14    stringi_1.4.6    rlang_0.4.8      fs_1.4.1        
-[13] promises_1.1.0   whisker_0.4      rmarkdown_2.4    tools_3.6.3     
-[17] stringr_1.4.0    glue_1.4.2       httpuv_1.5.2     xfun_0.18       
-[21] yaml_2.2.1       compiler_3.6.3   htmltools_0.5.0  knitr_1.30      </code></pre>
+  [1] reticulate_1.16       tidyselect_1.1.0      RSQLite_2.2.1        
+  [4] htmlwidgets_1.5.2     BiocParallel_1.20.1   Rtsne_0.15           
+  [7] munsell_0.5.0         codetools_0.2-16      ica_1.0-2            
+ [10] future_1.19.1         miniUI_0.1.1.1        withr_2.3.0          
+ [13] GOSemSim_2.12.1       colorspace_1.4-1      highr_0.8            
+ [16] knitr_1.30            rstudioapi_0.11       ROCR_1.0-11          
+ [19] ggsignif_0.6.0        tensor_1.5            DOSE_3.12.0          
+ [22] Rttf2pt1_1.3.8        listenv_0.8.0         labeling_0.4.2       
+ [25] git2r_0.27.1          urltools_1.7.3        polyclip_1.10-0      
+ [28] farver_2.0.3          bit64_4.0.5           pheatmap_1.0.12      
+ [31] rhdf5_2.30.1          rprojroot_1.3-2       vctrs_0.3.4          
+ [34] generics_0.0.2        xfun_0.18             R6_2.4.1             
+ [37] graphlayouts_0.7.0    rsvd_1.0.3            fgsea_1.12.0         
+ [40] spatstat.utils_1.17-0 gridGraphics_0.5-0    DelayedArray_0.12.3  
+ [43] promises_1.1.0        ggraph_2.0.3          gtable_0.3.0         
+ [46] globals_0.13.1        goftest_1.2-2         tidygraph_1.2.0      
+ [49] rlang_0.4.8           splines_3.6.3         rstatix_0.6.0        
+ [52] extrafontdb_1.0       lazyeval_0.2.2        europepmc_0.4        
+ [55] broom_0.7.1           BiocManager_1.30.10   yaml_2.2.1           
+ [58] reshape2_1.4.4        abind_1.4-5           backports_1.1.10     
+ [61] httpuv_1.5.2          qvalue_2.18.0         gridtext_0.1.1       
+ [64] tools_3.6.3           ellipsis_0.3.1        ggridges_0.5.2       
+ [67] Rcpp_1.0.4.6          plyr_1.8.6            progress_1.2.2       
+ [70] purrr_0.3.4           prettyunits_1.1.1     rpart_4.1-15         
+ [73] deldir_0.1-29         pbapply_1.4-3         zoo_1.8-8            
+ [76] haven_2.3.1           cluster_2.1.0         fs_1.4.1             
+ [79] magrittr_1.5          data.table_1.13.0     DO.db_2.9            
+ [82] openxlsx_4.2.2        triebeard_0.3.0       lmtest_0.9-38        
+ [85] RANN_2.6.1            whisker_0.4           fitdistrplus_1.1-1   
+ [88] hms_0.5.3             mime_0.9              evaluate_0.14        
+ [91] xtable_1.8-4          rio_0.5.16            readxl_1.3.1         
+ [94] compiler_3.6.3        tibble_3.0.4          KernSmooth_2.23-16   
+ [97] crayon_1.3.4          htmltools_0.5.0       mgcv_1.8-31          
+[100] later_1.0.0           DBI_1.1.0             tweenr_1.0.1         
+[103] corrplot_0.84         MASS_7.3-53           rappdirs_0.3.1       
+[106] Matrix_1.2-18         car_3.0-10            igraph_1.2.6         
+[109] pkgconfig_2.0.3       rvcheck_0.1.8         foreign_0.8-75       
+[112] plotly_4.9.2.1        xml2_1.3.2            webshot_0.5.2        
+[115] rvest_0.3.6           digest_0.6.26         RcppAnnoy_0.0.16     
+[118] spatstat.data_1.4-3   fastmatch_1.1-0       rmarkdown_2.4        
+[121] cellranger_1.1.0      leiden_0.3.3          uwot_0.1.8           
+[124] curl_4.3              shiny_1.5.0           lifecycle_0.2.0      
+[127] nlme_3.1-144          jsonlite_1.7.1        Rhdf5lib_1.8.0       
+[130] carData_3.0-4         pillar_1.4.6          lattice_0.20-38      
+[133] GO.db_3.10.0          fastmap_1.0.1         httr_1.4.2           
+[136] survival_3.1-8        glue_1.4.2            zip_2.1.1            
+[139] spatstat_1.64-1       bit_4.0.4             ggforce_0.3.2        
+[142] stringi_1.4.6         HDF5Array_1.14.4      blob_1.2.1           
+[145] memoise_1.1.0         irlba_2.3.3           future.apply_1.6.0   </code></pre>
+</div>
 </div>
 </div>
 
@@ -691,6 +2234,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
