@@ -1,13 +1,333 @@
 ---
 title: "Quality control and normalization"
-output: workflowr::wflow_html
+output:
+  workflowr::wflow_html:
+    toc: TRUE
+    code_folding: hide
 editor_options:
   chunk_output_type: console
 ---
 
+```{r setup, warning=FALSE, message=FALSE}
+source("code/load_packages.R")
+source("code/plot_QC_function.R") #change settings in script to get different layout per subpanel for this figure
+dir.create("output/paper_figures") # location where paper figures are stored
+```
+
 ## Introduction
 
-```{r}
+The inDrop-RAID data contains samples 9 timepoints of aIg stimulated BJAB, and 3 additional timepoints with ibrutinib drug. Script below extracts all metadata (sequencing sample names, adds metadata info per sample (prot or RNA library)), and reads all data tables into R. The metadata table is saved in output folder: "output/metadata.csv"
+
+For QC and filtering, cells with matching RNA and protein information are used to create a Seurat object (settings RNA: min.cells = 100, min.features = 100; proteins added as additional modality PROT). Several QC stats are calculated, and the object is saved in: "output/seu_combined_raw.rds"
+
+```{r import raw counts, warning=FALSE, message=FALSE}
+source("code/Import_and_create_seuratObj.R")
+```
+
+## Before QC dataset properties
+
+Seurat object:
+```{r data properties seurat object}
+seu_combined
+```
+
+
+**Table** Overview of per sample properties.
+```{r Table median per sample, warning = FALSE, message=FALSE}
+kable(seu_combined@meta.data %>% 
+        group_by(condition) %>% 
+        summarise(`Total number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  )) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+**Table** Overview of full dataset properties.
+```{r Totals before filtering, warning = FALSE, message=FALSE}
+kable(seu_combined@meta.data %>% 
+        summarise(`Number of cells` = round(n(),0),
+          `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  ) %>%
+        t()) %>%
+
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+## Quality Control & filtering
+
+```{r QC-filters, warning = FALSE, message=FALSE}
+plot_RNA_nCount <- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = "nCount_RNA", 
+                                 ytext = "Total UMI counts per cell",
+                                 xtext = "Time aIg stimulation (minutes)",
+                                 paneltitle = "Keep cells < 4000 RNA counts",
+                                 colorviolin = "dodgerblue2" ) + 
+                        geom_hline(yintercept = 4000, size = 0.3) +
+                        theme(axis.title.x = element_blank())
+
+plot_RNA_ngenes <- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = "nFeature_RNA", 
+                                 ytext = "Total genes per cell",
+                                 xtext = "Time aIg stimulation (minutes)",
+                                 paneltitle = "Keep cells >150 genes",
+                                 colorviolin = "dodgerblue2" ) + 
+                        geom_hline(yintercept = 150, size = 0.3) +
+                        theme(axis.title.x = element_blank())
+  
+plot_percent.mt <- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = "percent.mt", 
+                                 ytext = "% Mitochondrial counts",
+                                 xtext = "Time aIg stimulation (minutes)",
+                                 paneltitle = "Keep cells < 20 % and samples < median 10 % mitochondrial",
+                                 colorviolin = "dodgerblue2" ) +
+                        geom_hline(yintercept = 10, size = 0.3) +
+                        geom_hline(yintercept = 15, color = "grey", size = 0.3) +
+                        theme(axis.title.x = element_blank())
+
+plot_percent.rb <- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = "percent.rb", 
+                                 ytext = "% Ribosomal counts",
+                                 xtext = "Time aIg stimulation (minutes)",
+                                 paneltitle = "Stable % ribosomal counts over time",
+                                 colorviolin = "dodgerblue2" ) +
+                        theme(axis.title.x = element_blank())
+  
+  
+plot_PROT_nCount <- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = "nCount_PROT", 
+                                 ytext =  "Total UMI counts per cell",
+                                 xtext = "Time aIg stimulation (minutes)",
+                                 paneltitle = "Keep cells < 3000 PROT counts",
+                                 colorviolin = "deeppink3" ) +
+                        geom_hline(yintercept = 3000, size = 0.3) +
+                        theme(axis.title.x = element_blank())
+
+plot_PROT_nproteins <- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = "nFeature_PROT", 
+                                 ytext =  "Total proteins per cell",
+                                 xtext = "Time aIg stimulation (minutes)",
+                                 paneltitle = "Keep cells >45 proteins",
+                                 colorviolin = "deeppink3" ) +
+                        geom_hline(yintercept = 45, size = 0.3) 
+
+plot_percent.H3 <- plot_QC_paper(seu_object = seu_combined, 
+                                 feature = "percent.HisH3", 
+                                 ytext =   "% Histone H3 counts",
+                                 xtext = "Time aIg stimulation (minutes)",
+                                 paneltitle = "Variation in % Histone H3 counts",
+                                 colorviolin = "deeppink3" ) 
+  
+plot.QC <- plot_grid(plot_RNA_nCount, plot_RNA_ngenes,  plot_percent.mt, plot_percent.rb,plot_PROT_nCount,plot_PROT_nproteins, plot_percent.H3, labels = c('a', 'b', 'c','d' , 'e', 'f', 'g'), label_size = 10, ncol = 2)
+
+ggsave(plot.QC, filename = "output/paper_figures/Suppl_QC_filters.pdf", width = 183, height = 200, units = "mm",  dpi = 300, useDingbats = FALSE)
+ggsave(plot.QC, filename = "output/paper_figures/Suppl_QC_filters.png", width = 183, height = 200, units = "mm",  dpi = 300)
 
 ```
 
+```{r Suppl_QC_filters, fig.width=7.20472, fig.height=7.87402, warning = FALSE, message=FALSE}
+plot.QC
+```
+*Supplementary Figure* Thresholds for selection of high-quality samples and cells from the QuRIE-seq datasets.
+
+Based on the indicated cut-offs, high-quality cellsare filtered for further analysis. 
+Based on the good protein quality of samples and m<11% median mitochondiral counts per sample, timepoints 0, 2, 4, 6, 60 and 180 are kept for further analysis.
+
+```{r filter cells and samples, class.source = 'fold-show'}
+seu_combined_filtered <- subset(seu_combined, subset = nFeature_RNA > 150 & nCount_RNA < 4000 & nFeature_PROT > 45 & nCount_PROT < 3000 & percent.mt < 15)
+
+seu_combined_filtered <- subset(seu_combined_filtered, idents = c("010.aIg.contr","030.aIg.contr","030.aIg.ibr"), invert = TRUE)
+
+```
+
+## Normalize and scale
+
+
+```{r RNA sctransform with mitoregress, class.source = 'fold-show', warning=FALSE}
+# run sctransform with default settings.
+seu_combined_filtered <- SCTransform(seu_combined_filtered,
+                            assay = "RNA",
+                            new.assay.name = "SCT.RNA",
+                            do.correct.umi = TRUE,
+                            ncells = NULL,
+                            variable.features.n = 3000,
+                            vars.to.regress = c("percent.mt", "nCount_RNA"), # substantial variation between samples & cells in mito and ncount
+                            do.scale = FALSE,
+                            do.center = TRUE,
+                            conserve.memory = FALSE,
+                            return.only.var.genes = FALSE,
+                            seed.use = 42,
+                            verbose = FALSE
+                            )
+# Add some metadata to normalized data (ncounts & percent mt)
+seu_combined_filtered <- AddMetaData(seu_combined_filtered, as.data.frame(seu_combined_filtered@assays$SCT.RNA@counts) %>% summarise_all(funs(sum)) %>% unlist(), col.name = "nCount_RNA_SCT")
+
+seu_combined_filtered <- PercentageFeatureSet(seu_combined_filtered, pattern = "^MT\\.|^MTRN", col.name = "percent.mt.aftersct", assay = "SCT.RNA")
+
+## cell cycle scoring metadata
+s.genes <- cc.genes$s.genes
+g2m.genes <- cc.genes$g2m.genes
+seu_combined_filtered <- CellCycleScoring(seu_combined_filtered, s.features = s.genes, g2m.features = g2m.genes, set.ident = FALSE, assay = "SCT.RNA")
+
+seu_combined_filtered[["S.score"]] <- seu_combined_filtered@meta.data$S.Score
+seu_combined_filtered[["G2M.score"]] <- seu_combined_filtered@meta.data$G2M.Score
+seu_combined_filtered[["CCphase"]] <- seu_combined_filtered@meta.data$Phase
+
+```
+
+```{r PROT CLR normalize, scale with regress, warning=FALSE}
+all.prot <- rownames(seu_combined_filtered[["PROT"]])
+
+seu_combined_filtered <- NormalizeData(seu_combined_filtered, assay = "PROT", normalization.method = "CLR", verbose = FALSE)
+
+seu_combined_filtered <- ScaleData(seu_combined_filtered, assay = "PROT", features = all.prot, vars.to.regress = c("nFeature_PROT","nCount_PROT", "percent.HisH3"))
+
+```
+
+Seurat object with filtered cells and normalized counts is stored in "output/seu_combined_filtered_normalized.rds"
+```{r class.source = 'fold-show'}
+saveRDS(seu_combined_filtered, "output/seu_combined_filtered_normalized.rds")
+```
+
+
+## Subset of samples
+
+The manuscript describes two analysis of different collection of samples:  
+* Effect of aIg stimulation over two time-scales (see MOFA aIg [page](MOFAaIg.html))
+* Effect of ibrutinib on the cell-state at these two timescales (see MOFA ibru [page](MOFAibru.html))
+
+```{r class.source = 'fold-show'}
+seu_combined_aIg_selected <- subset(seu_combined_filtered, idents = c("006.aIg.ibr", "180.aIg.ibr"), invert = TRUE)
+
+saveRDS(seu_combined_aIg_selected, "output/seu_aIG_samples.rds")
+```
+
+```{r class.source = 'fold-show'}
+seu_combined_ibru_selected <- subset(seu_combined_filtered, idents = c("002.aIg.contr","004.aIg.contr","060.aIg.contr"), invert = TRUE)
+
+saveRDS(seu_combined_ibru_selected, "output/seu_ibru_samples.rds")
+```
+
+
+## Filtered dataset properties {.tabset}
+
+Overview of the number of cells and data properties of all samples, aIg subset of samples, or ibrutinib subset of samples.
+
+### Full dataset
+```{r data properties seurat object after filter}
+seu_combined_filtered
+```
+
+**Table** Overview of per sample properties after filtering
+```{r After filtering Table median per sample, warning = FALSE, message=FALSE}
+kable(seu_combined_filtered@meta.data %>% 
+        group_by(condition) %>% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  )) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+**Table** Overview of full filtered dataset properties.
+```{r After filtering totals, warning = FALSE, message=FALSE}
+kable(seu_combined_filtered@meta.data %>% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  ) %>%
+        t()) %>%
+
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+### aIg samples
+
+```{r aIg samples seurat object}
+seu_combined_aIg_selected
+```
+
+**Table** Overview of aIg dataset properties per sample
+```{r aIg samples Table median per sample, warning = FALSE, message=FALSE}
+kable(seu_combined_aIg_selected@meta.data %>% 
+        group_by(condition) %>% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  )) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+**Table** Overview of aIg dataset properties.
+```{r aIg samples totals, warning = FALSE, message=FALSE}
+kable(seu_combined_aIg_selected@meta.data %>% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  ) %>%
+        t()) %>%
+
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+### aIg + ibrutinib samples
+
+```{r ibru dataset seuratobject}
+seu_combined_ibru_selected
+```
+
+**Table** Overview of ibru dataset properties per sample
+```{r ibru samples Table median per sample, warning = FALSE, message=FALSE}
+kable(seu_combined_ibru_selected@meta.data %>% 
+        group_by(condition) %>% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  )) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+**Table** Overview of ibru dataset properties.
+```{r ibru samples totals, warning = FALSE, message=FALSE}
+kable(seu_combined_ibru_selected@meta.data %>% 
+        summarise(`Number of cells` = round(n(),0),
+                  `Median counts RNA` = round(median(nCount_RNA),0),
+                  `Median Number genes` = round(median(nFeature_RNA),0),
+                  `Median Mitochondrial counts (Median %)` = round(median(percent.mt),2), 
+                  `Ribosomal counts (Median %)` = round(median(percent.rb),2),
+                  `Median counts PROT` = round(median(nCount_PROT),0),
+                  `Number proteins` = round(median(nFeature_PROT),0)
+                  ) %>%
+        t()) %>%
+
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
