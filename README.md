@@ -1,4 +1,4 @@
-# QuRIEseq_analysis
+# QuRIE-seq_manuscript
 
 A [workflowr][] project.
 
