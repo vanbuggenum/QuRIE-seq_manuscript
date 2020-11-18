@@ -1,7 +1,7 @@
-name: "QuRIEseq_analysis"
+name: QuRIEseq_analysis
 output_dir: ../docs
 navbar:
-  title: "QuRIE-seq manuscript"
+  title: QuRIE-seq manuscript
   left:
   - text: Home
     href: index.html
@@ -11,7 +11,10 @@ navbar:
     href: MOFAaIg.html
   - text: MOFA ibru
     href: MOFAibru.html
-
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/jessievb/QuRIEseq_analysis
 output:
   workflowr::wflow_html:
     toc: yes
