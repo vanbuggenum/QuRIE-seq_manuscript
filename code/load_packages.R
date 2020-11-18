@@ -2,7 +2,7 @@
 library(stringr)
 library(dplyr)
 library(tidyr)
-
+library(scales)
 library(ggplot2)
 library(Seurat)
 library(gridExtra)
