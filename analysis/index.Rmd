@@ -5,6 +5,7 @@ site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
     toc: false
+    code_folding: hide
 editor_options:
   chunk_output_type: console
 ---
@@ -21,5 +22,5 @@ Three pages contain code to process, analyse and create figures:
 
 * [QC](QC.html) processes count tables (available at GEO####): filter high quality cells; normalize and scale counts.   
 * [MOFA aIg](MOFAaIg.html) computes a model of cells stimulates with aIg molecule.   
-* [MOFA ibru](MOFAaIg.html) computes a model of cells stimulates with aIg molecule with or without prescence of ibrutinib.  
+* [MOFA ibru](MOFAibru.html) computes a model of cells stimulates with aIg molecule with or without prescence of ibrutinib.  
 
