@@ -23,8 +23,11 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -265,6 +268,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -360,7 +366,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">QuRIE-seq manuscript</a>
+      <a class="navbar-brand" href="index.html">QuRIE-seq_manuscript</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -378,13 +384,27 @@ div.tocify {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jessievb/QuRIEseq_analysis">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
 <div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
 
@@ -413,13 +433,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-17
+<strong>Last updated:</strong> 2020-11-19
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>QuRIEseq_analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>QuRIE-seq_manuscript/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -504,30 +524,41 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong4487750"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 4487750 </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0cda3dc17e090caebd65040a9e601f7631e1d07etargetblank0cda3dca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0cda3dc17e090caebd65040a9e601f7631e1d07e" target="_blank">0cda3dc</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong4487750" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0cda3dc17e090caebd65040a9e601f7631e1d07etargetblank0cda3dca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 4487750. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0cda3dc17e090caebd65040a9e601f7631e1d07e" target="_blank">0cda3dc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
 Untracked files:
-    Untracked:  code/Import_and_create_seuratObj.R
-    Untracked:  code/load_packages.R
-    Untracked:  code/plot_QC_function.R
-    Untracked:  data/raw/
     Untracked:  data/workflow_QuRIEseq.png.png
+    Untracked:  output/MOFA_aIg.hdf5
+    Untracked:  output/MOFA_aIg.rds
+    Untracked:  output/data_weights_prot_fact1and3.csv
+    Untracked:  output/metadata.csv
+    Untracked:  output/paper_figures/
+    Untracked:  output/seu_aIG_samples.rds
+    Untracked:  output/seu_combined_filtered_allsamples.rds
+    Untracked:  output/seu_combined_filtered_normalized.rds
+    Untracked:  output/seu_combined_raw.rds
+    Untracked:  output/seu_ibru_samples.rds
+
+Unstaged changes:
+    Modified:   analysis/MOFAibru.Rmd
+    Modified:   code/load_packages.R
 
 </code></pre>
 <p>
@@ -571,7 +602,41 @@ Message
 Rmd
 </td>
 <td>
-4487750
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/0cda3dc17e090caebd65040a9e601f7631e1d07e/analysis/MOFAaIg.Rmd" target="_blank">0cda3dc</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-19
+</td>
+<td>
+Figure 1 and 2 plus supplementary figures manuscript
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/2ffe38d8ad99572f5b5e0fdde94cbd8db50659bf/docs/MOFAaIg.html" target="_blank">2ffe38d</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/4487750fd014ae3af0bfaa3cd6d581cf1ac3392c/analysis/MOFAaIg.Rmd" target="_blank">4487750</a>
 </td>
 <td>
 Jessie van Buggenum
@@ -588,7 +653,7 @@ basis set-up of page display
 Rmd
 </td>
 <td>
-d9372d1
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/d9372d117842a51e92f9ba0293d6e92c8e9b29c1/analysis/MOFAaIg.Rmd" target="_blank">d9372d1</a>
 </td>
 <td>
 Jessie van Buggenum
@@ -607,8 +672,327 @@ Publish the initial files for this website
 </div>
 </div>
 </div>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
+<pre class="r"><code>source(&quot;code/load_packages.R&quot;)
+seu_combined_selectsamples &lt;- readRDS(&quot;output/seu_aIG_samples.rds&quot;)
+
+
+panellabels &lt;- c(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;,&#39;d&#39; , &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;, &#39;k&#39;)
+
+add.textsize &lt;- theme(axis.text.x = element_text(colour = &#39;black&#39;, size = 7),
+          axis.text.y = element_text(colour = &#39;black&#39;,size=7),
+          text = element_text(size=7),
+          axis.text=element_text(size=7),
+          plot.title = element_text(size=7)
+          )
+
+
+colorgradient6_manual &lt;- c(&quot;#F7FBFF&quot;,&quot;#CFE1F2&quot;, &quot;#93C4DE&quot;, &quot;#4A97C9&quot;, &quot;#1F5284&quot;, &quot;#0C2236&quot; )
+colorgradient6_manual2 &lt;- c(&quot;#d4d4d3&quot;,&quot;#CFE1F2&quot;, &quot;#93C4DE&quot;, &quot;#4A97C9&quot;, &quot;#1F5284&quot;, &quot;#0C2236&quot; )
+labels &lt;- c(&quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;6&quot;, &quot;60&quot;, &quot;180&quot;)</code></pre>
+<div id="mofa-analysis-time-series-aig" class="section level2">
+<h2>MOFA analysis time-series aIg</h2>
+<div id="variable-features" class="section level4">
+<h4>Variable features</h4>
+<p>Determine variable genes and proteins</p>
+<pre class="r"><code>seu_combined_selectsamples &lt;- FindVariableFeatures(seu_combined_selectsamples, selection.method = &quot;mvp&quot;, assay = &quot;SCT.RNA&quot;, num.bin =20, mean.cutoff = c(0, 5), dispersion.cutoff = c(0.5,10), nfeatures =500)
+
+genes.variable &lt;- seu_combined_selectsamples@assays$SCT.RNA@var.features[-grep(&quot;^MT&quot;, seu_combined_selectsamples@assays$SCT.RNA@var.features)] # without the mitochondrial genes 
+
+proteins.all &lt;- row.names(seu_combined_selectsamples[[&quot;PROT&quot;]])
+
+meta.allcells &lt;- seu_combined_selectsamples@meta.data %&gt;%
+  mutate(sample = rownames(seu_combined_selectsamples@meta.data))</code></pre>
+</div>
+<div id="mofa-model" class="section level4">
+<h4>MOFA model</h4>
+<pre class="r"><code>## Note, if mofa object was generated before, it will read the generated rds file. (this will speed-up the process of generating this html document if edits are required)
+
+myfiles &lt;- list.files(path=&quot;output/&quot;, pattern = &quot;.rds$&quot;)
+
+if(&quot;MOFA_aIg.rds&quot; %in%  myfiles){mofa &lt;- readRDS(&quot;output/MOFA_aIg.rds&quot;)} else { #If so, read object, else do:
+     
+      mofa &lt;- create_mofa(list(
+        &quot;RNA&quot; = as.matrix( seu_combined_selectsamples@assays$SCT.RNA@scale.data[genes.variable,] ),
+        &quot;PROT&quot; = as.matrix( seu_combined_selectsamples@assays$PROT@scale.data[proteins.all,] ))
+        )
+
+      # Default settings used (try 15 factors, excludes all non-informative factors)
+      data_opts &lt;- get_default_data_options(mofa)
+      model_opts &lt;- get_default_model_options(mofa)
+      train_opts &lt;- get_default_training_options(mofa)
+      train_opts$seed &lt;- 42 # use same seed for reproducibility
+      mofa &lt;- prepare_mofa(
+        object = mofa,
+        data_options = data_opts,
+        model_options = model_opts,
+        training_options = train_opts
+        )
+
+    mofa &lt;- run_mofa(mofa, outfile = &quot;output/MOFA_aIg.hdf5&quot;)
+    mofa &lt;- run_umap(mofa, factors = c(1:7))
+    samples_metadata(mofa) &lt;- meta.allcells
+    saveRDS(mofa, file= &quot;output/MOFA_aIg.rds&quot;)
+  
+}
+
+
+mofa</code></pre>
+<pre><code>Trained MOFA with the following characteristics: 
+ Number of views: 2 
+ Views names: RNA PROT 
+ Number of features (per view): 2371 80 
+ Number of groups: 1 
+ Groups names: group1 
+ Number of samples (per group): 4767 
+ Number of factors: 9 </code></pre>
+<pre class="r"><code># Export Factor 1 and 3 weights for Cytoscape plot
+data_weights_prot &lt;- get_weights(object = mofa, views = &quot;PROT&quot;, factors = c(1,3), as.data.frame = TRUE)
+
+data_weights_prot &lt;- as.data.frame(data_weights_prot)  %&gt;%
+  spread(factor, value) %&gt;%
+  mutate(Factor1_signflip = Factor1 *-1)
+
+write.csv2(data_weights_prot, file = &quot;output/data_weights_prot_fact1and3.csv&quot;)</code></pre>
+</div>
+</div>
+<div id="figure-1" class="section level2">
+<h2>Figure 1</h2>
+<div id="umap-on-7-mofa-factors" class="section level3">
+<h3>UMAP on 7 MOFA factors</h3>
+<pre class="r"><code>## UMAP
+plot.umap.data &lt;-  plot_dimred(mofa, method=&quot;UMAP&quot;, color_by = &quot;condition&quot;,stroke = 0.001, dot_size =1, alpha = 0.2, return_data = T)
+
+plot.umap.all &lt;- ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
+  geom_point(size = 0.8, alpha = 0.6, shape = 21, stroke = 0) +
+  theme_half_open() +
+  scale_fill_manual(values = colorgradient6_manual, labels = c(labels), name = &quot;Time aIg&quot;,)+
+   theme(legend.position=&quot;none&quot;)+
+  add.textsize +
+  labs(title = &quot;UMAP on MOFA+ factors shows minute and \nhour time-scale cell-state transitions&quot;, x = &quot;UMAP 1&quot;, y = &quot;UMAP 2&quot;)
+
+## UMAP legend
+legend.umap &lt;- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
+  geom_point(size = 2, alpha = 1, shape = 21, stroke = 0) +
+  theme_half_open() +
+  scale_fill_manual(values = colorgradient6_manual, labels = c(labels), name = &quot;Time aIg \n(minutes)&quot;,)+
+  add.textsize +
+  labs(title = &quot;UMAP on MOFA+ factors shows minute and \nhour time-scale cell-state transitions&quot;, x = &quot;UMAP 1&quot;, &quot;y = UMAP 2&quot;))
+legend.umap &lt;- as_ggplot(legend.umap)</code></pre>
+<pre class="r"><code>plot_fig1_umap &lt;- plot_grid(plot.umap.all,legend.umap, labels = c(&quot;&quot;), label_size = 10, ncol = 2, rel_widths = c(1, 0.2))
+
+ggsave(plot_fig1_umap, filename = &quot;output/paper_figures/Fig1_UMAP.pdf&quot;, width = 68, height = 62, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(plot_fig1_umap, filename = &quot;output/paper_figures/Fig1_UMAP.png&quot;, width = 68, height = 62, units = &quot;mm&quot;,  dpi = 300)
+
+plot_fig1_umap</code></pre>
+<p><img src="figure/MOFAaIg.Rmd/Fig1_UMAP-1.png" width="288" style="display: block; margin: auto;" /> <em>Figure 1.</em> UMAP of 7 MOFA factors, integrating phospho-protein and RNA measurements</p>
+</div>
+<div id="suppl-pca" class="section level3">
+<h3>Suppl PCA</h3>
+<pre class="r"><code>seu_combined_selectsamples &lt;- RunPCA(seu_combined_selectsamples,assay = &quot;SCT.RNA&quot;, features = genes.variable, verbose = FALSE, ndims.print = 0, reduction.name = &quot;pca.RNA&quot;)
+seu_combined_selectsamples &lt;- RunPCA(seu_combined_selectsamples, assay = &quot;PROT&quot;, features = proteins.all, verbose = FALSE, ndims.print = 0,reduction.name = &quot;pca.PROT&quot;)</code></pre>
+<pre class="r"><code>## PCA analysis
+
+plot.PCA.RNA &lt;- DimPlot(seu_combined_selectsamples, reduction = &quot;pca.RNA&quot;, group.by = &quot;condition&quot;, pt.size =0.2) +
+  scale_color_manual(values = colorgradient6_manual2, labels = c(labels), name = &quot;Time aIg&quot;,)+
+  labs(title = &quot;RNA PCA separates cells \nat hour time-scale&quot;, x= &quot;RNA PC 1&quot;, y = &quot; RNA PC 2&quot;) +
+  add.textsize +
+  theme(legend.position = &quot;none&quot;)
+
+
+plot.PCA.PROT &lt;- DimPlot(seu_combined_selectsamples, reduction = &quot;pca.PROT&quot;, group.by = &quot;condition&quot;, pt.size = 0.2) +
+  scale_color_manual(values = colorgradient6_manual2, labels = c(labels), name = &quot;Time aIg&quot;,)+
+  labs(title = &quot;(phospho-)protein PCA separates cells\nat minutes time-scale&quot;, x= &quot;Protein PC 1&quot;, y = &quot;Protein PC 2&quot;) +
+  add.textsize +
+  #  scale_x_reverse()+
+  theme(legend.position = &quot;none&quot;)
+
+legend &lt;- get_legend(DimPlot(seu_combined_selectsamples, reduction = &quot;pca.RNA&quot;, group.by = &quot;condition&quot;, pt.size =0.1) +
+  scale_color_manual(values = colorgradient6_manual2, labels = c(labels), name = &quot;Time aIg&quot;,)+
+  add.textsize)
+legend &lt;- as_ggplot(legend)
+
+
+PCA.PROTPC1.data &lt;- data.frame(rank = 1:80, 
+                               protein = names(sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1])),
+                               weight.PC1 = sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1]),
+                               highlights = c(names(sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1]))[1:4],rep(&quot;&quot;,76))
+                               ) 
+
+plot.PCA.PROTweightsPC1 &lt;- ggplot(PCA.PROTPC1.data, aes(x=weight.PC1, y = rank, label = highlights)) +
+  geom_point(size=0.1) +
+  labs(title = &quot;Top 4 protein loadings \n&quot;, x= &quot;Weight Protein PC1&quot;) +
+  geom_point(color = ifelse(PCA.PROTPC1.data$highlights == &quot;&quot;, &quot;grey50&quot;, &quot;red&quot;)) +
+  geom_text_repel(size = 2, segment.size = 0.25)+
+  theme_half_open()+
+  add.textsize +
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()
+        ) +
+  scale_x_reverse()+
+  scale_y_reverse()
+
+
+PCA.RNAPC1.data &lt;- data.frame(rank = 1:2371, 
+                               RNA = names(sort(seu_combined_selectsamples@reductions$pca.RNA@feature.loadings[,1])),
+                               weight.PC1 = sort(seu_combined_selectsamples@reductions$pca.RNA@feature.loadings[,1]),
+                               highlights = c(rep(&quot;&quot;,2366),names(sort(seu_combined_selectsamples@reductions$pca.RNA@feature.loadings[,1]))[2367:2371])
+                               ) 
+## Loadings RNA
+plot.PCA.RNAweightsPC1 &lt;- ggplot(PCA.RNAPC1.data, aes(x=weight.PC1, y = rank, label = highlights)) +
+  geom_point(size=0.1) +
+  labs(title = &quot;Top 4 RNA loadings \n&quot;, x= &quot;Weight RNA PC1&quot;) +
+  geom_point(color = ifelse(PCA.RNAPC1.data$highlights == &quot;&quot;, &quot;grey50&quot;, &quot;red&quot;)) +
+  geom_text_repel(size = 2, segment.size = 0.25)+
+  theme_half_open()+
+  add.textsize +
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()
+        ) 
+
+## ridgeplots
+PC1.data &lt;- data.frame(sample = rownames(seu_combined_selectsamples@reductions$pca.PROT@cell.embeddings),
+                       PC1_PROT = seu_combined_selectsamples@reductions$pca.PROT@cell.embeddings[,1],
+                       PC1_RNA = seu_combined_selectsamples@reductions$pca.RNA@cell.embeddings[,1]) %&gt;%
+  left_join(meta.allcells)
+
+plot_ridge_PC1Prot &lt;- ggplot(PC1.data, aes(x = PC1_PROT, y = condition, fill = condition)) + 
+  scale_fill_manual(values = colorgradient6_manual, labels = c(labels), name = &quot;Time aIg \n(minutes)&quot;)+
+  geom_density_ridges2() +
+  scale_y_discrete(labels = labels,  name = &quot;Time aIg (minutes)&quot;)+
+  scale_x_continuous(name = &quot;PC1 Proteins&quot;) +
+  theme_half_open() +
+  add.textsize+
+  theme(legend.position = &quot;none&quot;)
+
+plot_ridge_PC1RNA &lt;- ggplot(PC1.data, aes(x = PC1_RNA, y = condition, fill = condition)) + 
+  scale_fill_manual(values = colorgradient6_manual, labels = c(labels), name = &quot;Time aIg \n(minutes)&quot;)+
+  geom_density_ridges2() +
+  scale_y_discrete(labels = labels,  name = &quot;Time aIg (minutes)&quot;)+
+  scale_x_continuous(name = &quot;PC1 RNA&quot;) +
+  theme_half_open() +
+  add.textsize+
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<pre class="r"><code>Fig1.pca &lt;- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1, labels = c(panellabels[1:2], &quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,panellabels[3:4]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3))</code></pre>
+<pre><code>Picking joint bandwidth of 0.37</code></pre>
+<pre><code>Picking joint bandwidth of 0.368</code></pre>
+<pre class="r"><code>ggsave(filename = &quot;output/paper_figures/Suppl_PCA_aIg.pdf&quot;, width = 143, height = 170, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(filename = &quot;output/paper_figures/Suppl_PCA_aIg.png&quot;, width = 143, height = 170, units = &quot;mm&quot;,  dpi = 300)
+
+Fig1.pca</code></pre>
+<p><img src="figure/MOFAaIg.Rmd/Figure_1_supplementary-1.png" width="537.6" style="display: block; margin: auto;" /> <em>Supplemental Figure.</em> PCA analysis on RNA ór Protein dataset</p>
+</div>
+<div id="suppl-mofa-model-properties" class="section level3">
+<h3>Suppl MOFA model properties</h3>
+<pre class="r"><code>Fig.1.suppl.mofa.row1 &lt;- plot_grid(plot.variance.perfactor.all, plot.variance.total,NULL, plot.heatmap.pval.covariates, labels = c(panellabels[1:3]), label_size = 10, ncol = 4, rel_widths = c(1.35, 0.27,0.2,0.38))
+
+Fig.1.suppl.mofa.row2 &lt;- plot_grid(plot.violin.factorall,legend.umap, labels = panellabels[4], label_size = 10, ncol = 2, rel_widths = c(1,0.1))
+
+Suppl_mofa &lt;- plot_grid(Fig.1.suppl.mofa.row1, Fig.1.suppl.mofa.row2, plot.rank.PROT.2.4to7, plot.rank.RNA.2.4to7, labels = c(&quot;&quot;,&quot;&quot;, panellabels[5:6]),label_size = 10, ncol = 1, rel_heights = c(1.45,1,1.1,1.1))
+
+
+ggsave(Suppl_mofa, filename = &quot;output/paper_figures/Suppl_MOFAaIg.pdf&quot;, width = 183, height = 220, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(Suppl_mofa, filename = &quot;output/paper_figures/Suppl_MOFAaIg.png&quot;, width = 183, height = 220, units = &quot;mm&quot;,  dpi = 300)
+
+Suppl_mofa</code></pre>
+<p><img src="figure/MOFAaIg.Rmd/Suppl_MOFA_model-1.png" width="691.2" style="display: block; margin: auto;" /> <em>Supplemental Figure.</em> MOFA model additional information</p>
+</div>
+</div>
+<div id="figure-2" class="section level2">
+<h2>Figure 2</h2>
+<p>Prepare main panels</p>
+<p>Enrichment analysis of Factor 3 positive loadings</p>
+<pre class="r"><code>topposrna.factor3 &lt;- weights.RNA %&gt;%
+  filter(factor == &quot;Factor3&quot; &amp; value &gt;= 0) %&gt;%
+  arrange(-value)
+rownames(topposrna.factor3) &lt;- topposrna.factor3$feature
+
+### Convert Gene-names to gene IDs (using &#39;org.Hs.eg.db&#39; library)
+
+topposrna.factor3 &lt;- topposrna.factor3 %&gt;%
+  mutate(ENTREZID = mapIds(org.Hs.eg.db, as.character(topposrna.factor3$feature), &#39;ENTREZID&#39;, &#39;SYMBOL&#39;))</code></pre>
+<pre><code>&#39;select()&#39; returned 1:1 mapping between keys and columns</code></pre>
+<pre class="r"><code>listgenes.factor3 &lt;- topposrna.factor3$value
+
+names(listgenes.factor3) &lt;- topposrna.factor3$ENTREZID
+
+
+go.pb.fct3.pos &lt;- enrichGO(gene         = topposrna.factor3$feature,
+                OrgDb         = org.Hs.eg.db,
+                keyType       = &#39;SYMBOL&#39;,
+                ont           = &quot;BP&quot;,
+                pAdjustMethod = &quot;BH&quot;)
+
+go.pb.fct3.pos &lt;- simplify(go.pb.fct3.pos, cutoff=0.6, by=&quot;p.adjust&quot;, select_fun=min)
+
+
+go.pb.fct3.pos.dplyr &lt;- mutate(go.pb.fct3.pos, richFactor = Count / as.numeric(sub(&quot;/\\d+&quot;, &quot;&quot;, BgRatio))) 
+
+## plot main panel
+plot.enriched.go.bp.factor3 &lt;- ggplot(go.pb.fct3.pos.dplyr, showCategory = 10, 
+  aes(-log10(p.adjust), fct_reorder(Description,  -log10(p.adjust)))) +   geom_segment(aes(xend=0, yend = Description)) +
+  geom_point(aes(size = Count)) +
+  scale_color_viridis_c(guide=guide_colorbar(reverse=TRUE)) +
+  scale_size_continuous(range=c(0.5, 3)) +
+  theme_minimal() + 
+  add.textsize +
+  xlab(&quot;-log adj pval&quot;) +
+  ylab(NULL) + 
+  ggtitle(&quot;Enriched Biological Processes&quot;) +
+  theme(legend.position=&quot;none&quot;)
+
+legend.plot.enriched.go.bp.factor3 &lt;- as.ggplot(get_legend(ggplot(go.pb.fct3.pos.dplyr, showCategory = 10, 
+  aes(-log10(p.adjust), fct_reorder(Description,  -log10(p.adjust)))) +   geom_segment(aes(xend=0, yend = Description)) +
+  geom_point(aes(size = Count)) +
+  scale_color_viridis_c(guide=guide_colorbar(reverse=TRUE)) +
+  scale_size_continuous(range=c(0.5, 3)) +
+  theme_minimal() + 
+  add.textsize +
+  xlab(&quot;-log adj pval&quot;) +
+  ylab(NULL) + 
+  ggtitle(&quot;Enriched Biological Processes&quot;) +
+     theme(legend.position=&quot;right&quot;)))
+
+## Plot supplementary
+plot.enriched.go.bp.factor3_50 &lt;- ggplot(go.pb.fct3.pos.dplyr, showCategory = 50, 
+  aes(-log10(p.adjust), fct_reorder(Description,  -log10(p.adjust)))) +   geom_segment(aes(xend=0, yend = Description)) +
+  geom_point(aes(size = Count)) +
+  scale_color_viridis_c(guide=guide_colorbar(reverse=TRUE)) +
+  scale_size_continuous(range=c(0.5, 3)) +
+  theme_minimal() + 
+  add.textsize +
+  xlab(&quot;-log adj pval&quot;) +
+  ylab(NULL) + 
+  ggtitle(&quot;Enriched Biological Processes&quot;) </code></pre>
+<pre class="r"><code>message(c(&quot;Significance protein folding GO term: \n&quot;,go.pb.fct3.pos.dplyr@result[which(go.pb.fct3.pos.dplyr@result$Description == &quot;protein folding&quot;),&quot;p.adjust&quot;]))</code></pre>
+<pre><code>Significance protein folding GO term: 
+0.0210693865776273</code></pre>
+<div id="main-figure-2" class="section level3">
+<h3>Main figure 2</h3>
+<pre class="r"><code>Fig2.row1.violinsprot &lt;- plot_grid(`plot.violin.p-CD79a`, `plot.violin.p-Syk`, `plot.violin.p-JAK1`,labels = c(panellabels[3]), label_size = 10, ncol = 1, rel_heights = c(1.2,0.95,1.2))
+Fig2.row1 &lt;- plot_grid(plot.violin.factor1,plot.rank.PROT.1, plot.rank.RNA.1, Fig2.row1.violinsprot, labels = c(panellabels[1:2], &quot;&quot;),  label_size = 10, ncol =4, rel_widths = c(0.8,0.55,0.5,0.8))
+
+Fig2.row2.violinsrna &lt;- plot_grid(plot.violin.rna.NEAT1,plot.violin.rna.NPM1, plot.violin.rna.BTF3,labels = &quot;&quot;, label_size = 10, ncol = 1, rel_heights = c(1.2,0.95,1.2))
+
+Fig2.row2 &lt;- plot_grid(plot.violin.factor3,plot.rank.PROT.3,plot.rank.RNA.3,Fig2.row2.violinsrna, labels = c(panellabels[4:5], &quot;&quot;, panellabels[7]), label_size = 10, ncol =4, rel_widths = c(0.8,0.55,0.5,0.8))
+
+Fig2.row3 &lt;- plot_grid(plot.enriched.go.bp.factor3,legend.plot.enriched.go.bp.factor3,NULL, labels = panellabels[6], label_size = 10, ncol =3, rel_widths = c(1.8,0.2,0.6))
+
+plot_fig2 &lt;- plot_grid(Fig2.row1, Fig2.row2,Fig2.row3, labels = c(&quot;&quot;, &quot;&quot;, &quot;&quot;), label_size = 10, ncol = 1, rel_heights = c(1,1,0.55))
+
+ggsave(plot_fig2, filename = &quot;output/paper_figures/Fig2.pdf&quot;, width = 183, height = 183, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(plot_fig2, filename = &quot;output/paper_figures/Fig2.png&quot;, width = 183, height = 183, units = &quot;mm&quot;,  dpi = 300)
+
+plot_fig2</code></pre>
+<p><img src="figure/MOFAaIg.Rmd/plot_fig2-1.png" width="691.2" style="display: block; margin: auto;" /> <em>Figure 2.</em> Factor 1 and 3 exploration.</p>
+</div>
+<div id="suppl-enriched-fact-3" class="section level3">
+<h3>Suppl Enriched Fact 3</h3>
+<pre class="r"><code>ggsave(plot.enriched.go.bp.factor3_50, filename = &quot;output/paper_figures/Suppl_Enrichm_Fct3.pdf&quot;, width = 183, height = 183, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(plot.enriched.go.bp.factor3_50, filename = &quot;output/paper_figures/Suppl_Enrichm_Fct3.png&quot;, width = 183, height = 183, units = &quot;mm&quot;,  dpi = 300)
+plot.enriched.go.bp.factor3_50</code></pre>
+<p><img src="figure/MOFAaIg.Rmd/Suppl-1.png" width="691.2" style="display: block; margin: auto;" /> <em>Supplemental Figure.</em> Top 50 enriched gene-sets in postive loadings factor 3.</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -629,18 +1013,82 @@ locale:
 [5] LC_TIME=English_Netherlands.1252    
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+ [1] parallel  stats4    grid      stats     graphics  grDevices utils    
+ [8] datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.6.1
+ [1] png_0.1-7                   forcats_0.5.0              
+ [3] clusterProfiler_3.14.3      clusterProfiler.dplyr_0.0.2
+ [5] enrichplot_1.6.1            org.Hs.eg.db_3.10.0        
+ [7] AnnotationDbi_1.48.0        IRanges_2.20.2             
+ [9] S4Vectors_0.24.4            Biobase_2.46.0             
+[11] BiocGenerics_0.32.0         ggridges_0.5.2             
+[13] cowplot_1.1.0               ggtext_0.1.0               
+[15] ggplotify_0.0.5             ggcorrplot_0.1.3           
+[17] ggrepel_0.8.2               ggpubr_0.4.0               
+[19] scico_1.2.0                 MOFA2_1.1                  
+[21] extrafont_0.17              patchwork_1.0.1            
+[23] RColorBrewer_1.1-2          viridis_0.5.1              
+[25] viridisLite_0.3.0           ggsci_2.9                  
+[27] sctransform_0.3.1           ggthemes_4.2.0             
+[29] matrixStats_0.57.0          kableExtra_1.2.1           
+[31] gridExtra_2.3               Seurat_3.2.2               
+[33] ggplot2_3.3.2               scales_1.1.1               
+[35] tidyr_1.1.2                 dplyr_1.0.2                
+[37] stringr_1.4.0               workflowr_1.6.1            
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.4.6     rprojroot_1.3-2  digest_0.6.26    later_1.0.0     
- [5] R6_2.4.1         backports_1.1.10 git2r_0.27.1     magrittr_1.5    
- [9] evaluate_0.14    stringi_1.4.6    rlang_0.4.8      fs_1.4.1        
-[13] promises_1.1.0   whisker_0.4      rmarkdown_2.4    tools_3.6.3     
-[17] stringr_1.4.0    glue_1.4.2       httpuv_1.5.2     xfun_0.18       
-[21] yaml_2.2.1       compiler_3.6.3   htmltools_0.5.0  knitr_1.30      </code></pre>
+  [1] reticulate_1.16       tidyselect_1.1.0      RSQLite_2.2.1        
+  [4] htmlwidgets_1.5.2     BiocParallel_1.20.1   Rtsne_0.15           
+  [7] munsell_0.5.0         codetools_0.2-16      ica_1.0-2            
+ [10] future_1.19.1         miniUI_0.1.1.1        withr_2.3.0          
+ [13] GOSemSim_2.12.1       colorspace_1.4-1      knitr_1.30           
+ [16] rstudioapi_0.11       ROCR_1.0-11           ggsignif_0.6.0       
+ [19] tensor_1.5            DOSE_3.12.0           Rttf2pt1_1.3.8       
+ [22] listenv_0.8.0         labeling_0.4.2        git2r_0.27.1         
+ [25] urltools_1.7.3        mnormt_2.0.2          polyclip_1.10-0      
+ [28] farver_2.0.3          bit64_4.0.5           pheatmap_1.0.12      
+ [31] rhdf5_2.30.1          rprojroot_1.3-2       vctrs_0.3.4          
+ [34] generics_0.0.2        xfun_0.18             markdown_1.1         
+ [37] R6_2.4.1              graphlayouts_0.7.0    rsvd_1.0.3           
+ [40] fgsea_1.12.0          spatstat.utils_1.17-0 gridGraphics_0.5-0   
+ [43] DelayedArray_0.12.3   promises_1.1.0        ggraph_2.0.3         
+ [46] gtable_0.3.0          globals_0.13.1        goftest_1.2-2        
+ [49] tidygraph_1.2.0       rlang_0.4.8           splines_3.6.3        
+ [52] rstatix_0.6.0         extrafontdb_1.0       lazyeval_0.2.2       
+ [55] europepmc_0.4         broom_0.7.1           BiocManager_1.30.10  
+ [58] yaml_2.2.1            reshape2_1.4.4        abind_1.4-5          
+ [61] backports_1.1.10      httpuv_1.5.2          qvalue_2.18.0        
+ [64] gridtext_0.1.1        tools_3.6.3           psych_2.0.9          
+ [67] ellipsis_0.3.1        Rcpp_1.0.4.6          plyr_1.8.6           
+ [70] progress_1.2.2        purrr_0.3.4           prettyunits_1.1.1    
+ [73] rpart_4.1-15          deldir_0.1-29         pbapply_1.4-3        
+ [76] zoo_1.8-8             haven_2.3.1           cluster_2.1.0        
+ [79] fs_1.4.1              magrittr_1.5          data.table_1.13.0    
+ [82] DO.db_2.9             openxlsx_4.2.2        triebeard_0.3.0      
+ [85] lmtest_0.9-38         RANN_2.6.1            tmvnsim_1.0-2        
+ [88] whisker_0.4           fitdistrplus_1.1-1    hms_0.5.3            
+ [91] mime_0.9              evaluate_0.14         xtable_1.8-4         
+ [94] rio_0.5.16            readxl_1.3.1          compiler_3.6.3       
+ [97] tibble_3.0.4          KernSmooth_2.23-16    crayon_1.3.4         
+[100] htmltools_0.5.0       mgcv_1.8-31           later_1.0.0          
+[103] DBI_1.1.0             tweenr_1.0.1          corrplot_0.84        
+[106] MASS_7.3-53           rappdirs_0.3.1        Matrix_1.2-18        
+[109] car_3.0-10            igraph_1.2.6          pkgconfig_2.0.3      
+[112] rvcheck_0.1.8         foreign_0.8-75        plotly_4.9.2.1       
+[115] xml2_1.3.2            webshot_0.5.2         rvest_0.3.6          
+[118] digest_0.6.26         RcppAnnoy_0.0.16      spatstat.data_1.4-3  
+[121] fastmatch_1.1-0       rmarkdown_2.4         cellranger_1.1.0     
+[124] leiden_0.3.3          uwot_0.1.8            curl_4.3             
+[127] shiny_1.5.0           lifecycle_0.2.0       nlme_3.1-144         
+[130] jsonlite_1.7.1        Rhdf5lib_1.8.0        carData_3.0-4        
+[133] pillar_1.4.6          lattice_0.20-38       GO.db_3.10.0         
+[136] fastmap_1.0.1         httr_1.4.2            survival_3.1-8       
+[139] glue_1.4.2            zip_2.1.1             spatstat_1.64-1      
+[142] bit_4.0.4             ggforce_0.3.2         stringi_1.4.6        
+[145] HDF5Array_1.14.4      blob_1.2.1            memoise_1.1.0        
+[148] irlba_2.3.3           future.apply_1.6.0   </code></pre>
+</div>
 </div>
 </div>
 
@@ -691,6 +1139,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
