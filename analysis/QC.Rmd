@@ -21,7 +21,11 @@ The inDrop-RAID data contains samples 9 timepoints of aIg stimulated BJAB, and 3
 For QC and filtering, cells with matching RNA and protein information are used to create a Seurat object (settings RNA: min.cells = 100, min.features = 100; proteins added as additional modality PROT). Several QC stats are calculated, and the object is saved in: "output/seu_combined_raw.rds"
 
 ```{r import raw counts, warning=FALSE, message=FALSE}
-source("code/Import_and_create_seuratObj.R")
+myfiles <- list.files(path="output/", pattern = ".rds$")
+## only read all raw files and create raw combined table if not done yet. Speeds up generation of html file
+if("seu_combined_raw.rds" %in%  myfiles){seu_combined <- readRDS("output/seu_combined_raw.rds")} else { 
+  source("code/Import_and_create_seuratObj.R")
+}
 ```
 
 ## Before QC dataset properties
@@ -88,9 +92,9 @@ plot_percent.mt <- plot_QC_paper(seu_object = seu_combined,
                                  feature = "percent.mt", 
                                  ytext = "% Mitochondrial counts",
                                  xtext = "Time aIg stimulation (minutes)",
-                                 paneltitle = "Keep cells < 20 % and samples < median 10 % mitochondrial",
+                                 paneltitle = "Keep cells < 15 % and samples < median 11 % mitochondrial",
                                  colorviolin = "dodgerblue2" ) +
-                        geom_hline(yintercept = 10, size = 0.3) +
+                        geom_hline(yintercept = 11, size = 0.3) +
                         geom_hline(yintercept = 15, color = "grey", size = 0.3) +
                         theme(axis.title.x = element_blank())
 
