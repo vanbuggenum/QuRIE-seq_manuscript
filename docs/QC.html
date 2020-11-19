@@ -435,7 +435,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-18
+<strong>Last updated:</strong> 2020-11-19
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -526,16 +526,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree67539d569507cb2f30d2188677021e9b34659fa7targetblank67539d5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/67539d569507cb2f30d2188677021e9b34659fa7" target="_blank">67539d5</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree5d80bc60e41940bb4c7d346d5da4aae483246ba3targetblank5d80bc6a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/5d80bc60e41940bb4c7d346d5da4aae483246ba3" target="_blank">5d80bc6</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree67539d569507cb2f30d2188677021e9b34659fa7targetblank67539d5a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree5d80bc60e41940bb4c7d346d5da4aae483246ba3targetblank5d80bc6a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/67539d569507cb2f30d2188677021e9b34659fa7" target="_blank">67539d5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/5d80bc60e41940bb4c7d346d5da4aae483246ba3" target="_blank">5d80bc6</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -547,6 +547,9 @@ Ignored files:
 
 Untracked files:
     Untracked:  data/workflow_QuRIEseq.png.png
+    Untracked:  output/MOFA_aIg.hdf5
+    Untracked:  output/MOFA_aIg.rds
+    Untracked:  output/data_weights_prot_fact1and3.csv
     Untracked:  output/metadata.csv
     Untracked:  output/paper_figures/
     Untracked:  output/seu_aIG_samples.rds
@@ -557,7 +560,7 @@ Untracked files:
 
 Unstaged changes:
     Modified:   analysis/MOFAaIg.Rmd
-    Modified:   analysis/index.Rmd
+    Modified:   analysis/MOFAibru.Rmd
     Modified:   code/load_packages.R
 
 </code></pre>
@@ -597,6 +600,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/5d80bc60e41940bb4c7d346d5da4aae483246ba3/analysis/QC.Rmd" target="_blank">5d80bc6</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-19
+</td>
+<td>
+correct tresholds manuscript
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/2c3e4a119dcf91fab22e312f9c4b928a09bee26f/docs/QC.html" target="_blank">2c3e4a1</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-18
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -679,7 +716,11 @@ dir.create(&quot;output/paper_figures&quot;) # location where paper figures are 
 <h2>Introduction</h2>
 <p>The inDrop-RAID data contains samples 9 timepoints of aIg stimulated BJAB, and 3 additional timepoints with ibrutinib drug. Script below extracts all metadata (sequencing sample names, adds metadata info per sample (prot or RNA library)), and reads all data tables into R. The metadata table is saved in output folder: “output/metadata.csv”</p>
 <p>For QC and filtering, cells with matching RNA and protein information are used to create a Seurat object (settings RNA: min.cells = 100, min.features = 100; proteins added as additional modality PROT). Several QC stats are calculated, and the object is saved in: “output/seu_combined_raw.rds”</p>
-<pre class="r"><code>source(&quot;code/Import_and_create_seuratObj.R&quot;)</code></pre>
+<pre class="r"><code>myfiles &lt;- list.files(path=&quot;output/&quot;, pattern = &quot;.rds$&quot;)
+## only read all raw files and create raw combined table if not done yet. Speeds up generation of html file
+if(&quot;seu_combined_raw.rds&quot; %in%  myfiles){seu_combined &lt;- readRDS(&quot;output/seu_combined_raw.rds&quot;)} else { 
+  source(&quot;code/Import_and_create_seuratObj.R&quot;)
+}</code></pre>
 </div>
 <div id="before-qc-dataset-properties" class="section level2">
 <h2>Before QC dataset properties</h2>
@@ -1117,9 +1158,9 @@ plot_percent.mt &lt;- plot_QC_paper(seu_object = seu_combined,
                                  feature = &quot;percent.mt&quot;, 
                                  ytext = &quot;% Mitochondrial counts&quot;,
                                  xtext = &quot;Time aIg stimulation (minutes)&quot;,
-                                 paneltitle = &quot;Keep cells &lt; 20 % and samples &lt; median 10 % mitochondrial&quot;,
+                                 paneltitle = &quot;Keep cells &lt; 15 % and samples &lt; median 11 % mitochondrial&quot;,
                                  colorviolin = &quot;dodgerblue2&quot; ) +
-                        geom_hline(yintercept = 10, size = 0.3) +
+                        geom_hline(yintercept = 11, size = 0.3) +
                         geom_hline(yintercept = 15, color = &quot;grey&quot;, size = 0.3) +
                         theme(axis.title.x = element_blank())
 
@@ -2118,7 +2159,7 @@ other attached packages:
  [5] enrichplot_1.6.1            org.Hs.eg.db_3.10.0        
  [7] AnnotationDbi_1.48.0        IRanges_2.20.2             
  [9] S4Vectors_0.24.4            Biobase_2.46.0             
-[11] BiocGenerics_0.32.0         magick_2.4.0               
+[11] BiocGenerics_0.32.0         ggridges_0.5.2             
 [13] cowplot_1.1.0               ggtext_0.1.0               
 [15] ggplotify_0.0.5             ggcorrplot_0.1.3           
 [17] ggrepel_0.8.2               ggpubr_0.4.0               
@@ -2155,34 +2196,34 @@ loaded via a namespace (and not attached):
  [55] broom_0.7.1           BiocManager_1.30.10   yaml_2.2.1           
  [58] reshape2_1.4.4        abind_1.4-5           backports_1.1.10     
  [61] httpuv_1.5.2          qvalue_2.18.0         gridtext_0.1.1       
- [64] tools_3.6.3           ellipsis_0.3.1        ggridges_0.5.2       
- [67] Rcpp_1.0.4.6          plyr_1.8.6            progress_1.2.2       
- [70] purrr_0.3.4           prettyunits_1.1.1     rpart_4.1-15         
- [73] deldir_0.1-29         pbapply_1.4-3         zoo_1.8-8            
- [76] haven_2.3.1           cluster_2.1.0         fs_1.4.1             
- [79] magrittr_1.5          data.table_1.13.0     DO.db_2.9            
- [82] openxlsx_4.2.2        triebeard_0.3.0       lmtest_0.9-38        
- [85] RANN_2.6.1            whisker_0.4           fitdistrplus_1.1-1   
- [88] hms_0.5.3             mime_0.9              evaluate_0.14        
- [91] xtable_1.8-4          rio_0.5.16            readxl_1.3.1         
- [94] compiler_3.6.3        tibble_3.0.4          KernSmooth_2.23-16   
- [97] crayon_1.3.4          htmltools_0.5.0       mgcv_1.8-31          
-[100] later_1.0.0           DBI_1.1.0             tweenr_1.0.1         
-[103] corrplot_0.84         MASS_7.3-53           rappdirs_0.3.1       
-[106] Matrix_1.2-18         car_3.0-10            igraph_1.2.6         
-[109] pkgconfig_2.0.3       rvcheck_0.1.8         foreign_0.8-75       
-[112] plotly_4.9.2.1        xml2_1.3.2            webshot_0.5.2        
-[115] rvest_0.3.6           digest_0.6.26         RcppAnnoy_0.0.16     
-[118] spatstat.data_1.4-3   fastmatch_1.1-0       rmarkdown_2.4        
-[121] cellranger_1.1.0      leiden_0.3.3          uwot_0.1.8           
-[124] curl_4.3              shiny_1.5.0           lifecycle_0.2.0      
-[127] nlme_3.1-144          jsonlite_1.7.1        Rhdf5lib_1.8.0       
-[130] carData_3.0-4         pillar_1.4.6          lattice_0.20-38      
-[133] GO.db_3.10.0          fastmap_1.0.1         httr_1.4.2           
-[136] survival_3.1-8        glue_1.4.2            zip_2.1.1            
-[139] spatstat_1.64-1       bit_4.0.4             ggforce_0.3.2        
-[142] stringi_1.4.6         HDF5Array_1.14.4      blob_1.2.1           
-[145] memoise_1.1.0         irlba_2.3.3           future.apply_1.6.0   </code></pre>
+ [64] tools_3.6.3           ellipsis_0.3.1        Rcpp_1.0.4.6         
+ [67] plyr_1.8.6            progress_1.2.2        purrr_0.3.4          
+ [70] prettyunits_1.1.1     rpart_4.1-15          deldir_0.1-29        
+ [73] pbapply_1.4-3         zoo_1.8-8             haven_2.3.1          
+ [76] cluster_2.1.0         fs_1.4.1              magrittr_1.5         
+ [79] data.table_1.13.0     DO.db_2.9             openxlsx_4.2.2       
+ [82] triebeard_0.3.0       lmtest_0.9-38         RANN_2.6.1           
+ [85] whisker_0.4           fitdistrplus_1.1-1    hms_0.5.3            
+ [88] mime_0.9              evaluate_0.14         xtable_1.8-4         
+ [91] rio_0.5.16            readxl_1.3.1          compiler_3.6.3       
+ [94] tibble_3.0.4          KernSmooth_2.23-16    crayon_1.3.4         
+ [97] htmltools_0.5.0       mgcv_1.8-31           later_1.0.0          
+[100] DBI_1.1.0             tweenr_1.0.1          corrplot_0.84        
+[103] MASS_7.3-53           rappdirs_0.3.1        Matrix_1.2-18        
+[106] car_3.0-10            igraph_1.2.6          pkgconfig_2.0.3      
+[109] rvcheck_0.1.8         foreign_0.8-75        plotly_4.9.2.1       
+[112] xml2_1.3.2            webshot_0.5.2         rvest_0.3.6          
+[115] digest_0.6.26         RcppAnnoy_0.0.16      spatstat.data_1.4-3  
+[118] fastmatch_1.1-0       rmarkdown_2.4         cellranger_1.1.0     
+[121] leiden_0.3.3          uwot_0.1.8            curl_4.3             
+[124] shiny_1.5.0           lifecycle_0.2.0       nlme_3.1-144         
+[127] jsonlite_1.7.1        Rhdf5lib_1.8.0        carData_3.0-4        
+[130] pillar_1.4.6          lattice_0.20-38       GO.db_3.10.0         
+[133] fastmap_1.0.1         httr_1.4.2            survival_3.1-8       
+[136] glue_1.4.2            zip_2.1.1             spatstat_1.64-1      
+[139] bit_4.0.4             ggforce_0.3.2         stringi_1.4.6        
+[142] HDF5Array_1.14.4      blob_1.2.1            memoise_1.1.0        
+[145] irlba_2.3.3           future.apply_1.6.0   </code></pre>
 </div>
 </div>
 </div>
