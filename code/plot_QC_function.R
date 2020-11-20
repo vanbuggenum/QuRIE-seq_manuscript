@@ -1,9 +1,9 @@
 plot_QC_paper <- function(seu_object, feature, ytext, xtext, paneltitle, colorviolin,...){
-  VlnPlot(seu_object, pt.size = 0.01, features = feature, ncol = 1, group.by = "orig.ident", cols =rep(colorviolin, 11)) +
+  VlnPlot(seu_object, pt.size = 0.01, features = feature, ncol = 1, group.by = "orig.ident", cols =rep(colorviolin, 8)) +
     stat_summary(fun.y = median, geom='point', size = 3, colour = "red", shape = 95)+
     labs(y = ytext, title = paneltitle, x=xtext) +
     #geom_hline(yintercept = 4000, size = 0.3) +
-    scale_x_discrete(labels = c("0", "2", "4", "6", "6 \n+ Ibru", "10", "30", "30 \n+ Ibru", "60", "180", "180 \n+ Ibru"))+
+    scale_x_discrete(labels = c("0", "2", "4", "6", "6 \n+ Ibru", "60", "180", "180 \n+ Ibru"))+
     theme_half_open()+
     theme(axis.text.x = element_text(colour = 'black',angle = 0, hjust=0.4),
           axis.text.y = element_text(colour = 'black'),

@@ -1,12 +1,12 @@
 # I will create datatable with all filenames, custom samplenames(sampleIDs), and sample info seperated in multiple columns
 
 # read all file locations from data/raw/ (dirsample), list original sample name (sample_origname), manually add if protein or RNA data (dataorigin)
-samples_df <- data.frame(dirsample = paste0("data/raw/", list.files(path = "data/raw/")), sample_origname = list.files(path = "data/raw/"),dataorigin = c(rep(c("RNA","protein"),11)))
+samples_df <- data.frame(dirsample = paste0("data/raw/", list.files(path = "data/raw/")), sample_origname = list.files(path = "data/raw/"),dataorigin = c(rep(c("RNA","protein"),8)))
 
 # Extract sampleid_brief from original sample_origname, manually add formatted condition per sample (usefull later for ordered orig.ident etc in seurat)
 samples_df <- data.frame(samples_df,
                          sampleid_brief = separate(samples_df,col = "sample_origname", c("A", NA))[,"A"],
-                         condition = c(rep(c("060.aIg.contr","180.aIg.contr","180.aIg.ibr","000.aIg.contr","002.aIg.contr","004.aIg.contr","006.aIg.contr","006.aIg.ibr","010.aIg.contr","030.aIg.contr","030.aIg.ibr"), each = 2)))
+                         condition = c(rep(c("060.aIg.contr","180.aIg.contr","180.aIg.ibr","000.aIg.contr","002.aIg.contr","004.aIg.contr","006.aIg.contr","006.aIg.ibr"), each = 2)))
 # Extract from condition metadata per sample (time, stimulus, inhibitor columns) also usefull for later seurat metadata, add sampleIDs that will be used in R
 samples_df <- data.frame(samples_df,
                          time = separate(samples_df,col = "condition", c("A", "B", "C"))[,"A"],

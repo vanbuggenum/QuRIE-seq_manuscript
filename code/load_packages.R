@@ -25,7 +25,7 @@ library(ggcorrplot)
 library(ggplotify)
 library(ggtext)
 library(cowplot)
-library(magick)
+library(ggridges)
 
 library('org.Hs.eg.db')
 library('enrichplot')
