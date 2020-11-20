@@ -435,7 +435,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-19
+<strong>Last updated:</strong> 2020-11-20
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -526,16 +526,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree5d80bc60e41940bb4c7d346d5da4aae483246ba3targetblank5d80bc6a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/5d80bc60e41940bb4c7d346d5da4aae483246ba3" target="_blank">5d80bc6</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree420f8973a6de641d96917dda9684f5994b8f5f18targetblank420f897a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/420f8973a6de641d96917dda9684f5994b8f5f18" target="_blank">420f897</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree5d80bc60e41940bb4c7d346d5da4aae483246ba3targetblank5d80bc6a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree420f8973a6de641d96917dda9684f5994b8f5f18targetblank420f897a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/5d80bc60e41940bb4c7d346d5da4aae483246ba3" target="_blank">5d80bc6</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/420f8973a6de641d96917dda9684f5994b8f5f18" target="_blank">420f897</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -544,24 +544,29 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+    Ignored:    analysis/figure/
 
 Untracked files:
-    Untracked:  data/workflow_QuRIEseq.png.png
-    Untracked:  output/MOFA_aIg.hdf5
-    Untracked:  output/MOFA_aIg.rds
-    Untracked:  output/data_weights_prot_fact1and3.csv
-    Untracked:  output/metadata.csv
+    Untracked:  MOFA_aIg.hdf5
+    Untracked:  MOFA_aIg.rds
+    Untracked:  MOFA_ibru.hdf5
+    Untracked:  MOFA_ibru.rds
     Untracked:  output/paper_figures/
-    Untracked:  output/seu_aIG_samples.rds
-    Untracked:  output/seu_combined_filtered_allsamples.rds
-    Untracked:  output/seu_combined_filtered_normalized.rds
-    Untracked:  output/seu_combined_raw.rds
-    Untracked:  output/seu_ibru_samples.rds
+    Untracked:  seu_combined_filtered_allsamples.rds
+    Untracked:  seu_combined_raw.rds
 
 Unstaged changes:
     Modified:   analysis/MOFAaIg.Rmd
     Modified:   analysis/MOFAibru.Rmd
+    Modified:   code/Import_and_create_seuratObj.R
     Modified:   code/load_packages.R
+    Modified:   code/plot_QC_function.R
+    Deleted:    data/raw/7amrna.counts.tsv.gz
+    Deleted:    data/raw/7aprot_sc.counts.fullytrim.m1.n1.l8.e75.FraMod.matrix
+    Deleted:    data/raw/8amrna.counts.tsv.gz
+    Deleted:    data/raw/8aprot_sc.counts.fullytrim.m1.n1.l8.e75.FraMod.matrix
+    Deleted:    data/raw/9amrna.counts.tsv.gz
+    Deleted:    data/raw/9aprot_sc.counts.fullytrim.m1.n1.l8.e75.FraMod.matrix
 
 </code></pre>
 <p>
@@ -600,6 +605,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/420f8973a6de641d96917dda9684f5994b8f5f18/analysis/QC.Rmd" target="_blank">420f897</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-20
+</td>
+<td>
+update gene treshold
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/1f83dd100d4b2069c03c893fb546676351e5619f/docs/QC.html" target="_blank">1f83dd1</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -727,8 +766,8 @@ if(&quot;seu_combined_raw.rds&quot; %in%  myfiles){seu_combined &lt;- readRDS(&q
 <p>Seurat object:</p>
 <pre class="r"><code>seu_combined</code></pre>
 <pre><code>An object of class Seurat 
-9300 features across 11061 samples within 2 assays 
-Active assay: RNA (9220 features, 0 variable features)
+10364 features across 7449 samples within 2 assays 
+Active assay: RNA (10284 features, 0 variable features)
  1 other assay present: PROT</code></pre>
 <p><strong>Table</strong> Overview of per sample properties.</p>
 <pre class="r"><code>kable(seu_combined@meta.data %&gt;% 
@@ -780,16 +819,16 @@ Number proteins
 688
 </td>
 <td style="text-align:right;">
-1379
+1400
 </td>
 <td style="text-align:right;">
-961
+982
 </td>
 <td style="text-align:right;">
-7.24
+7.12
 </td>
 <td style="text-align:right;">
-6.68
+6.60
 </td>
 <td style="text-align:right;">
 1108
@@ -806,16 +845,16 @@ Number proteins
 958
 </td>
 <td style="text-align:right;">
-780
+791
 </td>
 <td style="text-align:right;">
-594
+602
 </td>
 <td style="text-align:right;">
-7.72
+7.63
 </td>
 <td style="text-align:right;">
-6.74
+6.67
 </td>
 <td style="text-align:right;">
 984
@@ -832,16 +871,16 @@ Number proteins
 545
 </td>
 <td style="text-align:right;">
-842
+856
 </td>
 <td style="text-align:right;">
-628
+643
 </td>
 <td style="text-align:right;">
-7.92
+7.81
 </td>
 <td style="text-align:right;">
-5.97
+5.89
 </td>
 <td style="text-align:right;">
 1035
@@ -858,16 +897,16 @@ Number proteins
 820
 </td>
 <td style="text-align:right;">
-1060
+1072
 </td>
 <td style="text-align:right;">
-774
+786
 </td>
 <td style="text-align:right;">
-8.26
+8.17
 </td>
 <td style="text-align:right;">
-6.86
+6.77
 </td>
 <td style="text-align:right;">
 720
@@ -884,16 +923,16 @@ Number proteins
 1148
 </td>
 <td style="text-align:right;">
-464
+468
 </td>
 <td style="text-align:right;">
-360
+365
 </td>
 <td style="text-align:right;">
-10.99
+10.85
 </td>
 <td style="text-align:right;">
-6.04
+5.98
 </td>
 <td style="text-align:right;">
 756
@@ -904,100 +943,22 @@ Number proteins
 </tr>
 <tr>
 <td style="text-align:left;">
-010.aIg.contr
-</td>
-<td style="text-align:right;">
-748
-</td>
-<td style="text-align:right;">
-528
-</td>
-<td style="text-align:right;">
-412
-</td>
-<td style="text-align:right;">
-11.19
-</td>
-<td style="text-align:right;">
-6.18
-</td>
-<td style="text-align:right;">
-724
-</td>
-<td style="text-align:right;">
-54
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-030.aIg.contr
-</td>
-<td style="text-align:right;">
-1263
-</td>
-<td style="text-align:right;">
-753
-</td>
-<td style="text-align:right;">
-552
-</td>
-<td style="text-align:right;">
-11.89
-</td>
-<td style="text-align:right;">
-6.49
-</td>
-<td style="text-align:right;">
-813
-</td>
-<td style="text-align:right;">
-56
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-030.aIg.ibr
-</td>
-<td style="text-align:right;">
-1601
-</td>
-<td style="text-align:right;">
-767
-</td>
-<td style="text-align:right;">
-563
-</td>
-<td style="text-align:right;">
-12.18
-</td>
-<td style="text-align:right;">
-5.92
-</td>
-<td style="text-align:right;">
-817
-</td>
-<td style="text-align:right;">
-55
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 060.aIg.contr
 </td>
 <td style="text-align:right;">
 879
 </td>
 <td style="text-align:right;">
-642
+647
 </td>
 <td style="text-align:right;">
-496
+500
 </td>
 <td style="text-align:right;">
-8.74
+8.65
 </td>
 <td style="text-align:right;">
-6.65
+6.61
 </td>
 <td style="text-align:right;">
 891
@@ -1014,16 +975,16 @@ Number proteins
 1121
 </td>
 <td style="text-align:right;">
-717
+721
 </td>
 <td style="text-align:right;">
-555
+558
 </td>
 <td style="text-align:right;">
-7.37
+7.34
 </td>
 <td style="text-align:right;">
-6.79
+6.75
 </td>
 <td style="text-align:right;">
 867
@@ -1040,16 +1001,16 @@ Number proteins
 1290
 </td>
 <td style="text-align:right;">
-743
+748
 </td>
 <td style="text-align:right;">
-580
+586
 </td>
 <td style="text-align:right;">
-6.30
+6.25
 </td>
 <td style="text-align:right;">
-6.90
+6.84
 </td>
 <td style="text-align:right;">
 808
@@ -1080,7 +1041,7 @@ Number proteins
 Number of cells
 </td>
 <td style="text-align:right;">
-11061.00
+7449.00
 </td>
 </tr>
 <tr>
@@ -1088,7 +1049,7 @@ Number of cells
 Median counts RNA
 </td>
 <td style="text-align:right;">
-725.00
+742.00
 </td>
 </tr>
 <tr>
@@ -1096,7 +1057,7 @@ Median counts RNA
 Median Number genes
 </td>
 <td style="text-align:right;">
-550.00
+570.00
 </td>
 </tr>
 <tr>
@@ -1104,7 +1065,7 @@ Median Number genes
 Median Mitochondrial counts (Median %)
 </td>
 <td style="text-align:right;">
-9.20
+7.89
 </td>
 </tr>
 <tr>
@@ -1112,7 +1073,7 @@ Median Mitochondrial counts (Median %)
 Ribosomal counts (Median %)
 </td>
 <td style="text-align:right;">
-6.46
+6.55
 </td>
 </tr>
 <tr>
@@ -1120,7 +1081,7 @@ Ribosomal counts (Median %)
 Median counts PROT
 </td>
 <td style="text-align:right;">
-835.00
+863.00
 </td>
 </tr>
 <tr>
@@ -1158,10 +1119,9 @@ plot_percent.mt &lt;- plot_QC_paper(seu_object = seu_combined,
                                  feature = &quot;percent.mt&quot;, 
                                  ytext = &quot;% Mitochondrial counts&quot;,
                                  xtext = &quot;Time aIg stimulation (minutes)&quot;,
-                                 paneltitle = &quot;Keep cells &lt; 15 % and samples &lt; median 11 % mitochondrial&quot;,
+                                 paneltitle = &quot;Keep cells &lt; 15 % mitochondrial genecounts&quot;,
                                  colorviolin = &quot;dodgerblue2&quot; ) +
-                        geom_hline(yintercept = 11, size = 0.3) +
-                        geom_hline(yintercept = 15, color = &quot;grey&quot;, size = 0.3) +
+                        geom_hline(yintercept = 15, color = &quot;black&quot;, size = 0.3) +
                         theme(axis.title.x = element_blank())
 
 plot_percent.rb &lt;- plot_QC_paper(seu_object = seu_combined, 
@@ -1204,9 +1164,7 @@ ggsave(plot.QC, filename = &quot;output/paper_figures/Suppl_QC_filters.png&quot;
 <pre class="r"><code>plot.QC</code></pre>
 <p><img src="figure/QC.Rmd/Suppl_QC_filters-1.png" width="691.65312" style="display: block; margin: auto;" /> <em>Supplementary Figure</em> Thresholds for selection of high-quality samples and cells from the QuRIE-seq datasets.</p>
 <p>Based on the indicated cut-offs, high-quality cellsare filtered for further analysis. Based on the good protein quality of samples and m&lt;11% median mitochondiral counts per sample, timepoints 0, 2, 4, 6, 60 and 180 are kept for further analysis.</p>
-<pre class="r fold-show"><code>seu_combined_filtered &lt;- subset(seu_combined, subset = nFeature_RNA &gt; 150 &amp; nCount_RNA &lt; 4000 &amp; nFeature_PROT &gt; 45 &amp; nCount_PROT &lt; 3000 &amp; percent.mt &lt; 15)
-
-seu_combined_filtered &lt;- subset(seu_combined_filtered, idents = c(&quot;010.aIg.contr&quot;,&quot;030.aIg.contr&quot;,&quot;030.aIg.ibr&quot;), invert = TRUE)</code></pre>
+<pre class="r fold-show"><code>seu_combined_filtered &lt;- subset(seu_combined, subset = nFeature_RNA &gt; 150 &amp; nCount_RNA &lt; 4000 &amp; nFeature_PROT &gt; 45 &amp; nCount_PROT &lt; 3000 &amp; percent.mt &lt; 15)</code></pre>
 </div>
 <div id="normalize-and-scale" class="section level2">
 <h2>Normalize and scale</h2>
@@ -1266,8 +1224,8 @@ saveRDS(seu_combined_ibru_selected, &quot;output/seu_ibru_samples.rds&quot;)</co
 <h3>Full dataset</h3>
 <pre class="r"><code>seu_combined_filtered</code></pre>
 <pre><code>An object of class Seurat 
-18520 features across 6976 samples within 3 assays 
-Active assay: SCT.RNA (9220 features, 3000 variable features)
+20648 features across 6988 samples within 3 assays 
+Active assay: SCT.RNA (10284 features, 3000 variable features)
  2 other assays present: RNA, PROT</code></pre>
 <p><strong>Table</strong> Overview of per sample properties after filtering</p>
 <pre class="r"><code>kable(seu_combined_filtered@meta.data %&gt;% 
@@ -1319,16 +1277,16 @@ Number proteins
 649
 </td>
 <td style="text-align:right;">
-1407
+1425
 </td>
 <td style="text-align:right;">
-977
+992
 </td>
 <td style="text-align:right;">
-7.11
+7.01
 </td>
 <td style="text-align:right;">
-6.70
+6.63
 </td>
 <td style="text-align:right;">
 1108
@@ -1342,19 +1300,19 @@ Number proteins
 002.aIg.contr
 </td>
 <td style="text-align:right;">
-927
+929
 </td>
 <td style="text-align:right;">
-788
+796
 </td>
 <td style="text-align:right;">
-602
+611
 </td>
 <td style="text-align:right;">
-7.61
+7.51
 </td>
 <td style="text-align:right;">
-6.76
+6.69
 </td>
 <td style="text-align:right;">
 992
@@ -1368,19 +1326,19 @@ Number proteins
 004.aIg.contr
 </td>
 <td style="text-align:right;">
-511
+512
 </td>
 <td style="text-align:right;">
-866
+886
 </td>
 <td style="text-align:right;">
-646
+662
 </td>
 <td style="text-align:right;">
-7.75
+7.64
 </td>
 <td style="text-align:right;">
-6.02
+5.94
 </td>
 <td style="text-align:right;">
 1043
@@ -1394,22 +1352,22 @@ Number proteins
 006.aIg.contr
 </td>
 <td style="text-align:right;">
-716
+718
 </td>
 <td style="text-align:right;">
-1098
+1112
 </td>
 <td style="text-align:right;">
-804
+817
 </td>
 <td style="text-align:right;">
-8.02
+7.93
 </td>
 <td style="text-align:right;">
-6.93
+6.85
 </td>
 <td style="text-align:right;">
-752
+753
 </td>
 <td style="text-align:right;">
 54
@@ -1420,22 +1378,22 @@ Number proteins
 006.aIg.ibr
 </td>
 <td style="text-align:right;">
-953
+959
 </td>
 <td style="text-align:right;">
-498
+502
 </td>
 <td style="text-align:right;">
-390
+396
 </td>
 <td style="text-align:right;">
-10.41
+10.34
 </td>
 <td style="text-align:right;">
-5.98
+5.92
 </td>
 <td style="text-align:right;">
-776
+777
 </td>
 <td style="text-align:right;">
 57
@@ -1446,19 +1404,19 @@ Number proteins
 060.aIg.contr
 </td>
 <td style="text-align:right;">
-865
+866
 </td>
 <td style="text-align:right;">
-644
+648
 </td>
 <td style="text-align:right;">
-497
+504
 </td>
 <td style="text-align:right;">
-8.72
+8.65
 </td>
 <td style="text-align:right;">
-6.65
+6.61
 </td>
 <td style="text-align:right;">
 894
@@ -1475,16 +1433,16 @@ Number proteins
 1099
 </td>
 <td style="text-align:right;">
-717
+721
 </td>
 <td style="text-align:right;">
-555
+558
 </td>
 <td style="text-align:right;">
-7.37
+7.32
 </td>
 <td style="text-align:right;">
-6.79
+6.75
 </td>
 <td style="text-align:right;">
 871
@@ -1501,16 +1459,16 @@ Number proteins
 1256
 </td>
 <td style="text-align:right;">
-740
+746
 </td>
 <td style="text-align:right;">
-578
+584
 </td>
 <td style="text-align:right;">
-6.31
+6.26
 </td>
 <td style="text-align:right;">
-6.90
+6.84
 </td>
 <td style="text-align:right;">
 810
@@ -1541,7 +1499,7 @@ Number proteins
 Number of cells
 </td>
 <td style="text-align:right;">
-6976.00
+6988.00
 </td>
 </tr>
 <tr>
@@ -1549,7 +1507,7 @@ Number of cells
 Median counts RNA
 </td>
 <td style="text-align:right;">
-746.00
+753.00
 </td>
 </tr>
 <tr>
@@ -1557,7 +1515,7 @@ Median counts RNA
 Median Number genes
 </td>
 <td style="text-align:right;">
-572.00
+579.00
 </td>
 </tr>
 <tr>
@@ -1565,7 +1523,7 @@ Median Number genes
 Median Mitochondrial counts (Median %)
 </td>
 <td style="text-align:right;">
-7.83
+7.76
 </td>
 </tr>
 <tr>
@@ -1573,7 +1531,7 @@ Median Mitochondrial counts (Median %)
 Ribosomal counts (Median %)
 </td>
 <td style="text-align:right;">
-6.64
+6.57
 </td>
 </tr>
 <tr>
@@ -1599,8 +1557,8 @@ Number proteins
 <h3>aIg samples</h3>
 <pre class="r"><code>seu_combined_aIg_selected</code></pre>
 <pre><code>An object of class Seurat 
-18520 features across 4767 samples within 3 assays 
-Active assay: SCT.RNA (9220 features, 3000 variable features)
+20648 features across 4773 samples within 3 assays 
+Active assay: SCT.RNA (10284 features, 3000 variable features)
  2 other assays present: RNA, PROT</code></pre>
 <p><strong>Table</strong> Overview of aIg dataset properties per sample</p>
 <pre class="r"><code>kable(seu_combined_aIg_selected@meta.data %&gt;% 
@@ -1652,16 +1610,16 @@ Number proteins
 649
 </td>
 <td style="text-align:right;">
-1407
+1425
 </td>
 <td style="text-align:right;">
-977
+992
 </td>
 <td style="text-align:right;">
-7.11
+7.01
 </td>
 <td style="text-align:right;">
-6.70
+6.63
 </td>
 <td style="text-align:right;">
 1108
@@ -1675,19 +1633,19 @@ Number proteins
 002.aIg.contr
 </td>
 <td style="text-align:right;">
-927
+929
 </td>
 <td style="text-align:right;">
-788
+796
 </td>
 <td style="text-align:right;">
-602
+611
 </td>
 <td style="text-align:right;">
-7.61
+7.51
 </td>
 <td style="text-align:right;">
-6.76
+6.69
 </td>
 <td style="text-align:right;">
 992
@@ -1701,19 +1659,19 @@ Number proteins
 004.aIg.contr
 </td>
 <td style="text-align:right;">
-511
+512
 </td>
 <td style="text-align:right;">
-866
+886
 </td>
 <td style="text-align:right;">
-646
+662
 </td>
 <td style="text-align:right;">
-7.75
+7.64
 </td>
 <td style="text-align:right;">
-6.02
+5.94
 </td>
 <td style="text-align:right;">
 1043
@@ -1727,22 +1685,22 @@ Number proteins
 006.aIg.contr
 </td>
 <td style="text-align:right;">
-716
+718
 </td>
 <td style="text-align:right;">
-1098
+1112
 </td>
 <td style="text-align:right;">
-804
+817
 </td>
 <td style="text-align:right;">
-8.02
+7.93
 </td>
 <td style="text-align:right;">
-6.93
+6.85
 </td>
 <td style="text-align:right;">
-752
+753
 </td>
 <td style="text-align:right;">
 54
@@ -1753,19 +1711,19 @@ Number proteins
 060.aIg.contr
 </td>
 <td style="text-align:right;">
-865
+866
 </td>
 <td style="text-align:right;">
-644
+648
 </td>
 <td style="text-align:right;">
-497
+504
 </td>
 <td style="text-align:right;">
-8.72
+8.65
 </td>
 <td style="text-align:right;">
-6.65
+6.61
 </td>
 <td style="text-align:right;">
 894
@@ -1782,16 +1740,16 @@ Number proteins
 1099
 </td>
 <td style="text-align:right;">
-717
+721
 </td>
 <td style="text-align:right;">
-555
+558
 </td>
 <td style="text-align:right;">
-7.37
+7.32
 </td>
 <td style="text-align:right;">
-6.79
+6.75
 </td>
 <td style="text-align:right;">
 871
@@ -1822,7 +1780,7 @@ Number proteins
 Number of cells
 </td>
 <td style="text-align:right;">
-4767.00
+4773.00
 </td>
 </tr>
 <tr>
@@ -1830,7 +1788,7 @@ Number of cells
 Median counts RNA
 </td>
 <td style="text-align:right;">
-816.00
+824.00
 </td>
 </tr>
 <tr>
@@ -1838,7 +1796,7 @@ Median counts RNA
 Median Number genes
 </td>
 <td style="text-align:right;">
-616.00
+625.00
 </td>
 </tr>
 <tr>
@@ -1846,7 +1804,7 @@ Median Number genes
 Median Mitochondrial counts (Median %)
 </td>
 <td style="text-align:right;">
-7.77
+7.69
 </td>
 </tr>
 <tr>
@@ -1854,7 +1812,7 @@ Median Mitochondrial counts (Median %)
 Ribosomal counts (Median %)
 </td>
 <td style="text-align:right;">
-6.69
+6.62
 </td>
 </tr>
 <tr>
@@ -1880,8 +1838,8 @@ Number proteins
 <h3>aIg + ibrutinib samples</h3>
 <pre class="r"><code>seu_combined_ibru_selected</code></pre>
 <pre><code>An object of class Seurat 
-18520 features across 4673 samples within 3 assays 
-Active assay: SCT.RNA (9220 features, 3000 variable features)
+20648 features across 4681 samples within 3 assays 
+Active assay: SCT.RNA (10284 features, 3000 variable features)
  2 other assays present: RNA, PROT</code></pre>
 <p><strong>Table</strong> Overview of ibru dataset properties per sample</p>
 <pre class="r"><code>kable(seu_combined_ibru_selected@meta.data %&gt;% 
@@ -1933,16 +1891,16 @@ Number proteins
 649
 </td>
 <td style="text-align:right;">
-1407
+1425
 </td>
 <td style="text-align:right;">
-977
+992
 </td>
 <td style="text-align:right;">
-7.11
+7.01
 </td>
 <td style="text-align:right;">
-6.70
+6.63
 </td>
 <td style="text-align:right;">
 1108
@@ -1956,22 +1914,22 @@ Number proteins
 006.aIg.contr
 </td>
 <td style="text-align:right;">
-716
+718
 </td>
 <td style="text-align:right;">
-1098
+1112
 </td>
 <td style="text-align:right;">
-804
+817
 </td>
 <td style="text-align:right;">
-8.02
+7.93
 </td>
 <td style="text-align:right;">
-6.93
+6.85
 </td>
 <td style="text-align:right;">
-752
+753
 </td>
 <td style="text-align:right;">
 54
@@ -1982,22 +1940,22 @@ Number proteins
 006.aIg.ibr
 </td>
 <td style="text-align:right;">
-953
+959
 </td>
 <td style="text-align:right;">
-498
+502
 </td>
 <td style="text-align:right;">
-390
+396
 </td>
 <td style="text-align:right;">
-10.41
+10.34
 </td>
 <td style="text-align:right;">
-5.98
+5.92
 </td>
 <td style="text-align:right;">
-776
+777
 </td>
 <td style="text-align:right;">
 57
@@ -2011,16 +1969,16 @@ Number proteins
 1099
 </td>
 <td style="text-align:right;">
-717
+721
 </td>
 <td style="text-align:right;">
-555
+558
 </td>
 <td style="text-align:right;">
-7.37
+7.32
 </td>
 <td style="text-align:right;">
-6.79
+6.75
 </td>
 <td style="text-align:right;">
 871
@@ -2037,16 +1995,16 @@ Number proteins
 1256
 </td>
 <td style="text-align:right;">
-740
+746
 </td>
 <td style="text-align:right;">
-578
+584
 </td>
 <td style="text-align:right;">
-6.31
+6.26
 </td>
 <td style="text-align:right;">
-6.90
+6.84
 </td>
 <td style="text-align:right;">
 810
@@ -2077,7 +2035,7 @@ Number proteins
 Number of cells
 </td>
 <td style="text-align:right;">
-4673.00
+4681.00
 </td>
 </tr>
 <tr>
@@ -2085,7 +2043,7 @@ Number of cells
 Median counts RNA
 </td>
 <td style="text-align:right;">
-756.00
+761.00
 </td>
 </tr>
 <tr>
@@ -2093,7 +2051,7 @@ Median counts RNA
 Median Number genes
 </td>
 <td style="text-align:right;">
-581.00
+586.00
 </td>
 </tr>
 <tr>
@@ -2101,7 +2059,7 @@ Median Number genes
 Median Mitochondrial counts (Median %)
 </td>
 <td style="text-align:right;">
-7.68
+7.62
 </td>
 </tr>
 <tr>
@@ -2109,7 +2067,7 @@ Median Mitochondrial counts (Median %)
 Ribosomal counts (Median %)
 </td>
 <td style="text-align:right;">
-6.67
+6.60
 </td>
 </tr>
 <tr>
@@ -2117,7 +2075,7 @@ Ribosomal counts (Median %)
 Median counts PROT
 </td>
 <td style="text-align:right;">
-839.00
+840.00
 </td>
 </tr>
 <tr>
