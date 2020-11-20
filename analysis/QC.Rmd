@@ -92,10 +92,9 @@ plot_percent.mt <- plot_QC_paper(seu_object = seu_combined,
                                  feature = "percent.mt", 
                                  ytext = "% Mitochondrial counts",
                                  xtext = "Time aIg stimulation (minutes)",
-                                 paneltitle = "Keep cells < 15 % and samples < median 11 % mitochondrial",
+                                 paneltitle = "Keep cells < 15 % mitochondrial genecounts",
                                  colorviolin = "dodgerblue2" ) +
-                        geom_hline(yintercept = 11, size = 0.3) +
-                        geom_hline(yintercept = 15, color = "grey", size = 0.3) +
+                        geom_hline(yintercept = 15, color = "black", size = 0.3) +
                         theme(axis.title.x = element_blank())
 
 plot_percent.rb <- plot_QC_paper(seu_object = seu_combined, 
@@ -148,8 +147,6 @@ Based on the good protein quality of samples and m<11% median mitochondiral coun
 
 ```{r filter cells and samples, class.source = 'fold-show'}
 seu_combined_filtered <- subset(seu_combined, subset = nFeature_RNA > 150 & nCount_RNA < 4000 & nFeature_PROT > 45 & nCount_PROT < 3000 & percent.mt < 15)
-
-seu_combined_filtered <- subset(seu_combined_filtered, idents = c("010.aIg.contr","030.aIg.contr","030.aIg.ibr"), invert = TRUE)
 
 ```
 
