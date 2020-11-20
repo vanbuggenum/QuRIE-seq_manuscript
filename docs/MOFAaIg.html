@@ -433,7 +433,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-19
+<strong>Last updated:</strong> 2020-11-20
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -524,16 +524,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0cda3dc17e090caebd65040a9e601f7631e1d07etargetblank0cda3dca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0cda3dc17e090caebd65040a9e601f7631e1d07e" target="_blank">0cda3dc</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreeb8950ba20a62c9e6e012893d62c26e26a6943d6ftargetblankb8950baa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/b8950ba20a62c9e6e012893d62c26e26a6943d6f" target="_blank">b8950ba</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0cda3dc17e090caebd65040a9e601f7631e1d07etargetblank0cda3dca" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreeb8950ba20a62c9e6e012893d62c26e26a6943d6ftargetblankb8950baa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0cda3dc17e090caebd65040a9e601f7631e1d07e" target="_blank">0cda3dc</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/b8950ba20a62c9e6e012893d62c26e26a6943d6f" target="_blank">b8950ba</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -544,21 +544,33 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Untracked files:
-    Untracked:  data/workflow_QuRIEseq.png.png
+    Untracked:  MOFA_aIg.hdf5
+    Untracked:  MOFA_aIg.rds
+    Untracked:  MOFA_ibru.hdf5
+    Untracked:  MOFA_ibru.rds
     Untracked:  output/MOFA_aIg.hdf5
     Untracked:  output/MOFA_aIg.rds
     Untracked:  output/data_weights_prot_fact1and3.csv
     Untracked:  output/metadata.csv
     Untracked:  output/paper_figures/
     Untracked:  output/seu_aIG_samples.rds
-    Untracked:  output/seu_combined_filtered_allsamples.rds
     Untracked:  output/seu_combined_filtered_normalized.rds
     Untracked:  output/seu_combined_raw.rds
     Untracked:  output/seu_ibru_samples.rds
+    Untracked:  seu_combined_filtered_allsamples.rds
+    Untracked:  seu_combined_raw.rds
 
 Unstaged changes:
     Modified:   analysis/MOFAibru.Rmd
+    Modified:   code/Import_and_create_seuratObj.R
     Modified:   code/load_packages.R
+    Modified:   code/plot_QC_function.R
+    Deleted:    data/raw/7amrna.counts.tsv.gz
+    Deleted:    data/raw/7aprot_sc.counts.fullytrim.m1.n1.l8.e75.FraMod.matrix
+    Deleted:    data/raw/8amrna.counts.tsv.gz
+    Deleted:    data/raw/8aprot_sc.counts.fullytrim.m1.n1.l8.e75.FraMod.matrix
+    Deleted:    data/raw/9amrna.counts.tsv.gz
+    Deleted:    data/raw/9aprot_sc.counts.fullytrim.m1.n1.l8.e75.FraMod.matrix
 
 </code></pre>
 <p>
@@ -597,6 +609,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/b8950ba20a62c9e6e012893d62c26e26a6943d6f/analysis/MOFAaIg.Rmd" target="_blank">b8950ba</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-20
+</td>
+<td>
+update mofa plot axis orientation
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/081882dfa0292fdeede3da3721bca3680bc43762/docs/MOFAaIg.html" target="_blank">081882d</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -740,11 +786,11 @@ mofa</code></pre>
 <pre><code>Trained MOFA with the following characteristics: 
  Number of views: 2 
  Views names: RNA PROT 
- Number of features (per view): 2371 80 
+ Number of features (per view): 2159 80 
  Number of groups: 1 
  Groups names: group1 
- Number of samples (per group): 4767 
- Number of factors: 9 </code></pre>
+ Number of samples (per group): 4754 
+ Number of factors: 7 </code></pre>
 <pre class="r"><code># Export Factor 1 and 3 weights for Cytoscape plot
 data_weights_prot &lt;- get_weights(object = mofa, views = &quot;PROT&quot;, factors = c(1,3), as.data.frame = TRUE)
 
@@ -767,6 +813,8 @@ plot.umap.all &lt;- ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
   theme_half_open() +
   scale_fill_manual(values = colorgradient6_manual, labels = c(labels), name = &quot;Time aIg&quot;,)+
    theme(legend.position=&quot;none&quot;)+
+  scale_x_reverse()+
+  scale_y_reverse()+
   add.textsize +
   labs(title = &quot;UMAP on MOFA+ factors shows minute and \nhour time-scale cell-state transitions&quot;, x = &quot;UMAP 1&quot;, y = &quot;UMAP 2&quot;)
 
@@ -833,10 +881,10 @@ plot.PCA.PROTweightsPC1 &lt;- ggplot(PCA.PROTPC1.data, aes(x=weight.PC1, y = ran
   scale_y_reverse()
 
 
-PCA.RNAPC1.data &lt;- data.frame(rank = 1:2371, 
+PCA.RNAPC1.data &lt;- data.frame(rank = 1:length(genes.variable), 
                                RNA = names(sort(seu_combined_selectsamples@reductions$pca.RNA@feature.loadings[,1])),
                                weight.PC1 = sort(seu_combined_selectsamples@reductions$pca.RNA@feature.loadings[,1]),
-                               highlights = c(rep(&quot;&quot;,2366),names(sort(seu_combined_selectsamples@reductions$pca.RNA@feature.loadings[,1]))[2367:2371])
+                               highlights = c(rep(&quot;&quot;,(length(genes.variable)-4)),names(sort(seu_combined_selectsamples@reductions$pca.RNA@feature.loadings[,1]))[(length(genes.variable)-3):length(genes.variable)])
                                ) 
 ## Loadings RNA
 plot.PCA.RNAweightsPC1 &lt;- ggplot(PCA.RNAPC1.data, aes(x=weight.PC1, y = rank, label = highlights)) +
@@ -874,9 +922,9 @@ plot_ridge_PC1RNA &lt;- ggplot(PC1.data, aes(x = PC1_RNA, y = condition, fill = 
   theme_half_open() +
   add.textsize+
   theme(legend.position = &quot;none&quot;)</code></pre>
-<pre class="r"><code>Fig1.pca &lt;- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1, labels = c(panellabels[1:2], &quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,panellabels[3:4]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3))</code></pre>
+<pre class="r"><code>Fig1.pca &lt;- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1, labels = c(panellabels[1:2], &quot;&quot;,panellabels[3:4],&quot;&quot;,panellabels[5:7]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3))</code></pre>
 <pre><code>Picking joint bandwidth of 0.37</code></pre>
-<pre><code>Picking joint bandwidth of 0.368</code></pre>
+<pre><code>Picking joint bandwidth of 0.362</code></pre>
 <pre class="r"><code>ggsave(filename = &quot;output/paper_figures/Suppl_PCA_aIg.pdf&quot;, width = 143, height = 170, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
 ggsave(filename = &quot;output/paper_figures/Suppl_PCA_aIg.png&quot;, width = 143, height = 170, units = &quot;mm&quot;,  dpi = 300)
 
@@ -967,17 +1015,17 @@ plot.enriched.go.bp.factor3_50 &lt;- ggplot(go.pb.fct3.pos.dplyr, showCategory =
   ggtitle(&quot;Enriched Biological Processes&quot;) </code></pre>
 <pre class="r"><code>message(c(&quot;Significance protein folding GO term: \n&quot;,go.pb.fct3.pos.dplyr@result[which(go.pb.fct3.pos.dplyr@result$Description == &quot;protein folding&quot;),&quot;p.adjust&quot;]))</code></pre>
 <pre><code>Significance protein folding GO term: 
-0.0210693865776273</code></pre>
+0.0457794707358827</code></pre>
 <div id="main-figure-2" class="section level3">
 <h3>Main figure 2</h3>
-<pre class="r"><code>Fig2.row1.violinsprot &lt;- plot_grid(`plot.violin.p-CD79a`, `plot.violin.p-Syk`, `plot.violin.p-JAK1`,labels = c(panellabels[3]), label_size = 10, ncol = 1, rel_heights = c(1.2,0.95,1.2))
-Fig2.row1 &lt;- plot_grid(plot.violin.factor1,plot.rank.PROT.1, plot.rank.RNA.1, Fig2.row1.violinsprot, labels = c(panellabels[1:2], &quot;&quot;),  label_size = 10, ncol =4, rel_widths = c(0.8,0.55,0.5,0.8))
+<pre class="r"><code>Fig2.row1.violinsprot &lt;- plot_grid(`plot.violin.p-CD79a`, `plot.violin.p-Syk`, `plot.violin.p-JAK1`,labels = c(panellabels[4]), label_size = 10, ncol = 1, rel_heights = c(1.2,0.95,1.2))
+Fig2.row1 &lt;- plot_grid(plot.violin.factor1,plot.rank.PROT.1, NULL, Fig2.row1.violinsprot, labels = c(panellabels[1:3], &quot;&quot;),  label_size = 10, ncol =4, rel_widths = c(0.8,0.55,0.5,0.8))
 
 Fig2.row2.violinsrna &lt;- plot_grid(plot.violin.rna.NEAT1,plot.violin.rna.NPM1, plot.violin.rna.BTF3,labels = &quot;&quot;, label_size = 10, ncol = 1, rel_heights = c(1.2,0.95,1.2))
 
-Fig2.row2 &lt;- plot_grid(plot.violin.factor3,plot.rank.PROT.3,plot.rank.RNA.3,Fig2.row2.violinsrna, labels = c(panellabels[4:5], &quot;&quot;, panellabels[7]), label_size = 10, ncol =4, rel_widths = c(0.8,0.55,0.5,0.8))
+Fig2.row2 &lt;- plot_grid(plot.violin.factor3,plot.rank.PROT.3,plot.rank.RNA.3,Fig2.row2.violinsrna, labels = c(panellabels[5:6], &quot;&quot;, panellabels[8]), label_size = 10, ncol =4, rel_widths = c(0.8,0.55,0.5,0.8))
 
-Fig2.row3 &lt;- plot_grid(plot.enriched.go.bp.factor3,legend.plot.enriched.go.bp.factor3,NULL, labels = panellabels[6], label_size = 10, ncol =3, rel_widths = c(1.8,0.2,0.6))
+Fig2.row3 &lt;- plot_grid(plot.enriched.go.bp.factor3,legend.plot.enriched.go.bp.factor3,NULL, labels = panellabels[7], label_size = 10, ncol =3, rel_widths = c(1.8,0.2,0.6))
 
 plot_fig2 &lt;- plot_grid(Fig2.row1, Fig2.row2,Fig2.row3, labels = c(&quot;&quot;, &quot;&quot;, &quot;&quot;), label_size = 10, ncol = 1, rel_heights = c(1,1,0.55))
 
@@ -986,6 +1034,14 @@ ggsave(plot_fig2, filename = &quot;output/paper_figures/Fig2.png&quot;, width = 
 
 plot_fig2</code></pre>
 <p><img src="figure/MOFAaIg.Rmd/plot_fig2-1.png" width="691.2" style="display: block; margin: auto;" /> <em>Figure 2.</em> Factor 1 and 3 exploration.</p>
+</div>
+<div id="suppl-factor-1-gene-loadings" class="section level3">
+<h3>Suppl Factor 1 Gene loadings</h3>
+<pre class="r"><code>ggsave(plot.rank.RNA.1, filename = &quot;output/paper_figures/Suppl_Fact1_geneloadings.pdf&quot;, width = 30, height = 61, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(plot.rank.RNA.1, filename = &quot;output/paper_figures/Suppl_Fact1_geneloadings.png&quot;, width = 30, height = 61, units = &quot;mm&quot;,  dpi = 300)
+
+plot.rank.RNA.1</code></pre>
+<p><img src="figure/MOFAaIg.Rmd/unnamed-chunk-6-1.png" width="96" style="display: block; margin: auto;" /></p>
 </div>
 <div id="suppl-enriched-fact-3" class="section level3">
 <h3>Suppl Enriched Fact 3</h3>
