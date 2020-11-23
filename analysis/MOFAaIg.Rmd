@@ -286,12 +286,12 @@ plot.violin.factorall <- plot_factor(mofa,
 
 plot.rank.PROT.2.4to7 <- plot_weights(mofa, 
   view = "PROT", 
-  factors = c(2,4:mofa@dimensions$K), 
-  nfeatures = 5, 
+  factors = c(1:mofa@dimensions$K), 
+  nfeatures = 3, 
   text_size = 1.5
 ) +   
   add.textsize +
-  labs(title = "Top 5 Protein loadings per factor") +
+  labs(title = "Top 3 Protein loadings per factor") +
   theme(axis.text.y=element_blank(),
         axis.ticks.y=element_blank()
 )
@@ -300,12 +300,12 @@ plot.rank.PROT.2.4to7 <- plot_weights(mofa,
 
 plot.rank.RNA.2.4to7 <- plot_weights(mofa, 
   view = "RNA", 
-  factors = c(2,4:mofa@dimensions$K), 
-  nfeatures = 5, 
+  factors = c(1:mofa@dimensions$K), 
+  nfeatures = 3, 
   text_size = 1.5
 ) +   
   add.textsize +
-  labs(title = "Top 5 RNA loadings per factor") +
+  labs(title = "Top 3 RNA loadings per factor") +
   theme(axis.text.y=element_blank(),
         axis.ticks.y=element_blank()
 )
@@ -835,17 +835,6 @@ ggsave(plot_fig2, filename = "output/paper_figures/Fig2.png", width = 183, heigh
 plot_fig2
 ```
 *Figure 2.* Factor 1 and 3 exploration.
-
-### Suppl Factor 1 Gene loadings
-
-```{r, fig.width=1, fig.height=2}
-
-ggsave(plot.rank.RNA.1, filename = "output/paper_figures/Suppl_Fact1_geneloadings.pdf", width = 30, height = 61, units = "mm",  dpi = 300, useDingbats = FALSE)
-ggsave(plot.rank.RNA.1, filename = "output/paper_figures/Suppl_Fact1_geneloadings.png", width = 30, height = 61, units = "mm",  dpi = 300)
-
-plot.rank.RNA.1
-
-```
 
 
 ### Suppl Enriched Fact 3
