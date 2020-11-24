@@ -35,7 +35,6 @@ Seurat object:
 seu_combined
 ```
 
-
 **Table** Overview of per sample properties.
 ```{r Table median per sample, warning = FALSE, message=FALSE}
 kable(seu_combined@meta.data %>% 
