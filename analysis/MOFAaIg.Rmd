@@ -109,7 +109,7 @@ plot.umap.all <- ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
   scale_x_reverse()+
   scale_y_reverse()+
   add.textsize +
-  labs(title = "UMAP on MOFA+ factors shows minute and \nhour time-scale cell-state transitions", x = "UMAP 1", y = "UMAP 2")
+  labs(title = "UMAP on MOFA+ factors shows minute and \nhour time-scale signal transductions", x = "UMAP 1", y = "UMAP 2")
 
 ## UMAP legend
 legend.umap <- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
@@ -117,7 +117,7 @@ legend.umap <- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = color_b
   theme_half_open() +
   scale_fill_manual(values = colorgradient6_manual, labels = c(labels), name = "Time aIg \n(minutes)",)+
   add.textsize +
-  labs(title = "UMAP on MOFA+ factors shows minute and \nhour time-scale cell-state transitions", x = "UMAP 1", "y = UMAP 2"))
+  labs(title = "UMAP on MOFA+ factors shows minute and \nhour time-scale signal transductions", x = "UMAP 1", "y = UMAP 2"))
 legend.umap <- as_ggplot(legend.umap)
 
 ```
@@ -139,7 +139,7 @@ seu_combined_selectsamples <- RunPCA(seu_combined_selectsamples,assay = "SCT.RNA
 seu_combined_selectsamples <- RunPCA(seu_combined_selectsamples, assay = "PROT", features = proteins.all, verbose = FALSE, ndims.print = 0,reduction.name = "pca.PROT")
 ```
 
-```{r PCA_time_aIg, message = FALSE}
+```{r PCA_time_aIg, message = FALSE, warning=FALSE}
 ## PCA analysis
 
 plot.PCA.RNA <- DimPlot(seu_combined_selectsamples, reduction = "pca.RNA", group.by = "condition", pt.size =0.2) +
@@ -227,7 +227,7 @@ plot_ridge_PC1RNA <- ggplot(PC1.data, aes(x = PC1_RNA, y = condition, fill = con
 
 ```
 
-```{r Figure_1_supplementary, fig.width=5.6, fig.height=6.69}
+```{r Figure_1_supplementary, fig.width=5.6, fig.height=6.69, message = FALSE, warning=FALSE}
 Fig1.pca <- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1, labels = c(panellabels[1:2], "",panellabels[3:4],"",panellabels[5:7]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3))
 
 ggsave(filename = "output/paper_figures/Suppl_PCA_aIg.pdf", width = 143, height = 170, units = "mm",  dpi = 300, useDingbats = FALSE)
@@ -235,7 +235,7 @@ ggsave(filename = "output/paper_figures/Suppl_PCA_aIg.png", width = 143, height 
 
 Fig1.pca
 ```
-*Supplemental Figure.* PCA analysis on RNA ór Protein dataset
+*Supplementary Figure.* PCA analysis on RNA ór Protein dataset
 
 ### Suppl MOFA model properties
 
@@ -336,12 +336,12 @@ Fig.1.suppl.mofa.row2 <- plot_grid(plot.violin.factorall,legend.umap, labels = p
 Suppl_mofa <- plot_grid(Fig.1.suppl.mofa.row1, Fig.1.suppl.mofa.row2, plot.rank.PROT.2.4to7, plot.rank.RNA.2.4to7, labels = c("","", panellabels[5:6]),label_size = 10, ncol = 1, rel_heights = c(1.45,1,1.1,1.1))
 
 
-ggsave(Suppl_mofa, filename = "output/paper_figures/Suppl_MOFAaIg.pdf", width = 183, height = 220, units = "mm",  dpi = 300, useDingbats = FALSE)
-ggsave(Suppl_mofa, filename = "output/paper_figures/Suppl_MOFAaIg.png", width = 183, height = 220, units = "mm",  dpi = 300)
+ggsave(Suppl_mofa, filename = "output/paper_figures/Fig2.Suppl_MOFAaIg.pdf", width = 183, height = 220, units = "mm",  dpi = 300, useDingbats = FALSE)
+ggsave(Suppl_mofa, filename = "output/paper_figures/Fig2.Suppl_MOFAaIg.pdf", width = 183, height = 220, units = "mm",  dpi = 300)
 
 Suppl_mofa
 ```
-*Supplemental Figure.* MOFA model additional information
+*Supplementary Figure.* MOFA model additional information
 
 ## Figure 2 
 
@@ -374,7 +374,7 @@ weights.RNA <- get_weights(mofa, views = "RNA",as.data.frame = TRUE)
 
 ```
 
-```{r Fig 2 main panels,warning=FALSE,message=FALSE, include=FALSE}
+```{r Fig 2 main panels, message=FALSE, warning=FALSE}
 ## violin plots phospho-proteins highlighted in main
 
 f.violin.fact <- function(data , protein){
@@ -434,7 +434,7 @@ plot.violin.factor1 <- plot.factor.group1.Factor1 +
               color="grey3") +
   annotate(geom="text", x=5.5, y=-4.3, label="hours", size = 2,
               color="grey3") +
-  labs(title = "Factor 1 captures \nminute times-scale cell-state transition")
+  labs(title = "Factor 1 captures \nminute times-scale signal transduction")
 
 plot.violin.factor3 <- plot.factor.group1.Factor3 +
   annotate(geom="text", x=5.5, y=4.3, label="hours", size = 2,
@@ -442,7 +442,7 @@ plot.violin.factor3 <- plot.factor.group1.Factor3 +
   annotate(geom="text", x=1.5, y=4.3, label="minutes", size = 2,
               color="grey3") +
   scale_y_continuous(expand = c(0,0), name = "Factor 3 value")+
-  labs(title = "Factor 3 captures \nhour time-scale cell-state transition")
+  labs(title = "Factor 3 captures \nhour time-scale signal transduction")
 
 #### protein Loadings factor 1
 
@@ -552,7 +552,7 @@ assign(paste0("plot.violin.", i), f.violin.prot(data = proteindata ,protein = i)
 
 Enrichment analysis of Factor 3 positive loadings
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 topposrna.factor3 <- weights.RNA %>%
   filter(factor == "Factor3" & value >= 0) %>%
   arrange(-value)
@@ -622,7 +622,7 @@ plot.enriched.go.bp.factor3_50 <- ggplot(go.pb.fct3.pos.dplyr, showCategory = 50
 message(c("Significance protein folding GO term: \n",go.pb.fct3.pos.dplyr@result[which(go.pb.fct3.pos.dplyr@result$Description == "protein folding"),"p.adjust"]))
 ```
 
-```{r, message=FALSE, warning=FALSE, include=FALSE}
+```{r message=FALSE, warning=FALSE}
 ##For RNA loadings panels
 topgeneset.fct3<- unlist(str_split(go.pb.fct3.pos.dplyr@result[1:10,"geneID"], pattern = "/"))
 
@@ -844,4 +844,4 @@ ggsave(plot.enriched.go.bp.factor3_50, filename = "output/paper_figures/Suppl_En
 ggsave(plot.enriched.go.bp.factor3_50, filename = "output/paper_figures/Suppl_Enrichm_Fct3.png", width = 183, height = 183, units = "mm",  dpi = 300)
 plot.enriched.go.bp.factor3_50
 ```
-*Supplemental Figure.* Top 50 enriched gene-sets in postive loadings factor 3.
+*Supplementary Figure.* Top 50 enriched gene-sets in postive loadings factor 3.
