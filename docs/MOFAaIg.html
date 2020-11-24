@@ -524,16 +524,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree8b81996c8ed528b0a0ae85d5ad0e9836a6d225bdtargetblank8b81996a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/8b81996c8ed528b0a0ae85d5ad0e9836a6d225bd" target="_blank">8b81996</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreea96d5ba425ae8f6bded33f2e72d8825346c51595targetblanka96d5baa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/a96d5ba425ae8f6bded33f2e72d8825346c51595" target="_blank">a96d5ba</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree8b81996c8ed528b0a0ae85d5ad0e9836a6d225bdtargetblank8b81996a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreea96d5ba425ae8f6bded33f2e72d8825346c51595targetblanka96d5baa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/8b81996c8ed528b0a0ae85d5ad0e9836a6d225bd" target="_blank">8b81996</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/a96d5ba425ae8f6bded33f2e72d8825346c51595" target="_blank">a96d5ba</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -544,10 +544,6 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Untracked files:
-    Untracked:  MOFA_aIg.hdf5
-    Untracked:  MOFA_aIg.rds
-    Untracked:  MOFA_ibru.hdf5
-    Untracked:  MOFA_ibru.rds
     Untracked:  code/template_script.R
     Untracked:  data/raw/
     Untracked:  output/MOFA_aIg.hdf5
@@ -561,8 +557,6 @@ Untracked files:
     Untracked:  output/seu_combined_filtered_normalized.rds
     Untracked:  output/seu_combined_raw.rds
     Untracked:  output/seu_ibru_samples.rds
-    Untracked:  seu_combined_filtered_allsamples.rds
-    Untracked:  seu_combined_raw.rds
 
 Unstaged changes:
     Modified:   analysis/MOFAibru.Rmd
@@ -605,6 +599,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/a96d5ba425ae8f6bded33f2e72d8825346c51595/analysis/MOFAaIg.Rmd" target="_blank">a96d5ba</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+update minor changes to documentation aIg
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/38267b11dbec4d2fed8dde09ac0f3ba7cf23f2e6/docs/MOFAaIg.html" target="_blank">38267b1</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1180,14 +1208,7 @@ assign(paste0(&quot;plot.violin.&quot;, i), f.violin.prot(data = proteindata ,pr
 `plot.violin.p-JAK1` &lt;-`plot.violin.p-JAK1` +
   add.textsize +
   labs(y = &quot;&lt;span style=&#39;color:red&#39;&gt;p-JAK1&lt;/span&gt;&quot;) +
-  theme(axis.title.y = element_markdown()) 
-    
-`plot.violin.p-CD79a`</code></pre>
-<p><img src="figure/MOFAaIg.Rmd/Fig%202%20main%20panels-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>`plot.violin.p-Syk`</code></pre>
-<p><img src="figure/MOFAaIg.Rmd/Fig%202%20main%20panels-2.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>`plot.violin.p-JAK1`</code></pre>
-<p><img src="figure/MOFAaIg.Rmd/Fig%202%20main%20panels-3.png" width="672" style="display: block; margin: auto;" /></p>
+  theme(axis.title.y = element_markdown()) </code></pre>
 <p>Enrichment analysis of Factor 3 positive loadings</p>
 <pre class="r"><code>topposrna.factor3 &lt;- weights.RNA %&gt;%
   filter(factor == &quot;Factor3&quot; &amp; value &gt;= 0) %&gt;%
@@ -1359,9 +1380,7 @@ plotdata.rank.RNA.1 &lt;-plot_weights(mofa,
   return_data = TRUE
 )
 
-unique(plotdata.rank.RNA.1$labelling_group)</code></pre>
-<pre><code>[1] &quot;1&quot; &quot;0&quot;</code></pre>
-<pre class="r"><code>plotdata.rank.RNA.1 &lt;- plotdata.rank.RNA.1 %&gt;%
+plotdata.rank.RNA.1 &lt;- plotdata.rank.RNA.1 %&gt;%
   mutate(Rank = 1:nrow(plotdata.rank.RNA.1),
          Weight = value, 
          colorvalue = ifelse(labelling_group == 1,&quot;blue4&quot;, ifelse(labelling_group == 1, &quot;blue4&quot;, &quot;grey&quot;)),
