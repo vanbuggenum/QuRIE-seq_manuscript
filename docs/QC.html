@@ -526,16 +526,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0d971e2a6ef8f3824d925655d662b7ceeacec605targetblank0d971e2a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0d971e2a6ef8f3824d925655d662b7ceeacec605" target="_blank">0d971e2</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree14c0ebf2831e464136125855b1d78cfbf533fffetargetblank14c0ebfa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/14c0ebf2831e464136125855b1d78cfbf533fffe" target="_blank">14c0ebf</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0d971e2a6ef8f3824d925655d662b7ceeacec605targetblank0d971e2a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree14c0ebf2831e464136125855b1d78cfbf533fffetargetblank14c0ebfa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0d971e2a6ef8f3824d925655d662b7ceeacec605" target="_blank">0d971e2</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/14c0ebf2831e464136125855b1d78cfbf533fffe" target="_blank">14c0ebf</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -558,7 +558,10 @@ Ignored files:
     Ignored:    output/seu_ibru_samples.rds
 
 Unstaged changes:
-    Modified:   .gitignore
+    Modified:   analysis/index.Rmd
+
+Staged changes:
+    Modified:   README.md
 
 </code></pre>
 <p>
@@ -597,6 +600,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/14c0ebf2831e464136125855b1d78cfbf533fffe/analysis/QC.Rmd" target="_blank">14c0ebf</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+small update documentation github page
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/eda7e9302a1081b93794d5ca9868d9af7adbc737/docs/QC.html" target="_blank">eda7e93</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -779,7 +816,7 @@ source(&quot;code/plot_QC_function.R&quot;) #change settings in script to get di
 dir.create(&quot;output/paper_figures&quot;) # location where paper figures are stored</code></pre>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>The inDrop-RAID data contains samples 9 timepoints of aIg stimulated BJAB, and 3 additional timepoints with ibrutinib drug. Script below extracts all metadata (sequencing sample names, adds metadata info per sample (prot or RNA library)), and reads all data tables into R. The metadata table is saved in output folder: “output/metadata.csv”</p>
+<p>The QuRIE-seq data contains single-cell transcriptomic and proteomic data of BJAB cells with 9 different durations of aIg stimulation, and 3 additional timepoints with ibrutinib drug inhibition. Script below extracts all metadata (sequencing sample names, adds metadata info per sample (prot or RNA library)), and reads all data tables into R. The metadata table is saved in output folder: “output/metadata.csv”</p>
 <p>For QC and filtering, cells with matching RNA and protein information are used to create a Seurat object (settings RNA: min.cells = 100, min.features = 100; proteins added as additional modality PROT). Several QC stats are calculated, and the object is saved in: “output/seu_combined_raw.rds”</p>
 <pre class="r"><code>myfiles &lt;- list.files(path=&quot;output/&quot;, pattern = &quot;.rds$&quot;)
 ## only read all raw files and create raw combined table if not done yet. Speeds up generation of html file
@@ -1189,7 +1226,7 @@ ggsave(plot.QC, filename = &quot;output/paper_figures/Suppl_QC_filters.pdf&quot;
 ggsave(plot.QC, filename = &quot;output/paper_figures/Suppl_QC_filters.png&quot;, width = 183, height = 200, units = &quot;mm&quot;,  dpi = 300)</code></pre>
 <pre class="r"><code>plot.QC</code></pre>
 <p><img src="figure/QC.Rmd/Suppl_QC_filters-1.png" width="691.65312" style="display: block; margin: auto;" /> <em>Supplementary Figure</em> Thresholds for selection of high-quality samples and cells from the QuRIE-seq datasets.</p>
-<p>Based on the indicated cut-offs, high-quality cellsare filtered for further analysis. Based on the good protein quality of samples and m&lt;11% median mitochondiral counts per sample, timepoints 0, 2, 4, 6, 60 and 180 are kept for further analysis.</p>
+<p>Based on the indicated cut-offs, high-quality cells are filtered for further analysis.</p>
 <pre class="r fold-show"><code>seu_combined_filtered &lt;- subset(seu_combined, subset = nFeature_RNA &gt; 150 &amp; nCount_RNA &lt; 4000 &amp; nFeature_PROT &gt; 45 &amp; nCount_PROT &lt; 3000 &amp; percent.mt &lt; 15)</code></pre>
 </div>
 <div id="normalize-and-scale" class="section level2">
