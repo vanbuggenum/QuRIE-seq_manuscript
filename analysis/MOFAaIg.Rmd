@@ -543,11 +543,6 @@ assign(paste0("plot.violin.", i), f.violin.prot(data = proteindata ,protein = i)
   add.textsize +
   labs(y = "<span style='color:red'>p-JAK1</span>") +
   theme(axis.title.y = element_markdown()) 
-    
-`plot.violin.p-CD79a`
-`plot.violin.p-Syk`
-`plot.violin.p-JAK1`
-
 ```
 
 Enrichment analysis of Factor 3 positive loadings
@@ -727,8 +722,6 @@ plotdata.rank.RNA.1 <-plot_weights(mofa,
   text_size = 1,
   return_data = TRUE
 )
-
-unique(plotdata.rank.RNA.1$labelling_group)
 
 plotdata.rank.RNA.1 <- plotdata.rank.RNA.1 %>%
   mutate(Rank = 1:nrow(plotdata.rank.RNA.1),
