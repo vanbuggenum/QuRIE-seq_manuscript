@@ -1,13 +1,543 @@
 ---
 title: "MOFA model of aIg stimulated cells in prescence of ibrutinib"
-output: workflowr::wflow_html
+output:
+  workflowr::wflow_html:
+    toc: TRUE
+    code_folding: hide
 editor_options:
   chunk_output_type: console
 ---
 
-## Introduction
 
-```{r}
+```{r setup, warning=FALSE, message=FALSE}
+source("code/load_packages.R")
+
+panellabels <- c('a', 'b', 'c','d' , 'e', 'f', 'g', 'h', 'i', 'j', 'k')
+
+add.textsize <- theme(axis.text.x = element_text(colour = 'black', size = 7),
+          axis.text.y = element_text(colour = 'black',size=7),
+          text = element_text(size=7),
+          axis.text=element_text(size=7),
+          plot.title = element_text(size=7)
+          )
+
+colorgradient6 <- c("#d4d4d3","#859FCA", "#4D7CC6" ,"#1F5284","#11304C", "#0C2236" )
+colorgradient7 <- c(colorgradient6,"orange2")
+colorsibru <- c(colorgradient7[c(1,2)],"#E69F00", colorgradient7[c(6)], "#D55E00","#ff0000")
+
+
+labels.withibru <- c(0, 6, "6 \n+ibru", 180, "180\n+ibru")
+labels.withibru.selected <- c(0, 6, "6 \n+ibru", 180, "180\n+ibru","180**\n+ibru")
+
 
 ```
 
+```{r seurat object}
+seu_combined_selectsamples.withibru <- readRDS("output/seu_ibru_samples.rds")
+
+proteins.all.withibru <- row.names(seu_combined_selectsamples.withibru[["PROT"]])
+
+meta.allcells.withibru <- seu_combined_selectsamples.withibru@meta.data %>%
+  mutate(sample = rownames(seu_combined_selectsamples.withibru@meta.data))
+
+seu_combined_selectsamples.withibru <- FindVariableFeatures(seu_combined_selectsamples.withibru, selection.method = "mvp", assay = "SCT.RNA", num.bin =20, mean.cutoff = c(0, 5), dispersion.cutoff = c(0.5,10), nfeatures =500, verbose = FALSE)
+
+genes.variable <- seu_combined_selectsamples.withibru@assays$SCT.RNA@var.features[-grep("^MT", seu_combined_selectsamples.withibru@assays$SCT.RNA@var.features)] # without the mitochondrial genes 
+
+seu_combined_selectsamples.withibru
+```
+
+## MOFA analysis ibru data 
+
+Note, if mofa object was generated before, it will read the generated rds file. (this will speed-up the process of generating this html document if edits are required)
+
+```{r Do mofa analysis}
+myfiles <- list.files(path="output/", pattern = ".rds$")
+
+if("MOFA_ibru.rds" %in%  myfiles){
+  
+  mofa <- readRDS("output/MOFA_ibru.rds")} else { 
+
+    ## Nested list of RNA and Protein data (retrieved from filtered Seurat object)    
+     mofa <- create_mofa(list(
+      "RNA" = as.matrix( seu_combined_selectsamples.withibru@assays$SCT.RNA@scale.data[genes.variable,] ),
+      "PROT" = as.matrix( seu_combined_selectsamples.withibru@assays$PROT@scale.data[proteins.all.withibru,] ))
+      )
+
+     ## Default data, model and training options
+     data_opts <- get_default_data_options(mofa)
+     model_opts <- get_default_model_options(mofa)
+     train_opts <- get_default_training_options(mofa)
+     train_opts$seed <- 42 # use same seed for reproducibility
+    
+    mofa <- prepare_mofa(
+      object = mofa,
+      data_options = data_opts,
+      model_options = model_opts,
+      training_options = train_opts
+      )
+
+      mofa <- run_mofa(mofa, outfile = "output/MOFA_ibru.hdf5")
+      mofa <- run_umap(mofa)
+      samples_metadata(mofa) <- meta.allcells.withibru
+      saveRDS(mofa, file= "output/MOFA_ibru.rds")
+  
+}
+
+mofa
+```
+
+
+
+
+## Figure 3
+
+### Main
+
+```{r Figure panels, message=FALSE, warning=FALSE}
+## UMAP
+plot.umap.data <-  plot_dimred(mofa, method="UMAP", color_by = "condition",stroke = 0.001, dot_size =1, alpha = 0.2, return_data = T)
+
+plot.umap.all <- ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
+  geom_point(size = 0.7, alpha = 0.5, shape = 21, stroke = 0) +
+  theme_half_open() +
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg \n(minutes)")+
+   theme(legend.position="none")+
+  add.textsize +
+  scale_x_reverse()+
+  scale_y_reverse()+
+  labs(title = "Ibrutinib affects signal transduction \nat minutes and hour time-scale", x = "UMAP 1", y = "UMAP 2")
+
+## UMAP legend
+legend.umap <- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
+  geom_point(size = 2, alpha = 0.5, shape = 21, stroke = 0) +
+  theme_half_open() +
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name ="Time aIg \n(minutes)",)+
+   theme(legend.position="right")+
+  add.textsize +
+  scale_x_reverse()+
+  scale_y_reverse()+
+  labs(title = "Ibrutinib affects signal transduction at \nminute and hour timepoints after aIG stimulation", x = "UMAP 1", y = "UMAP 2"))
+legend.umap <- as_ggplot(legend.umap)
+
+## correlation time and factors
+plot.correlation.covariates.withibru <- correlate_factors_with_covariates(mofa, 
+  covariates = c("time", "inhibitor"),
+  factors = 8:1,
+  plot = "r"
+)
+
+plot.correlation.covariates.withibru <- ggcorrplot(plot.correlation.covariates.withibru, tl.col = "black", method = "square", lab = TRUE, ggtheme = theme_void, colors = c("orange3", "white", "orange3"), lab_size = 2.5) +
+  add.textsize +
+  labs(title = "Correlation\ncoefficient\n", y = "") +
+  scale_y_discrete(labels = c("time\naIg\n","ibrutinib\ntreatment\n")) +
+  coord_flip() +
+  theme(axis.text.x=element_text(angle =0,hjust = 0.5), 
+        axis.text.y=element_text(size = 5),
+        legend.position="none",
+        plot.title = element_text(hjust = 0.5))
+
+## functions violin prots
+f.violin <- function(data, feature){
+  
+  ggplot(subset(data)  , aes(x = as.factor(condition), y =get(noquote(feature)))) +
+    annotate("rect",
+          xmin = 4 - 0.45,
+             xmax = 5 + 0.5,
+           ymin = -5.5, ymax =5, fill = "lightblue",
+           alpha = .4
+  )+
+  geom_violin(alpha = 0.9,aes(fill = condition))+
+  geom_jitter(width = 0.05,size = 0.1, color = "black")+ 
+  stat_summary(fun=median, geom="point", shape=95, size=2, inherit.aes = T, position = position_dodge(width = 0.9), color = "red")+
+  theme_few()+
+  labs(title = paste0(feature)) +
+  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = "Time aIg (Minutes)") +
+  scale_y_continuous(expand = c(0,0), name = "Counts (scaled)") +
+  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",)+ 
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",) +
+  add.textsize +
+  theme(axis.ticks=element_line(color="black", size = 0.2),
+        legend.position="none") 
+}
+
+## functions violin RNA
+f.violin.rectlarge <- function(data, feature){
+  
+  ggplot(subset(data)  , aes(x = as.factor(condition), y =get(noquote(feature)))) +
+    annotate("rect",
+          xmin = 4 - 0.45,
+             xmax = 5 + 0.5,
+           ymin = -3, ymax = 15, fill = "lightblue",
+           alpha = .4
+  )+
+  geom_violin(alpha = 0.9,aes(fill = condition))+
+  geom_jitter(width = 0.05,size = 0.1, color = "black")+ 
+  stat_summary(fun=median, geom="point", shape=95, size=2, inherit.aes = T, position = position_dodge(width = 0.9), color = "red")+
+  theme_few()+
+  labs(title = paste0(feature)) +
+  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = "Time aIg (Minutes)") +
+  scale_y_continuous(expand = c(0,0), name = "Counts (scaled)") +
+  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",)+ 
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",) +
+  add.textsize +
+  theme(axis.ticks=element_line(color="black", size = 0.2),
+        legend.position="none") 
+}
+
+## functions violin factors
+f.violin.fact <- function(data = proteindata.subset, protein){
+  
+  ggplot(subset(data)  , aes(x = as.factor(condition), y =get(noquote(protein)))) +
+    annotate("rect",
+          xmin = 4 - 0.5,
+             xmax = 5 + 0.5,
+           ymin = -4.5, ymax = 4.5, fill = "lightblue",
+           alpha = .4
+  )+
+    geom_hline(yintercept=0, linetype='dotted', col = 'black')+ 
+  geom_violin(alpha = 0.9,aes(fill = condition))+
+  geom_jitter(width = 0.05,size = 0.1, color = "black")+ 
+  stat_summary(fun=median, geom="point", shape=95, size=2, inherit.aes = T, position = position_dodge(width = 0.9), color = "red")+
+  theme_few()+
+  ylab(paste0(protein)) +
+  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = "Time aIg (Minutes)") +
+    scale_y_continuous(expand = c(0,0), name = strsplit(protein, split = "\\.")[[1]][2]) +
+  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",)+ 
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",) +
+  add.textsize +
+  theme(legend.position="none") 
+}
+
+
+## Factor data for violins
+MOFAfactors<- as.data.frame(mofa@expectations$Z) %>%
+  mutate(sample = rownames(as.data.frame(mofa@expectations$Z)[,1:mofa@dimensions$K])) 
+
+MOFAfactors <- left_join(as.data.frame(MOFAfactors), meta.allcells.withibru)
+
+factors_toplot <- c(colnames(MOFAfactors)[c(1:mofa@dimensions$K)])
+
+## plot violin factors
+for(i in factors_toplot) {
+assign(paste0("plot.violin.factor.", i), f.violin.fact(data = MOFAfactors,protein = i)) 
+}
+
+plot.violin.factor1 <- plot.violin.factor.group1.Factor1 +
+  theme(#axis.title.x=element_blank(),
+        #axis.text.x=element_blank(),
+        #axis.ticks.x=element_blank(),
+        legend.position="none") +
+  scale_y_reverse(expand = c(0,0), name = "Factor value")+
+  labs(title = "Factor 1 \n'BCR signaling'")
+
+plot.violin.factor3 <- plot.violin.factor.group1.Factor3 +
+  theme(axis.title.y=element_blank(),
+        #axis.text.y=element_blank(),
+        #axis.ticks.y=element_blank(),
+        legend.position="none") +
+  scale_y_continuous(expand = c(0,0), name = "Factor 3 value")+
+  labs(title = "Factor 3 \n'B-cell activation'")
+
+
+plot.violin.factor5 <- plot.violin.factor.group1.Factor5 +
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        legend.position="none") +
+  scale_y_continuous(expand = c(0,0), name = "Factor 5 value")+
+  labs(title = "Factor 5 \n")
+
+## Protein data for violins
+proteindata <- as.data.frame(t(seu_combined_selectsamples.withibru@assays$PROT@scale.data)) %>%
+  mutate(sample = rownames(t(seu_combined_selectsamples.withibru@assays$PROT@scale.data))) %>%
+  left_join(meta.allcells.withibru, by = "sample")
+
+proteinstoplot <- c("p-Erk1/2", "p-PLC-y2Y759", "p-BLNK", "p-CD79a", "p-Syk", "p-JAK1")
+
+for(i in proteinstoplot) {
+assign(paste0("plot.violin.prot.", i), f.violin(data = proteindata, feature = i))
+
+}
+
+`plot.violin.prot.p-Erk1/2` <- `plot.violin.prot.p-Erk1/2` +
+  labs(title = "p-ERK1/2") 
+  
+
+## Data for violin genes
+rnadata <- as.data.frame(t(seu_combined_selectsamples.withibru@assays$SCT.RNA@scale.data)) %>%
+  mutate(sample = rownames(t(seu_combined_selectsamples.withibru@assays$SCT.RNA@scale.data))) %>%
+  left_join(meta.allcells.withibru, by = "sample")
+
+for(i in c("NEAT1", "NPM1", "BTF3", "RGS2", "RGS13","VEGFA")) {
+assign(paste0("plot.violin.RNA.", i), f.violin.rectlarge(data = rnadata, feature = i))
+
+}
+
+## Enrichment analysis factor 5
+weights.RNA <- get_weights(mofa, views = "RNA",as.data.frame = TRUE)
+
+weights.RNA.filtered.f5 <- weights.RNA %>%
+  mutate(Entrez = mapIds(org.Hs.eg.db, as.character(weights.RNA$feature), 'ENTREZID', 'SYMBOL'))  %>%
+  filter(abs(value) >= 0.2 & factor == "Factor5") %>%
+  mutate(sign = ifelse(value <= 0, "neg", "pos")) 
+
+enriched.go.bp.fct5.clusterdposneg <- compareCluster(Entrez~factor+sign, data=weights.RNA.filtered.f5, fun='enrichGO', OrgDb='org.Hs.eg.db',ont= "BP",
+                pAdjustMethod = "BH", readable = TRUE)
+
+enriched.go.bp.fct5.clusterdposneg <- simplify(enriched.go.bp.fct5.clusterdposneg, cutoff=0.8, by="p.adjust", select_fun=min)
+
+
+plot.enriched.go.f5.top5 <- dotplot(enriched.go.bp.fct5.clusterdposneg,x=~sign, showCategory = 5, by = "count") +
+  scale_y_discrete(labels = c("negative regulation of G protein-coupled\nreceptor signaling pathway") , limits = "negative regulation of G protein-coupled receptor signaling pathway") +
+  facet_grid(~factor) +
+  add.textsize+ 
+  scale_color_viridis(option="E", direction = -1) +
+  scale_size_continuous(range=c(0.8, 2)) 
+
+## Top enriched sets
+topgeneset.fct5<- unlist(str_split(subset(enriched.go.bp.fct5.clusterdposneg@compareClusterResult, sign == "pos")$geneID, pattern = "/"))
+
+topgeneset.fct5 = bitr(topgeneset.fct5, fromType="SYMBOL", toType="ENTREZID", OrgDb="org.Hs.eg.db")
+
+bottomgeneset.fct5<- unlist(str_split(subset(enriched.go.bp.fct5.clusterdposneg@compareClusterResult, sign == "neg")[1:5,]$geneID, pattern = "/"))
+
+bottomgeneset.fct5 = bitr(bottomgeneset.fct5, fromType="SYMBOL", toType="ENTREZID", OrgDb="org.Hs.eg.db")
+
+## PROT factor 5 loadings
+plotdata.rank.PROT.5<-plot_weights(mofa, 
+  view = "PROT", 
+  factors = c(5), 
+  nfeatures = 4, 
+  text_size = 1,
+  manual = list(c("p-Erk1/2", "XBP1_PROT"),NULL), 
+  color_manual = list("black","black"),
+  return_data = TRUE
+)
+
+plotdata.rank.PROT.5<- plotdata.rank.PROT.5%>%
+  mutate(Rank = 1:nrow(plotdata.rank.PROT.5),
+         Weight = value, 
+         colorvalue = ifelse(labelling_group == 3,"black", ifelse(labelling_group == 2, "black", "grey2")),
+         highlights = ifelse(labelling_group >= 1, as.character(feature), "")
+         )
+
+plot.rank.PROT.5<- ggplot(plotdata.rank.PROT.5, aes(x=Rank, y = Weight, label = highlights)) +
+  labs(title = "<p><span style='color:black'></span>  phospho-proteins<span style='color:black'><span style='color:blue4'></span> ",  #
+       x= "Loading rank\n",
+       y= "Factor 5 loading value") +
+  geom_point(size=0.1, color =plotdata.rank.PROT.5$colorvalue) +
+  geom_text_repel(size = 2, 
+                  segment.size = 0.2, 
+                  color =plotdata.rank.PROT.5$colorvalue,
+                  nudge_x       = -1 - plotdata.rank.PROT.5$Weight,
+                  direction     = "y",
+                  hjust         = 0,
+                  segment.color = "grey50")+
+  theme_few()+
+  add.textsize +
+  scale_x_continuous() +
+  add.textsize +
+  theme(
+    plot.title = element_markdown(),
+    axis.text.x=element_blank(),
+    axis.ticks.x=element_blank(),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.ticks.y = element_blank()
+        )+
+  ylim(c(-1,1))
+
+
+### RNA loadings
+plotdata.rank.RNA.5<-plot_weights(mofa, 
+  view = "RNA", 
+  factors = c(5), 
+  nfeatures = 2, 
+  text_size = 1,
+  manual = list(topgeneset.fct5$SYMBOL,NULL), 
+  color_manual = list("black","black"),
+  return_data = TRUE
+)
+
+plotdata.rank.RNA.5<- plotdata.rank.RNA.5%>%
+  mutate(Rank = 1:nrow(plotdata.rank.RNA.5),
+         Weight = value, 
+         colorvalue = ifelse(labelling_group == 3,"black", ifelse(labelling_group == 2, "black", "grey2")),
+         highlights = ifelse(labelling_group >= 1, as.character(feature), "")
+         )
+
+plot.rank.RNA.5<- ggplot(plotdata.rank.RNA.5, aes(x=Rank, y = Weight, label = highlights)) +
+  labs(title = "Top loadings  <p><span style='color:black'></span> genes <span style='color:black'><span style='color:black'></span> ",  #
+       x= "Loading rank\n",
+       y= "Factor 5 loading value") +
+  geom_point(size=0.1, color =plotdata.rank.RNA.5$colorvalue) +
+  geom_text_repel(size = 2, 
+                  segment.size = 0.2, 
+                  color =plotdata.rank.RNA.5$colorvalue,
+                  nudge_x       = -1 - plotdata.rank.RNA.5$Weight,
+                  direction     = "y",
+                  hjust         =  0,
+                  segment.color = "grey50")+
+  theme_few()+
+  add.textsize +
+  scale_x_continuous() +
+  add.textsize +
+  theme(
+    plot.title = element_markdown()
+  )  +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank()
+        )+
+  ylim(c(-1,1))
+
+
+```
+
+
+```{r Fig_3}
+Fig3.row1 <- plot_grid(plot.umap.all, legend.umap, NULL, plot.correlation.covariates.withibru, plot.violin.factor1,plot.violin.factor3,plot.violin.factor5, labels = c(panellabels[1],"",panellabels[2], "", panellabels[3]), label_size = 10, ncol =7, rel_widths = c(1.2,0.1,0.1,0.55,0.72,0.68,0.61))
+
+Fig3.row2 <- plot_grid(plot.rank.RNA.5, plot.rank.PROT.5,plot.violin.RNA.RGS2, plot.violin.RNA.RGS13, `plot.violin.prot.p-Erk1/2`, labels = c(panellabels[4], "", panellabels[5], "", panellabels[6]), label_size = 10, ncol = 5,  rel_widths = c(0.8,0.66,1.2,1.2,1.2))
+
+
+plot.Fig3 <- plot_grid(Fig3.row1, Fig3.row2, labels = c( "", ""), label_size = 10, ncol = 1, rel_heights =c(0.9,0.7,1))
+
+ggsave(plot.Fig3,filename = "output/paper_figures/Fig3.pdf", width = 183, height = 122, units = "mm",  dpi = 300, useDingbats = FALSE)
+ggsave(plot.Fig3, filename = "output/paper_figures/Fig3.png", width = 183, height = 122, units = "mm",  dpi = 300)
+
+plot.Fig3
+```
+*Figure 3.* aIG stimultion in contect of Ibrutinib.
+
+### Supplementary MOFA model
+
+```{r Suppl MOFAmodel panels, warning=FALSE}
+## Variance per factor
+plot.variance.perfactor.all <- plot_variance_explained(mofa, x="factor", y="view") +
+    add.textsize +
+    labs(title = "Variance explained by each factor per modality") 
+
+## variance total
+plot.variance.total <- plot_variance_explained(mofa, x="view", y="factor", plot_total = T)
+plot.variance.total <- plot.variance.total[[2]] +
+  add.textsize +
+    labs(title = "Total \nvariance") +
+  geom_text(aes(label=round(R2,1)), vjust=1.6, color="white", size=2.5)
+
+## Significance correlation covariates
+plot.heatmap.pval.covariates <- as.ggplot(correlate_factors_with_covariates(mofa, 
+  covariates = c("time"),
+  factors = 1:mofa@dimensions$K,
+  fontsize = 7, 
+  cluster_row = F,
+  cluster_col = F
+))+ 
+  add.textsize +
+  theme(axis.text.y=element_blank(),
+        axis.text.x=element_blank(),
+        plot.title = element_text(size=7, face = "plain"),
+        )
+
+## Factor values over time
+plot.violin.factorall <- plot_factor(mofa, 
+  factor = c(1:mofa@dimensions$K),
+  color_by = "condition",
+  dot_size = 0.2,      # change dot size
+  dodge = T,           # dodge points with different colors
+  legend = F,          # remove legend
+  add_violin = T,      # add violin plots,
+  violin_alpha = 0.9  # transparency of violin plots
+) +   
+  add.textsize +
+  scale_color_manual(values=c(colorsibru, labels = c(labels), name = "Time aIg")) +
+  scale_fill_manual(values=c(colorsibru, labels = c(labels), name = "Time aIg"))+
+  labs(title = "Factor values per time-point of additional factors not correlating with time." ) +
+  theme(axis.text.x=element_blank())
+
+## Loadings factors stable protein
+
+plot.rank.PROT.2.4to7 <- plot_weights(mofa, 
+  view = "PROT", 
+  factors = c(1:mofa@dimensions$K), 
+  nfeatures = 3, 
+  text_size = 1.5
+) +   
+  add.textsize +
+  labs(title = "Top 3 Protein loadings per factor") +
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()
+)
+
+## Loadings factors stable protein
+
+plot.rank.RNA.2.4to7 <- plot_weights(mofa, 
+  view = "RNA", 
+  factors = c(1:mofa@dimensions$K), 
+  nfeatures = 3, 
+  text_size = 1.5
+) +   
+  add.textsize +
+  labs(title = "Top 3 RNA loadings per factor") +
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()
+)
+
+## correlation time and factors
+plot.correlation.covariates <- correlate_factors_with_covariates(mofa, 
+  covariates = c("time"),
+  factors = mofa@dimensions$K:1,
+  plot = "r"
+)
+
+plot.correlation.covariates <- ggcorrplot(plot.correlation.covariates, tl.col = "black", method = "square", lab = TRUE, ggtheme = theme_void, colors = c("#11304C", "white", "#11304C"), lab_size = 2.5) +
+  add.textsize +
+  labs(title = "Correlation of \nfactors with \ntime of treatment", y = "") +
+  scale_y_discrete(labels = "") +
+  coord_flip() +
+  theme(axis.text.x=element_text(angle =0,hjust = 0.5), 
+        axis.text.y=element_text(size = 5),
+        legend.position="none",
+        plot.title = element_text(hjust = 0.5))
+```
+
+
+```{r Suppl_MOFA_model, fig.width=7.2, fig.height=8.66}
+Fig.3.suppl.mofa.row1 <- plot_grid(plot.variance.perfactor.all, plot.variance.total,NULL, plot.heatmap.pval.covariates, labels = c(panellabels[1:3]), label_size = 10, ncol = 4, rel_widths = c(1.35, 0.27,0.2,0.38))
+
+Fig.3.suppl.mofa.row2 <- plot_grid(plot.violin.factorall,legend.umap, labels = panellabels[4], label_size = 10, ncol = 2, rel_widths = c(1,0.1))
+
+
+
+Suppl_mofa <- plot_grid(Fig.3.suppl.mofa.row1, Fig.3.suppl.mofa.row2, plot.rank.PROT.2.4to7, plot.rank.RNA.2.4to7, labels = c("","", panellabels[5:6]),label_size = 10, ncol = 1, rel_heights = c(1.45,1,1.1,1.1))
+
+
+ggsave(Suppl_mofa, filename = "output/paper_figures/Fig3.Suppl_MOFAibru.pdf", width = 183, height = 220, units = "mm",  dpi = 300, useDingbats = FALSE)
+ggsave(Suppl_mofa, filename = "output/paper_figures/Fig3.Suppl_MOFAibru.png", width = 183, height = 220, units = "mm",  dpi = 300)
+
+Suppl_mofa
+```
+*Supplementary Figure.* MOFA model additional information
+
+Enrichment genes factor 5 positve loadings (> 0.2).
+```{r}
+# print positive enrichment
+subset(enriched.go.bp.fct5.clusterdposneg@compareClusterResult, sign == "pos")
+
+```
+
+### Supplementary violins
+
+```{r Suppl_ibru_violins}
+Suppl.row1 <- plot_grid(`plot.violin.prot.p-PLC-y2Y759`, `plot.violin.prot.p-BLNK`,`plot.violin.prot.p-CD79a`,`plot.violin.prot.p-Syk`,`plot.violin.prot.p-JAK1`,labels = panellabels[1], label_size = 10, ncol = 5, rel_widths = c(1,1,1,1,1))
+
+Suppl.row2 <- plot_grid(plot.violin.RNA.NEAT1, plot.violin.RNA.NPM1, plot.violin.RNA.BTF3,labels = panellabels[2], label_size = 10, ncol = 5, rel_widths = c(1,1,1,1,1))
+
+Suppl_ibru_protsgenes <- plot_grid(Suppl.row1, Suppl.row2,label_size = 10, ncol = 1, rel_heights = c(1,1))
+
+ggsave(Suppl_ibru_protsgenes, filename = "output/paper_figures/Fig3.suppl.violinsibru.pdf", width = 183, height = 122, units = "mm",  dpi = 300, useDingbats = FALSE)
+ggsave(Suppl_ibru_protsgenes, filename = "output/paper_figures/Fig3.suppl.violinsibru.png", width = 183, height = 122, units = "mm",  dpi = 300)
+
+Suppl_ibru_protsgenes
+```
+*Supplementary Figure.* Violin plots of highlighted phopho-proteins & genes
