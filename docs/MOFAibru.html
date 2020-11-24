@@ -23,8 +23,11 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -265,6 +268,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -360,7 +366,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">QuRIE-seq manuscript</a>
+      <a class="navbar-brand" href="index.html">QuRIE-seq_manuscript</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -378,13 +384,27 @@ div.tocify {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/jessievb/QuRIE-seq_manuscript">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
 
 <div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
 
@@ -413,13 +433,13 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-17
+<strong>Last updated:</strong> 2020-11-24
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
-<strong>Knit directory:</strong> <code>QuRIEseq_analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+<strong>Knit directory:</strong> <code>QuRIE-seq_manuscript/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
@@ -504,30 +524,42 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong4487750"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 4487750 </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree8d11c04c7067bbc0d675048fa837cdaa4823bf28targetblank8d11c04a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/8d11c04c7067bbc0d675048fa837cdaa4823bf28" target="_blank">8d11c04</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong4487750" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree8d11c04c7067bbc0d675048fa837cdaa4823bf28targetblank8d11c04a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 4487750. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/8d11c04c7067bbc0d675048fa837cdaa4823bf28" target="_blank">8d11c04</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
 Untracked files:
-    Untracked:  code/Import_and_create_seuratObj.R
-    Untracked:  code/load_packages.R
-    Untracked:  code/plot_QC_function.R
+    Untracked:  code/template_script.R
     Untracked:  data/raw/
-    Untracked:  data/workflow_QuRIEseq.png.png
+    Untracked:  output/MOFA_aIg.hdf5
+    Untracked:  output/MOFA_aIg.rds
+    Untracked:  output/MOFA_ibru.hdf5
+    Untracked:  output/MOFA_ibru.rds
+    Untracked:  output/data_weights_prot_fact1and3.csv
+    Untracked:  output/metadata.csv
+    Untracked:  output/paper_figures/
+    Untracked:  output/seu_aIG_samples.rds
+    Untracked:  output/seu_combined_filtered_normalized.rds
+    Untracked:  output/seu_combined_raw.rds
+    Untracked:  output/seu_ibru_samples.rds
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
 
 </code></pre>
 <p>
@@ -571,7 +603,41 @@ Message
 Rmd
 </td>
 <td>
-4487750
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/8d11c04c7067bbc0d675048fa837cdaa4823bf28/analysis/MOFAibru.Rmd" target="_blank">8d11c04</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+Documentation Figure 3: ibrutinib data
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/2ffe38d8ad99572f5b5e0fdde94cbd8db50659bf/docs/MOFAibru.html" target="_blank">2ffe38d</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/4487750fd014ae3af0bfaa3cd6d581cf1ac3392c/analysis/MOFAibru.Rmd" target="_blank">4487750</a>
 </td>
 <td>
 Jessie van Buggenum
@@ -588,7 +654,7 @@ basis set-up of page display
 Rmd
 </td>
 <td>
-d9372d1
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/d9372d117842a51e92f9ba0293d6e92c8e9b29c1/analysis/MOFAibru.Rmd" target="_blank">d9372d1</a>
 </td>
 <td>
 Jessie van Buggenum
@@ -607,8 +673,523 @@ Publish the initial files for this website
 </div>
 </div>
 </div>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
+<pre class="r"><code>source(&quot;code/load_packages.R&quot;)
+
+panellabels &lt;- c(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;,&#39;d&#39; , &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;, &#39;k&#39;)
+
+add.textsize &lt;- theme(axis.text.x = element_text(colour = &#39;black&#39;, size = 7),
+          axis.text.y = element_text(colour = &#39;black&#39;,size=7),
+          text = element_text(size=7),
+          axis.text=element_text(size=7),
+          plot.title = element_text(size=7)
+          )
+
+colorgradient6 &lt;- c(&quot;#d4d4d3&quot;,&quot;#859FCA&quot;, &quot;#4D7CC6&quot; ,&quot;#1F5284&quot;,&quot;#11304C&quot;, &quot;#0C2236&quot; )
+colorgradient7 &lt;- c(colorgradient6,&quot;orange2&quot;)
+colorsibru &lt;- c(colorgradient7[c(1,2)],&quot;#E69F00&quot;, colorgradient7[c(6)], &quot;#D55E00&quot;,&quot;#ff0000&quot;)
+
+
+labels.withibru &lt;- c(0, 6, &quot;6 \n+ibru&quot;, 180, &quot;180\n+ibru&quot;)
+labels.withibru.selected &lt;- c(0, 6, &quot;6 \n+ibru&quot;, 180, &quot;180\n+ibru&quot;,&quot;180**\n+ibru&quot;)</code></pre>
+<pre class="r"><code>seu_combined_selectsamples.withibru &lt;- readRDS(&quot;output/seu_ibru_samples.rds&quot;)
+
+proteins.all.withibru &lt;- row.names(seu_combined_selectsamples.withibru[[&quot;PROT&quot;]])
+
+meta.allcells.withibru &lt;- seu_combined_selectsamples.withibru@meta.data %&gt;%
+  mutate(sample = rownames(seu_combined_selectsamples.withibru@meta.data))
+
+seu_combined_selectsamples.withibru &lt;- FindVariableFeatures(seu_combined_selectsamples.withibru, selection.method = &quot;mvp&quot;, assay = &quot;SCT.RNA&quot;, num.bin =20, mean.cutoff = c(0, 5), dispersion.cutoff = c(0.5,10), nfeatures =500, verbose = FALSE)
+
+genes.variable &lt;- seu_combined_selectsamples.withibru@assays$SCT.RNA@var.features[-grep(&quot;^MT&quot;, seu_combined_selectsamples.withibru@assays$SCT.RNA@var.features)] # without the mitochondrial genes 
+
+seu_combined_selectsamples.withibru</code></pre>
+<pre><code>An object of class Seurat 
+16824 features across 4658 samples within 3 assays 
+Active assay: SCT.RNA (8372 features, 2286 variable features)
+ 2 other assays present: RNA, PROT</code></pre>
+<div id="mofa-analysis-ibru-data" class="section level2">
+<h2>MOFA analysis ibru data</h2>
+<p>Note, if mofa object was generated before, it will read the generated rds file. (this will speed-up the process of generating this html document if edits are required)</p>
+<pre class="r"><code>myfiles &lt;- list.files(path=&quot;output/&quot;, pattern = &quot;.rds$&quot;)
+
+if(&quot;MOFA_ibru.rds&quot; %in%  myfiles){
+  
+  mofa &lt;- readRDS(&quot;output/MOFA_ibru.rds&quot;)} else { 
+
+    ## Nested list of RNA and Protein data (retrieved from filtered Seurat object)    
+     mofa &lt;- create_mofa(list(
+      &quot;RNA&quot; = as.matrix( seu_combined_selectsamples.withibru@assays$SCT.RNA@scale.data[genes.variable,] ),
+      &quot;PROT&quot; = as.matrix( seu_combined_selectsamples.withibru@assays$PROT@scale.data[proteins.all.withibru,] ))
+      )
+
+     ## Default data, model and training options
+     data_opts &lt;- get_default_data_options(mofa)
+     model_opts &lt;- get_default_model_options(mofa)
+     train_opts &lt;- get_default_training_options(mofa)
+     train_opts$seed &lt;- 42 # use same seed for reproducibility
+    
+    mofa &lt;- prepare_mofa(
+      object = mofa,
+      data_options = data_opts,
+      model_options = model_opts,
+      training_options = train_opts
+      )
+
+      mofa &lt;- run_mofa(mofa, outfile = &quot;output/MOFA_ibru.hdf5&quot;)
+      mofa &lt;- run_umap(mofa)
+      samples_metadata(mofa) &lt;- meta.allcells.withibru
+      saveRDS(mofa, file= &quot;output/MOFA_ibru.rds&quot;)
+  
+}
+
+mofa</code></pre>
+<pre><code>Trained MOFA with the following characteristics: 
+ Number of views: 2 
+ Views names: RNA PROT 
+ Number of features (per view): 2263 80 
+ Number of groups: 1 
+ Groups names: group1 
+ Number of samples (per group): 4658 
+ Number of factors: 8 </code></pre>
+</div>
+<div id="figure-3" class="section level2">
+<h2>Figure 3</h2>
+<div id="main" class="section level3">
+<h3>Main</h3>
+<pre class="r"><code>## UMAP
+plot.umap.data &lt;-  plot_dimred(mofa, method=&quot;UMAP&quot;, color_by = &quot;condition&quot;,stroke = 0.001, dot_size =1, alpha = 0.2, return_data = T)
+
+plot.umap.all &lt;- ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
+  geom_point(size = 0.7, alpha = 0.5, shape = 21, stroke = 0) +
+  theme_half_open() +
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = &quot;Time aIg \n(minutes)&quot;)+
+   theme(legend.position=&quot;none&quot;)+
+  add.textsize +
+  scale_x_reverse()+
+  scale_y_reverse()+
+  labs(title = &quot;Ibrutinib affects signal transduction \nat minutes and hour time-scale&quot;, x = &quot;UMAP 1&quot;, y = &quot;UMAP 2&quot;)
+
+## UMAP legend
+legend.umap &lt;- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
+  geom_point(size = 2, alpha = 0.5, shape = 21, stroke = 0) +
+  theme_half_open() +
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name =&quot;Time aIg \n(minutes)&quot;,)+
+   theme(legend.position=&quot;right&quot;)+
+  add.textsize +
+  scale_x_reverse()+
+  scale_y_reverse()+
+  labs(title = &quot;Ibrutinib affects signal transduction at \nminute and hour timepoints after aIG stimulation&quot;, x = &quot;UMAP 1&quot;, y = &quot;UMAP 2&quot;))
+legend.umap &lt;- as_ggplot(legend.umap)
+
+## correlation time and factors
+plot.correlation.covariates.withibru &lt;- correlate_factors_with_covariates(mofa, 
+  covariates = c(&quot;time&quot;, &quot;inhibitor&quot;),
+  factors = 8:1,
+  plot = &quot;r&quot;
+)</code></pre>
+<p><img src="figure/MOFAibru.Rmd/Figure%20panels-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>plot.correlation.covariates.withibru &lt;- ggcorrplot(plot.correlation.covariates.withibru, tl.col = &quot;black&quot;, method = &quot;square&quot;, lab = TRUE, ggtheme = theme_void, colors = c(&quot;orange3&quot;, &quot;white&quot;, &quot;orange3&quot;), lab_size = 2.5) +
+  add.textsize +
+  labs(title = &quot;Correlation\ncoefficient\n&quot;, y = &quot;&quot;) +
+  scale_y_discrete(labels = c(&quot;time\naIg\n&quot;,&quot;ibrutinib\ntreatment\n&quot;)) +
+  coord_flip() +
+  theme(axis.text.x=element_text(angle =0,hjust = 0.5), 
+        axis.text.y=element_text(size = 5),
+        legend.position=&quot;none&quot;,
+        plot.title = element_text(hjust = 0.5))
+
+## functions violin prots
+f.violin &lt;- function(data, feature){
+  
+  ggplot(subset(data)  , aes(x = as.factor(condition), y =get(noquote(feature)))) +
+    annotate(&quot;rect&quot;,
+          xmin = 4 - 0.45,
+             xmax = 5 + 0.5,
+           ymin = -5.5, ymax =5, fill = &quot;lightblue&quot;,
+           alpha = .4
+  )+
+  geom_violin(alpha = 0.9,aes(fill = condition))+
+  geom_jitter(width = 0.05,size = 0.1, color = &quot;black&quot;)+ 
+  stat_summary(fun=median, geom=&quot;point&quot;, shape=95, size=2, inherit.aes = T, position = position_dodge(width = 0.9), color = &quot;red&quot;)+
+  theme_few()+
+  labs(title = paste0(feature)) +
+  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = &quot;Time aIg (Minutes)&quot;) +
+  scale_y_continuous(expand = c(0,0), name = &quot;Counts (scaled)&quot;) +
+  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = &quot;Time aIg (Minutes)&quot;,)+ 
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = &quot;Time aIg (Minutes)&quot;,) +
+  add.textsize +
+  theme(axis.ticks=element_line(color=&quot;black&quot;, size = 0.2),
+        legend.position=&quot;none&quot;) 
+}
+
+## functions violin RNA
+f.violin.rectlarge &lt;- function(data, feature){
+  
+  ggplot(subset(data)  , aes(x = as.factor(condition), y =get(noquote(feature)))) +
+    annotate(&quot;rect&quot;,
+          xmin = 4 - 0.45,
+             xmax = 5 + 0.5,
+           ymin = -3, ymax = 15, fill = &quot;lightblue&quot;,
+           alpha = .4
+  )+
+  geom_violin(alpha = 0.9,aes(fill = condition))+
+  geom_jitter(width = 0.05,size = 0.1, color = &quot;black&quot;)+ 
+  stat_summary(fun=median, geom=&quot;point&quot;, shape=95, size=2, inherit.aes = T, position = position_dodge(width = 0.9), color = &quot;red&quot;)+
+  theme_few()+
+  labs(title = paste0(feature)) +
+  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = &quot;Time aIg (Minutes)&quot;) +
+  scale_y_continuous(expand = c(0,0), name = &quot;Counts (scaled)&quot;) +
+  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = &quot;Time aIg (Minutes)&quot;,)+ 
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = &quot;Time aIg (Minutes)&quot;,) +
+  add.textsize +
+  theme(axis.ticks=element_line(color=&quot;black&quot;, size = 0.2),
+        legend.position=&quot;none&quot;) 
+}
+
+## functions violin factors
+f.violin.fact &lt;- function(data = proteindata.subset, protein){
+  
+  ggplot(subset(data)  , aes(x = as.factor(condition), y =get(noquote(protein)))) +
+    annotate(&quot;rect&quot;,
+          xmin = 4 - 0.5,
+             xmax = 5 + 0.5,
+           ymin = -4.5, ymax = 4.5, fill = &quot;lightblue&quot;,
+           alpha = .4
+  )+
+    geom_hline(yintercept=0, linetype=&#39;dotted&#39;, col = &#39;black&#39;)+ 
+  geom_violin(alpha = 0.9,aes(fill = condition))+
+  geom_jitter(width = 0.05,size = 0.1, color = &quot;black&quot;)+ 
+  stat_summary(fun=median, geom=&quot;point&quot;, shape=95, size=2, inherit.aes = T, position = position_dodge(width = 0.9), color = &quot;red&quot;)+
+  theme_few()+
+  ylab(paste0(protein)) +
+  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = &quot;Time aIg (Minutes)&quot;) +
+    scale_y_continuous(expand = c(0,0), name = strsplit(protein, split = &quot;\\.&quot;)[[1]][2]) +
+  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = &quot;Time aIg (Minutes)&quot;,)+ 
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = &quot;Time aIg (Minutes)&quot;,) +
+  add.textsize +
+  theme(legend.position=&quot;none&quot;) 
+}
+
+
+## Factor data for violins
+MOFAfactors&lt;- as.data.frame(mofa@expectations$Z) %&gt;%
+  mutate(sample = rownames(as.data.frame(mofa@expectations$Z)[,1:mofa@dimensions$K])) 
+
+MOFAfactors &lt;- left_join(as.data.frame(MOFAfactors), meta.allcells.withibru)
+
+factors_toplot &lt;- c(colnames(MOFAfactors)[c(1:mofa@dimensions$K)])
+
+## plot violin factors
+for(i in factors_toplot) {
+assign(paste0(&quot;plot.violin.factor.&quot;, i), f.violin.fact(data = MOFAfactors,protein = i)) 
+}
+
+plot.violin.factor1 &lt;- plot.violin.factor.group1.Factor1 +
+  theme(#axis.title.x=element_blank(),
+        #axis.text.x=element_blank(),
+        #axis.ticks.x=element_blank(),
+        legend.position=&quot;none&quot;) +
+  scale_y_reverse(expand = c(0,0), name = &quot;Factor value&quot;)+
+  labs(title = &quot;Factor 1 \n&#39;BCR signaling&#39;&quot;)
+
+plot.violin.factor3 &lt;- plot.violin.factor.group1.Factor3 +
+  theme(axis.title.y=element_blank(),
+        #axis.text.y=element_blank(),
+        #axis.ticks.y=element_blank(),
+        legend.position=&quot;none&quot;) +
+  scale_y_continuous(expand = c(0,0), name = &quot;Factor 3 value&quot;)+
+  labs(title = &quot;Factor 3 \n&#39;B-cell activation&#39;&quot;)
+
+
+plot.violin.factor5 &lt;- plot.violin.factor.group1.Factor5 +
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        legend.position=&quot;none&quot;) +
+  scale_y_continuous(expand = c(0,0), name = &quot;Factor 5 value&quot;)+
+  labs(title = &quot;Factor 5 \n&quot;)
+
+## Protein data for violins
+proteindata &lt;- as.data.frame(t(seu_combined_selectsamples.withibru@assays$PROT@scale.data)) %&gt;%
+  mutate(sample = rownames(t(seu_combined_selectsamples.withibru@assays$PROT@scale.data))) %&gt;%
+  left_join(meta.allcells.withibru, by = &quot;sample&quot;)
+
+proteinstoplot &lt;- c(&quot;p-Erk1/2&quot;, &quot;p-PLC-y2Y759&quot;, &quot;p-BLNK&quot;, &quot;p-CD79a&quot;, &quot;p-Syk&quot;, &quot;p-JAK1&quot;)
+
+for(i in proteinstoplot) {
+assign(paste0(&quot;plot.violin.prot.&quot;, i), f.violin(data = proteindata, feature = i))
+
+}
+
+`plot.violin.prot.p-Erk1/2` &lt;- `plot.violin.prot.p-Erk1/2` +
+  labs(title = &quot;p-ERK1/2&quot;) 
+  
+
+## Data for violin genes
+rnadata &lt;- as.data.frame(t(seu_combined_selectsamples.withibru@assays$SCT.RNA@scale.data)) %&gt;%
+  mutate(sample = rownames(t(seu_combined_selectsamples.withibru@assays$SCT.RNA@scale.data))) %&gt;%
+  left_join(meta.allcells.withibru, by = &quot;sample&quot;)
+
+for(i in c(&quot;NEAT1&quot;, &quot;NPM1&quot;, &quot;BTF3&quot;, &quot;RGS2&quot;, &quot;RGS13&quot;,&quot;VEGFA&quot;)) {
+assign(paste0(&quot;plot.violin.RNA.&quot;, i), f.violin.rectlarge(data = rnadata, feature = i))
+
+}
+
+## Enrichment analysis factor 5
+weights.RNA &lt;- get_weights(mofa, views = &quot;RNA&quot;,as.data.frame = TRUE)
+
+weights.RNA.filtered.f5 &lt;- weights.RNA %&gt;%
+  mutate(Entrez = mapIds(org.Hs.eg.db, as.character(weights.RNA$feature), &#39;ENTREZID&#39;, &#39;SYMBOL&#39;))  %&gt;%
+  filter(abs(value) &gt;= 0.2 &amp; factor == &quot;Factor5&quot;) %&gt;%
+  mutate(sign = ifelse(value &lt;= 0, &quot;neg&quot;, &quot;pos&quot;)) 
+
+enriched.go.bp.fct5.clusterdposneg &lt;- compareCluster(Entrez~factor+sign, data=weights.RNA.filtered.f5, fun=&#39;enrichGO&#39;, OrgDb=&#39;org.Hs.eg.db&#39;,ont= &quot;BP&quot;,
+                pAdjustMethod = &quot;BH&quot;, readable = TRUE)
+
+enriched.go.bp.fct5.clusterdposneg &lt;- simplify(enriched.go.bp.fct5.clusterdposneg, cutoff=0.8, by=&quot;p.adjust&quot;, select_fun=min)
+
+
+plot.enriched.go.f5.top5 &lt;- dotplot(enriched.go.bp.fct5.clusterdposneg,x=~sign, showCategory = 5, by = &quot;count&quot;) +
+  scale_y_discrete(labels = c(&quot;negative regulation of G protein-coupled\nreceptor signaling pathway&quot;) , limits = &quot;negative regulation of G protein-coupled receptor signaling pathway&quot;) +
+  facet_grid(~factor) +
+  add.textsize+ 
+  scale_color_viridis(option=&quot;E&quot;, direction = -1) +
+  scale_size_continuous(range=c(0.8, 2)) 
+
+## Top enriched sets
+topgeneset.fct5&lt;- unlist(str_split(subset(enriched.go.bp.fct5.clusterdposneg@compareClusterResult, sign == &quot;pos&quot;)$geneID, pattern = &quot;/&quot;))
+
+topgeneset.fct5 = bitr(topgeneset.fct5, fromType=&quot;SYMBOL&quot;, toType=&quot;ENTREZID&quot;, OrgDb=&quot;org.Hs.eg.db&quot;)
+
+bottomgeneset.fct5&lt;- unlist(str_split(subset(enriched.go.bp.fct5.clusterdposneg@compareClusterResult, sign == &quot;neg&quot;)[1:5,]$geneID, pattern = &quot;/&quot;))
+
+bottomgeneset.fct5 = bitr(bottomgeneset.fct5, fromType=&quot;SYMBOL&quot;, toType=&quot;ENTREZID&quot;, OrgDb=&quot;org.Hs.eg.db&quot;)
+
+## PROT factor 5 loadings
+plotdata.rank.PROT.5&lt;-plot_weights(mofa, 
+  view = &quot;PROT&quot;, 
+  factors = c(5), 
+  nfeatures = 4, 
+  text_size = 1,
+  manual = list(c(&quot;p-Erk1/2&quot;, &quot;XBP1_PROT&quot;),NULL), 
+  color_manual = list(&quot;black&quot;,&quot;black&quot;),
+  return_data = TRUE
+)
+
+plotdata.rank.PROT.5&lt;- plotdata.rank.PROT.5%&gt;%
+  mutate(Rank = 1:nrow(plotdata.rank.PROT.5),
+         Weight = value, 
+         colorvalue = ifelse(labelling_group == 3,&quot;black&quot;, ifelse(labelling_group == 2, &quot;black&quot;, &quot;grey2&quot;)),
+         highlights = ifelse(labelling_group &gt;= 1, as.character(feature), &quot;&quot;)
+         )
+
+plot.rank.PROT.5&lt;- ggplot(plotdata.rank.PROT.5, aes(x=Rank, y = Weight, label = highlights)) +
+  labs(title = &quot;&lt;p&gt;&lt;span style=&#39;color:black&#39;&gt;&lt;/span&gt;  phospho-proteins&lt;span style=&#39;color:black&#39;&gt;&lt;span style=&#39;color:blue4&#39;&gt;&lt;/span&gt; &quot;,  #
+       x= &quot;Loading rank\n&quot;,
+       y= &quot;Factor 5 loading value&quot;) +
+  geom_point(size=0.1, color =plotdata.rank.PROT.5$colorvalue) +
+  geom_text_repel(size = 2, 
+                  segment.size = 0.2, 
+                  color =plotdata.rank.PROT.5$colorvalue,
+                  nudge_x       = -1 - plotdata.rank.PROT.5$Weight,
+                  direction     = &quot;y&quot;,
+                  hjust         = 0,
+                  segment.color = &quot;grey50&quot;)+
+  theme_few()+
+  add.textsize +
+  scale_x_continuous() +
+  add.textsize +
+  theme(
+    plot.title = element_markdown(),
+    axis.text.x=element_blank(),
+    axis.ticks.x=element_blank(),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.ticks.y = element_blank()
+        )+
+  ylim(c(-1,1))
+
+
+### RNA loadings
+plotdata.rank.RNA.5&lt;-plot_weights(mofa, 
+  view = &quot;RNA&quot;, 
+  factors = c(5), 
+  nfeatures = 2, 
+  text_size = 1,
+  manual = list(topgeneset.fct5$SYMBOL,NULL), 
+  color_manual = list(&quot;black&quot;,&quot;black&quot;),
+  return_data = TRUE
+)
+
+plotdata.rank.RNA.5&lt;- plotdata.rank.RNA.5%&gt;%
+  mutate(Rank = 1:nrow(plotdata.rank.RNA.5),
+         Weight = value, 
+         colorvalue = ifelse(labelling_group == 3,&quot;black&quot;, ifelse(labelling_group == 2, &quot;black&quot;, &quot;grey2&quot;)),
+         highlights = ifelse(labelling_group &gt;= 1, as.character(feature), &quot;&quot;)
+         )
+
+plot.rank.RNA.5&lt;- ggplot(plotdata.rank.RNA.5, aes(x=Rank, y = Weight, label = highlights)) +
+  labs(title = &quot;Top loadings  &lt;p&gt;&lt;span style=&#39;color:black&#39;&gt;&lt;/span&gt; genes &lt;span style=&#39;color:black&#39;&gt;&lt;span style=&#39;color:black&#39;&gt;&lt;/span&gt; &quot;,  #
+       x= &quot;Loading rank\n&quot;,
+       y= &quot;Factor 5 loading value&quot;) +
+  geom_point(size=0.1, color =plotdata.rank.RNA.5$colorvalue) +
+  geom_text_repel(size = 2, 
+                  segment.size = 0.2, 
+                  color =plotdata.rank.RNA.5$colorvalue,
+                  nudge_x       = -1 - plotdata.rank.RNA.5$Weight,
+                  direction     = &quot;y&quot;,
+                  hjust         =  0,
+                  segment.color = &quot;grey50&quot;)+
+  theme_few()+
+  add.textsize +
+  scale_x_continuous() +
+  add.textsize +
+  theme(
+    plot.title = element_markdown()
+  )  +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank()
+        )+
+  ylim(c(-1,1))</code></pre>
+<pre class="r"><code>Fig3.row1 &lt;- plot_grid(plot.umap.all, legend.umap, NULL, plot.correlation.covariates.withibru, plot.violin.factor1,plot.violin.factor3,plot.violin.factor5, labels = c(panellabels[1],&quot;&quot;,panellabels[2], &quot;&quot;, panellabels[3]), label_size = 10, ncol =7, rel_widths = c(1.2,0.1,0.1,0.55,0.72,0.68,0.61))
+
+Fig3.row2 &lt;- plot_grid(plot.rank.RNA.5, plot.rank.PROT.5,plot.violin.RNA.RGS2, plot.violin.RNA.RGS13, `plot.violin.prot.p-Erk1/2`, labels = c(panellabels[4], &quot;&quot;, panellabels[5], &quot;&quot;, panellabels[6]), label_size = 10, ncol = 5,  rel_widths = c(0.8,0.66,1.2,1.2,1.2))
+
+
+plot.Fig3 &lt;- plot_grid(Fig3.row1, Fig3.row2, labels = c( &quot;&quot;, &quot;&quot;), label_size = 10, ncol = 1, rel_heights =c(0.9,0.7,1))
+
+ggsave(plot.Fig3,filename = &quot;output/paper_figures/Fig3.pdf&quot;, width = 183, height = 122, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(plot.Fig3, filename = &quot;output/paper_figures/Fig3.png&quot;, width = 183, height = 122, units = &quot;mm&quot;,  dpi = 300)
+
+plot.Fig3</code></pre>
+<p><img src="figure/MOFAibru.Rmd/Fig_3-1.png" width="672" style="display: block; margin: auto;" /> <em>Figure 3.</em> aIG stimultion in contect of Ibrutinib.</p>
+</div>
+<div id="supplementary-mofa-model" class="section level3">
+<h3>Supplementary MOFA model</h3>
+<pre class="r"><code>## Variance per factor
+plot.variance.perfactor.all &lt;- plot_variance_explained(mofa, x=&quot;factor&quot;, y=&quot;view&quot;) +
+    add.textsize +
+    labs(title = &quot;Variance explained by each factor per modality&quot;) 
+
+## variance total
+plot.variance.total &lt;- plot_variance_explained(mofa, x=&quot;view&quot;, y=&quot;factor&quot;, plot_total = T)
+plot.variance.total &lt;- plot.variance.total[[2]] +
+  add.textsize +
+    labs(title = &quot;Total \nvariance&quot;) +
+  geom_text(aes(label=round(R2,1)), vjust=1.6, color=&quot;white&quot;, size=2.5)
+
+## Significance correlation covariates
+plot.heatmap.pval.covariates &lt;- as.ggplot(correlate_factors_with_covariates(mofa, 
+  covariates = c(&quot;time&quot;),
+  factors = 1:mofa@dimensions$K,
+  fontsize = 7, 
+  cluster_row = F,
+  cluster_col = F
+))+ 
+  add.textsize +
+  theme(axis.text.y=element_blank(),
+        axis.text.x=element_blank(),
+        plot.title = element_text(size=7, face = &quot;plain&quot;),
+        )</code></pre>
+<p><img src="figure/MOFAibru.Rmd/Suppl%20MOFAmodel%20panels-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>## Factor values over time
+plot.violin.factorall &lt;- plot_factor(mofa, 
+  factor = c(1:mofa@dimensions$K),
+  color_by = &quot;condition&quot;,
+  dot_size = 0.2,      # change dot size
+  dodge = T,           # dodge points with different colors
+  legend = F,          # remove legend
+  add_violin = T,      # add violin plots,
+  violin_alpha = 0.9  # transparency of violin plots
+) +   
+  add.textsize +
+  scale_color_manual(values=c(colorsibru, labels = c(labels), name = &quot;Time aIg&quot;)) +
+  scale_fill_manual(values=c(colorsibru, labels = c(labels), name = &quot;Time aIg&quot;))+
+  labs(title = &quot;Factor values per time-point of additional factors not correlating with time.&quot; ) +
+  theme(axis.text.x=element_blank())
+
+## Loadings factors stable protein
+
+plot.rank.PROT.2.4to7 &lt;- plot_weights(mofa, 
+  view = &quot;PROT&quot;, 
+  factors = c(1:mofa@dimensions$K), 
+  nfeatures = 3, 
+  text_size = 1.5
+) +   
+  add.textsize +
+  labs(title = &quot;Top 3 Protein loadings per factor&quot;) +
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()
+)
+
+## Loadings factors stable protein
+
+plot.rank.RNA.2.4to7 &lt;- plot_weights(mofa, 
+  view = &quot;RNA&quot;, 
+  factors = c(1:mofa@dimensions$K), 
+  nfeatures = 3, 
+  text_size = 1.5
+) +   
+  add.textsize +
+  labs(title = &quot;Top 3 RNA loadings per factor&quot;) +
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()
+)
+
+## correlation time and factors
+plot.correlation.covariates &lt;- correlate_factors_with_covariates(mofa, 
+  covariates = c(&quot;time&quot;),
+  factors = mofa@dimensions$K:1,
+  plot = &quot;r&quot;
+)</code></pre>
+<p><img src="figure/MOFAibru.Rmd/Suppl%20MOFAmodel%20panels-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>plot.correlation.covariates &lt;- ggcorrplot(plot.correlation.covariates, tl.col = &quot;black&quot;, method = &quot;square&quot;, lab = TRUE, ggtheme = theme_void, colors = c(&quot;#11304C&quot;, &quot;white&quot;, &quot;#11304C&quot;), lab_size = 2.5) +
+  add.textsize +
+  labs(title = &quot;Correlation of \nfactors with \ntime of treatment&quot;, y = &quot;&quot;) +
+  scale_y_discrete(labels = &quot;&quot;) +
+  coord_flip() +
+  theme(axis.text.x=element_text(angle =0,hjust = 0.5), 
+        axis.text.y=element_text(size = 5),
+        legend.position=&quot;none&quot;,
+        plot.title = element_text(hjust = 0.5))</code></pre>
+<pre><code>Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
+<pre class="r"><code>Fig.3.suppl.mofa.row1 &lt;- plot_grid(plot.variance.perfactor.all, plot.variance.total,NULL, plot.heatmap.pval.covariates, labels = c(panellabels[1:3]), label_size = 10, ncol = 4, rel_widths = c(1.35, 0.27,0.2,0.38))
+
+Fig.3.suppl.mofa.row2 &lt;- plot_grid(plot.violin.factorall,legend.umap, labels = panellabels[4], label_size = 10, ncol = 2, rel_widths = c(1,0.1))
+
+
+
+Suppl_mofa &lt;- plot_grid(Fig.3.suppl.mofa.row1, Fig.3.suppl.mofa.row2, plot.rank.PROT.2.4to7, plot.rank.RNA.2.4to7, labels = c(&quot;&quot;,&quot;&quot;, panellabels[5:6]),label_size = 10, ncol = 1, rel_heights = c(1.45,1,1.1,1.1))
+
+
+ggsave(Suppl_mofa, filename = &quot;output/paper_figures/Fig3.Suppl_MOFAibru.pdf&quot;, width = 183, height = 220, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(Suppl_mofa, filename = &quot;output/paper_figures/Fig3.Suppl_MOFAibru.png&quot;, width = 183, height = 220, units = &quot;mm&quot;,  dpi = 300)
+
+Suppl_mofa</code></pre>
+<p><img src="figure/MOFAibru.Rmd/Suppl_MOFA_model-1.png" width="691.2" style="display: block; margin: auto;" /> <em>Supplementary Figure.</em> MOFA model additional information</p>
+<p>Enrichment genes factor 5 positve loadings (&gt; 0.2).</p>
+<pre class="r"><code># print positive enrichment
+subset(enriched.go.bp.fct5.clusterdposneg@compareClusterResult, sign == &quot;pos&quot;)</code></pre>
+<pre><code>        Cluster  factor sign         ID
+120 Factor5.pos Factor5  pos GO:0045744
+                                                            Description
+120 negative regulation of G protein-coupled receptor signaling pathway
+    GeneRatio  BgRatio       pvalue  p.adjust qvalue     geneID Count
+120       2/5 53/18670 7.863922e-05 0.0222549     NA RGS13/RGS2     2</code></pre>
+</div>
+<div id="supplementary-violins" class="section level3">
+<h3>Supplementary violins</h3>
+<pre class="r"><code>Suppl.row1 &lt;- plot_grid(`plot.violin.prot.p-PLC-y2Y759`, `plot.violin.prot.p-BLNK`,`plot.violin.prot.p-CD79a`,`plot.violin.prot.p-Syk`,`plot.violin.prot.p-JAK1`,labels = panellabels[1], label_size = 10, ncol = 5, rel_widths = c(1,1,1,1,1))
+
+Suppl.row2 &lt;- plot_grid(plot.violin.RNA.NEAT1, plot.violin.RNA.NPM1, plot.violin.RNA.BTF3,labels = panellabels[2], label_size = 10, ncol = 5, rel_widths = c(1,1,1,1,1))
+
+Suppl_ibru_protsgenes &lt;- plot_grid(Suppl.row1, Suppl.row2,label_size = 10, ncol = 1, rel_heights = c(1,1))
+
+ggsave(Suppl_ibru_protsgenes, filename = &quot;output/paper_figures/Fig3.suppl.violinsibru.pdf&quot;, width = 183, height = 122, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(Suppl_ibru_protsgenes, filename = &quot;output/paper_figures/Fig3.suppl.violinsibru.png&quot;, width = 183, height = 122, units = &quot;mm&quot;,  dpi = 300)
+
+Suppl_ibru_protsgenes</code></pre>
+<p><img src="figure/MOFAibru.Rmd/Suppl_ibru_violins-1.png" width="672" style="display: block; margin: auto;" /> <em>Supplementary Figure.</em> Violin plots of highlighted phopho-proteins &amp; genes</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -629,18 +1210,82 @@ locale:
 [5] LC_TIME=English_Netherlands.1252    
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+ [1] parallel  stats4    grid      stats     graphics  grDevices utils    
+ [8] datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.6.1
+ [1] png_0.1-7                   forcats_0.5.0              
+ [3] clusterProfiler_3.14.3      clusterProfiler.dplyr_0.0.2
+ [5] enrichplot_1.6.1            org.Hs.eg.db_3.10.0        
+ [7] AnnotationDbi_1.48.0        IRanges_2.20.2             
+ [9] S4Vectors_0.24.4            Biobase_2.46.0             
+[11] BiocGenerics_0.32.0         ggridges_0.5.2             
+[13] cowplot_1.1.0               ggtext_0.1.0               
+[15] ggplotify_0.0.5             ggcorrplot_0.1.3           
+[17] ggrepel_0.8.2               ggpubr_0.4.0               
+[19] scico_1.2.0                 MOFA2_1.1                  
+[21] extrafont_0.17              patchwork_1.0.1            
+[23] RColorBrewer_1.1-2          viridis_0.5.1              
+[25] viridisLite_0.3.0           ggsci_2.9                  
+[27] sctransform_0.3.1           ggthemes_4.2.0             
+[29] matrixStats_0.57.0          kableExtra_1.2.1           
+[31] gridExtra_2.3               Seurat_3.2.2               
+[33] ggplot2_3.3.2               scales_1.1.1               
+[35] tidyr_1.1.2                 dplyr_1.0.2                
+[37] stringr_1.4.0               workflowr_1.6.1            
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.4.6     rprojroot_1.3-2  digest_0.6.26    later_1.0.0     
- [5] R6_2.4.1         backports_1.1.10 git2r_0.27.1     magrittr_1.5    
- [9] evaluate_0.14    stringi_1.4.6    rlang_0.4.8      fs_1.4.1        
-[13] promises_1.1.0   whisker_0.4      rmarkdown_2.4    tools_3.6.3     
-[17] stringr_1.4.0    glue_1.4.2       httpuv_1.5.2     xfun_0.18       
-[21] yaml_2.2.1       compiler_3.6.3   htmltools_0.5.0  knitr_1.30      </code></pre>
+  [1] reticulate_1.16       tidyselect_1.1.0      RSQLite_2.2.1        
+  [4] htmlwidgets_1.5.2     BiocParallel_1.20.1   Rtsne_0.15           
+  [7] munsell_0.5.0         codetools_0.2-16      ica_1.0-2            
+ [10] future_1.19.1         miniUI_0.1.1.1        withr_2.3.0          
+ [13] GOSemSim_2.12.1       colorspace_1.4-1      knitr_1.30           
+ [16] rstudioapi_0.11       ROCR_1.0-11           ggsignif_0.6.0       
+ [19] tensor_1.5            DOSE_3.12.0           Rttf2pt1_1.3.8       
+ [22] listenv_0.8.0         labeling_0.4.2        git2r_0.27.1         
+ [25] urltools_1.7.3        mnormt_2.0.2          polyclip_1.10-0      
+ [28] farver_2.0.3          bit64_4.0.5           pheatmap_1.0.12      
+ [31] rhdf5_2.30.1          rprojroot_1.3-2       vctrs_0.3.4          
+ [34] generics_0.0.2        xfun_0.18             markdown_1.1         
+ [37] R6_2.4.1              graphlayouts_0.7.0    rsvd_1.0.3           
+ [40] fgsea_1.12.0          spatstat.utils_1.17-0 gridGraphics_0.5-0   
+ [43] DelayedArray_0.12.3   promises_1.1.0        ggraph_2.0.3         
+ [46] gtable_0.3.0          globals_0.13.1        goftest_1.2-2        
+ [49] tidygraph_1.2.0       rlang_0.4.8           splines_3.6.3        
+ [52] rstatix_0.6.0         extrafontdb_1.0       lazyeval_0.2.2       
+ [55] europepmc_0.4         broom_0.7.1           BiocManager_1.30.10  
+ [58] yaml_2.2.1            reshape2_1.4.4        abind_1.4-5          
+ [61] backports_1.1.10      httpuv_1.5.2          qvalue_2.18.0        
+ [64] gridtext_0.1.1        tools_3.6.3           psych_2.0.9          
+ [67] ellipsis_0.3.1        Rcpp_1.0.4.6          plyr_1.8.6           
+ [70] progress_1.2.2        purrr_0.3.4           prettyunits_1.1.1    
+ [73] rpart_4.1-15          deldir_0.1-29         pbapply_1.4-3        
+ [76] zoo_1.8-8             haven_2.3.1           cluster_2.1.0        
+ [79] fs_1.4.1              magrittr_1.5          data.table_1.13.0    
+ [82] DO.db_2.9             openxlsx_4.2.2        triebeard_0.3.0      
+ [85] lmtest_0.9-38         RANN_2.6.1            tmvnsim_1.0-2        
+ [88] whisker_0.4           fitdistrplus_1.1-1    hms_0.5.3            
+ [91] mime_0.9              evaluate_0.14         xtable_1.8-4         
+ [94] rio_0.5.16            readxl_1.3.1          compiler_3.6.3       
+ [97] tibble_3.0.4          KernSmooth_2.23-16    crayon_1.3.4         
+[100] htmltools_0.5.0       mgcv_1.8-31           later_1.0.0          
+[103] DBI_1.1.0             tweenr_1.0.1          corrplot_0.84        
+[106] MASS_7.3-53           rappdirs_0.3.1        Matrix_1.2-18        
+[109] car_3.0-10            igraph_1.2.6          pkgconfig_2.0.3      
+[112] rvcheck_0.1.8         foreign_0.8-75        plotly_4.9.2.1       
+[115] xml2_1.3.2            webshot_0.5.2         rvest_0.3.6          
+[118] digest_0.6.26         RcppAnnoy_0.0.16      spatstat.data_1.4-3  
+[121] fastmatch_1.1-0       rmarkdown_2.4         cellranger_1.1.0     
+[124] leiden_0.3.3          uwot_0.1.8            curl_4.3             
+[127] shiny_1.5.0           lifecycle_0.2.0       nlme_3.1-144         
+[130] jsonlite_1.7.1        Rhdf5lib_1.8.0        carData_3.0-4        
+[133] pillar_1.4.6          lattice_0.20-38       GO.db_3.10.0         
+[136] fastmap_1.0.1         httr_1.4.2            survival_3.1-8       
+[139] glue_1.4.2            zip_2.1.1             spatstat_1.64-1      
+[142] bit_4.0.4             ggforce_0.3.2         stringi_1.4.6        
+[145] HDF5Array_1.14.4      blob_1.2.1            memoise_1.1.0        
+[148] irlba_2.3.3           future.apply_1.6.0   </code></pre>
+</div>
 </div>
 </div>
 
@@ -691,6 +1336,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
