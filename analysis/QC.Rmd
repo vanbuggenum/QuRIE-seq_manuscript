@@ -16,7 +16,7 @@ dir.create("output/paper_figures") # location where paper figures are stored
 
 ## Introduction
 
-The inDrop-RAID data contains samples 9 timepoints of aIg stimulated BJAB, and 3 additional timepoints with ibrutinib drug. Script below extracts all metadata (sequencing sample names, adds metadata info per sample (prot or RNA library)), and reads all data tables into R. The metadata table is saved in output folder: "output/metadata.csv"
+The QuRIE-seq data contains single-cell transcriptomic and proteomic data of BJAB cells with 9 different durations of aIg stimulation, and 3 additional timepoints with ibrutinib drug inhibition. Script below extracts all metadata (sequencing sample names, adds metadata info per sample (prot or RNA library)), and reads all data tables into R. The metadata table is saved in output folder: "output/metadata.csv"
 
 For QC and filtering, cells with matching RNA and protein information are used to create a Seurat object (settings RNA: min.cells = 100, min.features = 100; proteins added as additional modality PROT). Several QC stats are calculated, and the object is saved in: "output/seu_combined_raw.rds"
 
@@ -141,8 +141,7 @@ plot.QC
 ```
 *Supplementary Figure* Thresholds for selection of high-quality samples and cells from the QuRIE-seq datasets.
 
-Based on the indicated cut-offs, high-quality cellsare filtered for further analysis. 
-Based on the good protein quality of samples and m<11% median mitochondiral counts per sample, timepoints 0, 2, 4, 6, 60 and 180 are kept for further analysis.
+Based on the indicated cut-offs, high-quality cells are filtered for further analysis.
 
 ```{r filter cells and samples, class.source = 'fold-show'}
 seu_combined_filtered <- subset(seu_combined, subset = nFeature_RNA > 150 & nCount_RNA < 4000 & nFeature_PROT > 45 & nCount_PROT < 3000 & percent.mt < 15)

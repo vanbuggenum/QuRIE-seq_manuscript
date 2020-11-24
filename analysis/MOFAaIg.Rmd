@@ -235,7 +235,7 @@ ggsave(filename = "output/paper_figures/Suppl_PCA_aIg.png", width = 143, height 
 
 Fig1.pca
 ```
-*Supplementary Figure.* PCA analysis on RNA ór Protein dataset
+*Supplementary Figure.* PCA analysis on RNA and Protein datasets separately.
 
 ### Suppl MOFA model properties
 
