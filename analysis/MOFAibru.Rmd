@@ -94,7 +94,7 @@ mofa
 
 ### Main
 
-```{r Figure panels, message=FALSE, warning=FALSE,echo = T, results = 'hide'}
+```{r Figure panels, message=FALSE, warning=FALSE,echo = T, fig.show= 'hide'}
 ## UMAP
 plot.umap.data <-  plot_dimred(mofa, method="UMAP", color_by = "condition",stroke = 0.001, dot_size =1, alpha = 0.2, return_data = T)
 
@@ -412,7 +412,7 @@ plot.Fig3
 
 ### Supplementary MOFA model
 
-```{r Suppl MOFAmodel panels, warning=FALSE,echo = T, results = 'hide', message=FALSE}
+```{r Suppl MOFAmodel panels, warning=FALSE,echo = T, fig.show= 'hide', message=FALSE}
 ## Variance per factor
 plot.variance.perfactor.all <- plot_variance_explained(mofa, x="factor", y="view") +
     add.textsize +

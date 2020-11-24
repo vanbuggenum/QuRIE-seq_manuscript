@@ -239,7 +239,7 @@ Fig1.pca
 
 ### Suppl MOFA model properties
 
-```{r Suppl MOFAmodel panels, warning=FALSE, include=FALSE}
+```{r Suppl MOFAmodel panels, warning=FALSE, fig.show='hide'}
 ## Variance per factor
 plot.variance.perfactor.all <- plot_variance_explained(mofa, x="factor", y="view") +
     add.textsize +
@@ -346,7 +346,7 @@ Suppl_mofa
 ## Figure 2 
 
 Prepare main panels
-```{r tables for fig 2 panels,warning=FALSE,message=FALSE, include=FALSE}
+```{r tables for fig 2 panels,warning=FALSE,message=FALSE, fig.show='hide'}
 meta.allcells <- seu_combined_selectsamples@meta.data %>%
   mutate(sample = rownames(seu_combined_selectsamples@meta.data))
 
