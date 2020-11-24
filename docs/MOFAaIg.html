@@ -524,16 +524,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreea96d5ba425ae8f6bded33f2e72d8825346c51595targetblanka96d5baa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/a96d5ba425ae8f6bded33f2e72d8825346c51595" target="_blank">a96d5ba</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree6b16185a88693c643e53e69d161a8810eeddafc0targetblank6b16185a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/6b16185a88693c643e53e69d161a8810eeddafc0" target="_blank">6b16185</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreea96d5ba425ae8f6bded33f2e72d8825346c51595targetblanka96d5baa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree6b16185a88693c643e53e69d161a8810eeddafc0targetblank6b16185a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/a96d5ba425ae8f6bded33f2e72d8825346c51595" target="_blank">a96d5ba</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/6b16185a88693c643e53e69d161a8810eeddafc0" target="_blank">6b16185</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -599,6 +599,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/6b16185a88693c643e53e69d161a8810eeddafc0/analysis/MOFAaIg.Rmd" target="_blank">6b16185</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+update minor changes to suppl fig mofa
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/df6d45f219c5d06b2f1be5b9ce106c75d6534df1/docs/MOFAaIg.html" target="_blank">df6d45f</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1024,7 +1058,7 @@ Fig1.pca</code></pre>
 </div>
 <div id="suppl-mofa-model-properties" class="section level3">
 <h3>Suppl MOFA model properties</h3>
-<pre class="r"><code>Fig.1.suppl.mofa.row1 &lt;- plot_grid(plot.variance.perfactor.all, plot.variance.total,NULL, plot.heatmap.pval.covariates, labels = c(panellabels[1:3]), label_size = 10, ncol = 4, rel_widths = c(1.35, 0.27,0.2,0.38))
+<pre class="r"><code>Fig.1.suppl.mofa.row1 &lt;- plot_grid(plot.variance.perfactor.all, plot.variance.total,NULL, plot.heatmap.pval.covariates, labels = c(panellabels[1:3]), label_size = 10, ncol = 4, rel_widths = c(1.35, 0.3,0.25,0.38))
 
 Fig.1.suppl.mofa.row2 &lt;- plot_grid(plot.violin.factorall,legend.umap, labels = panellabels[4], label_size = 10, ncol = 2, rel_widths = c(1,0.1))
 
@@ -1032,7 +1066,7 @@ Suppl_mofa &lt;- plot_grid(Fig.1.suppl.mofa.row1, Fig.1.suppl.mofa.row2, plot.ra
 
 
 ggsave(Suppl_mofa, filename = &quot;output/paper_figures/Fig2.Suppl_MOFAaIg.pdf&quot;, width = 183, height = 220, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
-ggsave(Suppl_mofa, filename = &quot;output/paper_figures/Fig2.Suppl_MOFAaIg.pdf&quot;, width = 183, height = 220, units = &quot;mm&quot;,  dpi = 300)
+ggsave(Suppl_mofa, filename = &quot;output/paper_figures/Fig2.Suppl_MOFAaIg.png&quot;, width = 183, height = 220, units = &quot;mm&quot;,  dpi = 300)
 
 Suppl_mofa</code></pre>
 <p><img src="figure/MOFAaIg.Rmd/Suppl_MOFA_model-1.png" width="691.2" style="display: block; margin: auto;" /> <em>Supplementary Figure.</em> MOFA model additional information</p>
