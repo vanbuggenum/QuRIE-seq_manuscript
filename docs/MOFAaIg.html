@@ -524,16 +524,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree6b16185a88693c643e53e69d161a8810eeddafc0targetblank6b16185a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/6b16185a88693c643e53e69d161a8810eeddafc0" target="_blank">6b16185</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree2290bafdd6c02e1188d9ece4467c326195f0db8atargetblank2290bafa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/2290bafdd6c02e1188d9ece4467c326195f0db8a" target="_blank">2290baf</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree6b16185a88693c643e53e69d161a8810eeddafc0targetblank6b16185a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree2290bafdd6c02e1188d9ece4467c326195f0db8atargetblank2290bafa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/6b16185a88693c643e53e69d161a8810eeddafc0" target="_blank">6b16185</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/2290bafdd6c02e1188d9ece4467c326195f0db8a" target="_blank">2290baf</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -542,25 +542,18 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-
-Untracked files:
-    Untracked:  code/template_script.R
-    Untracked:  data/raw/
-    Untracked:  output/MOFA_aIg.hdf5
-    Untracked:  output/MOFA_aIg.rds
-    Untracked:  output/MOFA_ibru.hdf5
-    Untracked:  output/MOFA_ibru.rds
-    Untracked:  output/data_weights_prot_fact1and3.csv
-    Untracked:  output/metadata.csv
-    Untracked:  output/paper_figures/
-    Untracked:  output/seu_aIG_samples.rds
-    Untracked:  output/seu_combined_filtered_normalized.rds
-    Untracked:  output/seu_combined_raw.rds
-    Untracked:  output/seu_ibru_samples.rds
-
-Unstaged changes:
-    Modified:   analysis/MOFAibru.Rmd
-    Modified:   analysis/_site.yml
+    Ignored:    data/raw/
+    Ignored:    output/MOFA_aIg.hdf5
+    Ignored:    output/MOFA_aIg.rds
+    Ignored:    output/MOFA_ibru.hdf5
+    Ignored:    output/MOFA_ibru.rds
+    Ignored:    output/data_weights_prot_fact1and3.csv
+    Ignored:    output/metadata.csv
+    Ignored:    output/paper_figures/
+    Ignored:    output/seu_aIG_samples.rds
+    Ignored:    output/seu_combined_filtered_normalized.rds
+    Ignored:    output/seu_combined_raw.rds
+    Ignored:    output/seu_ibru_samples.rds
 
 </code></pre>
 <p>
@@ -599,6 +592,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/2290bafdd6c02e1188d9ece4467c326195f0db8a/analysis/MOFAaIg.Rmd" target="_blank">2290baf</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+hide figure panels in html
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/f95d1d2fd13c485d64a93f74f1882e51dfc4fa87/docs/MOFAaIg.html" target="_blank">f95d1d2</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1058,6 +1085,91 @@ Fig1.pca</code></pre>
 </div>
 <div id="suppl-mofa-model-properties" class="section level3">
 <h3>Suppl MOFA model properties</h3>
+<pre class="r"><code>## Variance per factor
+plot.variance.perfactor.all &lt;- plot_variance_explained(mofa, x=&quot;factor&quot;, y=&quot;view&quot;) +
+    add.textsize +
+    labs(title = &quot;Variance explained by each factor per modality&quot;) 
+
+## variance total
+plot.variance.total &lt;- plot_variance_explained(mofa, x=&quot;view&quot;, y=&quot;factor&quot;, plot_total = T)
+plot.variance.total &lt;- plot.variance.total[[2]] +
+  add.textsize +
+    labs(title = &quot;Total \nvariance&quot;) +
+  geom_text(aes(label=round(R2,1)), vjust=1.6, color=&quot;white&quot;, size=2.5)
+
+## Significance correlation covariates
+plot.heatmap.pval.covariates &lt;- as.ggplot(correlate_factors_with_covariates(mofa, 
+  covariates = c(&quot;time&quot;),
+  factors = 1:mofa@dimensions$K,
+  fontsize = 7, 
+  cluster_row = F,
+  cluster_col = F
+))+ 
+  add.textsize +
+  theme(axis.text.y=element_blank(),
+        axis.text.x=element_blank(),
+        plot.title = element_text(size=7, face = &quot;plain&quot;),
+        )</code></pre>
+<pre class="r"><code>## Factor values over time
+plot.violin.factorall &lt;- plot_factor(mofa, 
+  factor = c(2,4:mofa@dimensions$K),
+  color_by = &quot;condition&quot;,
+  dot_size = 0.2,      # change dot size
+  dodge = T,           # dodge points with different colors
+  legend = F,          # remove legend
+  add_violin = T,      # add violin plots,
+  violin_alpha = 0.9  # transparency of violin plots
+) +   
+  add.textsize +
+  scale_color_manual(values=c(colorgradient6_manual2, labels = c(labels), name = &quot;Time aIg&quot;)) +
+  scale_fill_manual(values=c(colorgradient6_manual2, labels = c(labels), name = &quot;Time aIg&quot;))+
+  labs(title = &quot;Factor values per time-point of additional factors not correlating with time.&quot; ) +
+  theme(axis.text.x=element_blank())
+
+## Loadings factors stable protein
+
+plot.rank.PROT.2.4to7 &lt;- plot_weights(mofa, 
+  view = &quot;PROT&quot;, 
+  factors = c(1:mofa@dimensions$K), 
+  nfeatures = 3, 
+  text_size = 1.5
+) +   
+  add.textsize +
+  labs(title = &quot;Top 3 Protein loadings per factor&quot;) +
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()
+)
+
+## Loadings factors stable protein
+
+plot.rank.RNA.2.4to7 &lt;- plot_weights(mofa, 
+  view = &quot;RNA&quot;, 
+  factors = c(1:mofa@dimensions$K), 
+  nfeatures = 3, 
+  text_size = 1.5
+) +   
+  add.textsize +
+  labs(title = &quot;Top 3 RNA loadings per factor&quot;) +
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()
+)
+
+## correlation time and factors
+plot.correlation.covariates &lt;- correlate_factors_with_covariates(mofa, 
+  covariates = c(&quot;time&quot;),
+  factors = mofa@dimensions$K:1,
+  plot = &quot;r&quot;
+)</code></pre>
+<pre class="r"><code>plot.correlation.covariates &lt;- ggcorrplot(plot.correlation.covariates, tl.col = &quot;black&quot;, method = &quot;square&quot;, lab = TRUE, ggtheme = theme_void, colors = c(&quot;#11304C&quot;, &quot;white&quot;, &quot;#11304C&quot;), lab_size = 2.5) +
+  add.textsize +
+  labs(title = &quot;Correlation of \nfactors with \ntime of treatment&quot;, y = &quot;&quot;) +
+  scale_y_discrete(labels = &quot;&quot;) +
+  coord_flip() +
+  theme(axis.text.x=element_text(angle =0,hjust = 0.5), 
+        axis.text.y=element_text(size = 5),
+        legend.position=&quot;none&quot;,
+        plot.title = element_text(hjust = 0.5))</code></pre>
+<pre><code>Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <pre class="r"><code>Fig.1.suppl.mofa.row1 &lt;- plot_grid(plot.variance.perfactor.all, plot.variance.total,NULL, plot.heatmap.pval.covariates, labels = c(panellabels[1:3]), label_size = 10, ncol = 4, rel_widths = c(1.35, 0.3,0.25,0.38))
 
 Fig.1.suppl.mofa.row2 &lt;- plot_grid(plot.violin.factorall,legend.umap, labels = panellabels[4], label_size = 10, ncol = 2, rel_widths = c(1,0.1))
@@ -1075,6 +1187,30 @@ Suppl_mofa</code></pre>
 <div id="figure-2" class="section level2">
 <h2>Figure 2</h2>
 <p>Prepare main panels</p>
+<pre class="r"><code>meta.allcells &lt;- seu_combined_selectsamples@meta.data %&gt;%
+  mutate(sample = rownames(seu_combined_selectsamples@meta.data))
+
+proteindata &lt;- as.data.frame(t(seu_combined_selectsamples@assays$PROT@scale.data)) %&gt;%
+  mutate(sample = rownames(t(seu_combined_selectsamples@assays$PROT@scale.data))) %&gt;%
+  left_join(meta.allcells)
+
+MOFAfactors&lt;- as.data.frame(mofa@expectations$Z) %&gt;%
+  mutate(sample = rownames(as.data.frame(mofa@expectations$Z)[,1:mofa@dimensions$K])) 
+
+MOFAfactors &lt;- left_join(as.data.frame(MOFAfactors), meta.allcells)
+
+weights.prot &lt;- get_weights(mofa, views = &quot;PROT&quot;,as.data.frame = TRUE)
+
+topnegprots.factor1 &lt;- weights.prot %&gt;%
+  filter(factor == &quot;Factor1&quot; &amp; value &lt;= 0) %&gt;%
+  arrange(value)
+
+topposprots.factor3 &lt;- weights.prot %&gt;%
+  filter(factor == &quot;Factor3&quot; &amp; value &gt;= 0) %&gt;%
+  arrange(-value)
+
+
+weights.RNA &lt;- get_weights(mofa, views = &quot;RNA&quot;,as.data.frame = TRUE)</code></pre>
 <pre class="r"><code>## violin plots phospho-proteins highlighted in main
 
 f.violin.fact &lt;- function(data , protein){
