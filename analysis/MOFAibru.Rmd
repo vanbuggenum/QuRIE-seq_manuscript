@@ -262,7 +262,9 @@ assign(paste0("plot.violin.prot.", i), f.violin(data = proteindata, feature = i)
 
 `plot.violin.prot.p-Erk1/2` <- `plot.violin.prot.p-Erk1/2` +
   labs(title = "p-ERK1/2") 
-  
+
+`plot.violin.prot.p-Syk` <- `plot.violin.prot.p-Syk` +
+  labs(title = "p-SYK")   
 
 ## Data for violin genes
 rnadata <- as.data.frame(t(seu_combined_selectsamples.withibru@assays$SCT.RNA@scale.data)) %>%
