@@ -433,7 +433,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-24
+<strong>Last updated:</strong> 2020-11-25
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -524,16 +524,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree2290bafdd6c02e1188d9ece4467c326195f0db8atargetblank2290bafa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/2290bafdd6c02e1188d9ece4467c326195f0db8a" target="_blank">2290baf</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreecf646e039da3fd7c93cff01ff549f47338b6d4c9targetblankcf646e0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/cf646e039da3fd7c93cff01ff549f47338b6d4c9" target="_blank">cf646e0</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree2290bafdd6c02e1188d9ece4467c326195f0db8atargetblank2290bafa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreecf646e039da3fd7c93cff01ff549f47338b6d4c9targetblankcf646e0a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/2290bafdd6c02e1188d9ece4467c326195f0db8a" target="_blank">2290baf</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/cf646e039da3fd7c93cff01ff549f47338b6d4c9" target="_blank">cf646e0</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -592,6 +592,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/cf646e039da3fd7c93cff01ff549f47338b6d4c9/analysis/MOFAibru.Rmd" target="_blank">cf646e0</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-25
+</td>
+<td>
+typo Syk to SYK
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/416c6aeeb52f4ba7775eda7e0681c572d30344be/docs/MOFAibru.html" target="_blank">416c6ae</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-24
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -984,7 +1018,9 @@ assign(paste0(&quot;plot.violin.prot.&quot;, i), f.violin(data = proteindata, fe
 
 `plot.violin.prot.p-Erk1/2` &lt;- `plot.violin.prot.p-Erk1/2` +
   labs(title = &quot;p-ERK1/2&quot;) 
-  
+
+`plot.violin.prot.p-Syk` &lt;- `plot.violin.prot.p-Syk` +
+  labs(title = &quot;p-SYK&quot;)   
 
 ## Data for violin genes
 rnadata &lt;- as.data.frame(t(seu_combined_selectsamples.withibru@assays$SCT.RNA@scale.data)) %&gt;%
