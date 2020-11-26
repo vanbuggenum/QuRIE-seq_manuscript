@@ -336,7 +336,7 @@ plotdata.rank.PROT.5<-plot_weights(mofa,
   factors = c(5), 
   nfeatures = 4, 
   text_size = 1,
-  manual = list(c("p-Erk1/2", "XBP1_PROT"),NULL), 
+  manual = list(c("p-ERK1/2", "XBP1_PROT"),NULL), 
   color_manual = list("black","black"),
   return_data = TRUE
 )

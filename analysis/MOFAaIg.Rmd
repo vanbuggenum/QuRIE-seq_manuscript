@@ -193,6 +193,12 @@ PCA.PROTPC1.data <- data.frame(rank = 1:80,
                                highlights = c(names(sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1]))[1:4],rep("",76))
                                )
 
+PCA.PROTPC1.data <- PCA.PROTPC1.data %>%
+  mutate(highlights = as.character(highlights)) %>%
+  mutate(highlights = case_when(as.character(highlights) == "p-Syk" ~ "p-SYK",
+                                as.character(highlights) == "p-Src" ~ "p-SRC",
+                           TRUE ~ highlights))
+
 plot.PCA.PROTweightsPC1 <- ggplot(PCA.PROTPC1.data, aes(x=weight.PC1, y = rank, label = highlights)) +
   geom_point(size=0.1) +
   labs(title = "Top 4 protein loadings \n", x= "Weight Protein PC1") +
