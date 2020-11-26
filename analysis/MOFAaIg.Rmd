@@ -84,6 +84,31 @@ mofa
 ```
 
 ```{r}
+## Rename protein names
+featurenamesmofa <- features_names(mofa)
+
+
+## todo cleanup/more efficient
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Src" ,"p-SRC",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Syk" ,"SYK",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-c-Jun" ,"p-cJUN",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Akt" ,"AKT",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Btk" ,"BTK",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Akt" ,"p-AKT",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Syk" ,"p-SYK",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Erk1/2" ,"ERK1/2",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Erk1/2" ,"p-ERK1/2",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Myc" ,"p-MYC",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Btk" ,"p-BTK",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Bcl-6" ,"BCL6",x), how = "replace")
+
+features_names(mofa) <- featurenamesmofa
+
+
+```
+
+
+```{r}
 # Export Factor 1 and 3 weights for Cytoscape plot
 data_weights_prot <- get_weights(object = mofa, views = "PROT", factors = c(1,3), as.data.frame = TRUE)
 
@@ -166,7 +191,7 @@ PCA.PROTPC1.data <- data.frame(rank = 1:80,
                                protein = names(sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1])),
                                weight.PC1 = sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1]),
                                highlights = c(names(sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1]))[1:4],rep("",76))
-                               ) 
+                               )
 
 plot.PCA.PROTweightsPC1 <- ggplot(PCA.PROTPC1.data, aes(x=weight.PC1, y = rank, label = highlights)) +
   geom_point(size=0.1) +
@@ -446,7 +471,7 @@ plot.violin.factor3 <- plot.factor.group1.Factor3 +
 
 #### protein Loadings factor 1
 
-list.bcellpathway.protein <- c("p-CD79a", "p-Syk", "p-Src", "p-Erk1/2", "p-PLC-y2", "p-BLNK","p-PLC-y2Y759","p-PKC-b1", "p-p38", "p-Akt", "p-S6", "p-TOR", "CD79a") # , "p-PLC-y2", "p-PKC-b1", "p-IKKa/b","p-JNK", "p-p38", "p-p65","p-Akt", "p-S6", "p-TOR"
+list.bcellpathway.protein <- c("p-CD79a", "p-SYK", "p-SRC", "p-ERK1/2", "p-PLC-y2", "p-BLNK","p-PLC-y2Y759","p-PKC-b1", "p-p38", "p-AKT", "p-S6", "p-TOR", "CD79a") # , "p-PLC-y2", "p-PKC-b1", "p-IKKa/b","p-JNK", "p-p38", "p-p65","p-Akt", "p-S6", "p-TOR"
 list.top20 <- topnegprots.factor1$feature[1:20]
 ## protein factor 1
 plotdata.rank.PROT.1 <-plot_weights(mofa, 
@@ -464,7 +489,7 @@ plotdata.rank.PROT.1 <- plotdata.rank.PROT.1 %>%
          Weight = value, 
          colorvalue = ifelse(labelling_group == 2 & value <= -0.2,"grey", ifelse(labelling_group == 3 & value <= -0.2, "blue4", ifelse(labelling_group == 4 & value <= -0.2, "red", "grey"))),
          highlights = ifelse(labelling_group >= 1 & value <= -0.25, as.character(feature), "")
-         )
+         ) 
 
 plot.rank.PROT.1 <- ggplot(plotdata.rank.PROT.1, aes(x=Weight, y = Rank, label = highlights)) +
   labs(title = "(Phospho-)Proteins: <p><span style='color:blue4'>BCR </span>&<span style='color:red'> JAK1</span> signaling", #<span style='color:blue4'>BCR signaling</span> and <span style='color:red'>p-JAK1</span>
@@ -538,7 +563,7 @@ assign(paste0("plot.violin.", i), f.violin.prot(data = proteindata ,protein = i)
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank(),) +
-  labs(x = "p-SYK") 
+  scale_y_continuous(name = "p-SYK")
 
 `plot.violin.p-JAK1` <-`plot.violin.p-JAK1` +
   add.textsize +
@@ -669,7 +694,7 @@ plot.rank.RNA.3 <- ggplot(plotdata.rank.RNA.3, aes(x=Weight, y = Rank, label = h
 
 #### Protein loadings factor 3
 
-list.highlight.prot.fct3 <- c("p-p38", "p-Akt", "p-S6", "p-TOR", "XBP1_PROT", "p-STAT5")
+list.highlight.prot.fct3 <- c("p-p38", "p-AKT", "p-S6", "p-TOR", "XBP1_PROT", "p-STAT5")
 list.top20 <- topnegprots.factor1$feature[1:20]
 
 plotdata.rank.PROT.3 <-plot_weights(mofa, 
@@ -687,7 +712,9 @@ plotdata.rank.PROT.3 <- plotdata.rank.PROT.3 %>%
          Weight = value, 
          colorvalue = ifelse(labelling_group == 3 &value >= 0.25,"blue4", ifelse(labelling_group == 2&value >= 0.4, "grey", "grey")),
          highlights = ifelse(labelling_group >= 1&value >= 0.25, as.character(feature), "")
-         )
+         )  %>%
+  mutate(highlights = case_when(as.character(highlights) == "XBP1_PROT" ~ "XBP1",
+                           TRUE ~ highlights))
 
 plot.rank.PROT.3 <- ggplot(plotdata.rank.PROT.3, aes(x=Weight, y = Rank, label = highlights)) +
   labs(title = "Signaling implicated in <p><span style='color:blue4'>Unfolded protein response</span>", 

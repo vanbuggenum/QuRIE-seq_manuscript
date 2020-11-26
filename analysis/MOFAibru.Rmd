@@ -88,6 +88,30 @@ mofa
 ```
 
 
+```{r}
+## Rename protein names
+featurenamesmofa <- features_names(mofa)
+
+
+## todo cleanup/more efficient
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Src" ,"p-SRC",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Syk" ,"SYK",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-c-Jun" ,"p-cJUN",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Akt" ,"AKT",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Btk" ,"BTK",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Akt" ,"p-AKT",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Syk" ,"p-SYK",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Erk1/2" ,"ERK1/2",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Erk1/2" ,"p-ERK1/2",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Myc" ,"p-MYC",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Btk" ,"p-BTK",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Btk" ,"p-BTK",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Bcl-6" ,"BCL6",x), how = "replace")
+
+features_names(mofa) <- featurenamesmofa
+
+
+```
 
 
 ## Figure 3
@@ -322,7 +346,9 @@ plotdata.rank.PROT.5<- plotdata.rank.PROT.5%>%
          Weight = value, 
          colorvalue = ifelse(labelling_group == 3,"black", ifelse(labelling_group == 2, "black", "grey2")),
          highlights = ifelse(labelling_group >= 1, as.character(feature), "")
-         )
+         )%>%
+  mutate(highlights = case_when(as.character(highlights) == "XBP1_PROT" ~ "XBP1",
+                           TRUE ~ highlights))
 
 plot.rank.PROT.5<- ggplot(plotdata.rank.PROT.5, aes(x=Rank, y = Weight, label = highlights)) +
   labs(title = "<p><span style='color:black'></span>  phospho-proteins<span style='color:black'><span style='color:blue4'></span> ",  #
