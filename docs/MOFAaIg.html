@@ -433,7 +433,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-25
+<strong>Last updated:</strong> 2020-11-26
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -524,16 +524,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreecf646e039da3fd7c93cff01ff549f47338b6d4c9targetblankcf646e0a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/cf646e039da3fd7c93cff01ff549f47338b6d4c9" target="_blank">cf646e0</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreebe4b6104c29a28a40c7814c605dc3b86945baba7targetblankbe4b610a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/be4b6104c29a28a40c7814c605dc3b86945baba7" target="_blank">be4b610</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreecf646e039da3fd7c93cff01ff549f47338b6d4c9targetblankcf646e0a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreebe4b6104c29a28a40c7814c605dc3b86945baba7targetblankbe4b610a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/cf646e039da3fd7c93cff01ff549f47338b6d4c9" target="_blank">cf646e0</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/be4b6104c29a28a40c7814c605dc3b86945baba7" target="_blank">be4b610</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -593,6 +593,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/be4b6104c29a28a40c7814c605dc3b86945baba7/analysis/MOFAaIg.Rmd" target="_blank">be4b610</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-26
+</td>
+<td>
+Capitalize several proteins in all plots (hardcoded)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/61cb95458bab3b29188e8b72d1e020232a085299/docs/MOFAaIg.html" target="_blank">61cb954</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1013,6 +1047,25 @@ mofa</code></pre>
  Groups names: group1 
  Number of samples (per group): 4754 
  Number of factors: 7 </code></pre>
+<pre class="r"><code>## Rename protein names
+featurenamesmofa &lt;- features_names(mofa)
+
+
+## todo cleanup/more efficient
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;p-Src&quot; ,&quot;p-SRC&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;Syk&quot; ,&quot;SYK&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;p-c-Jun&quot; ,&quot;p-cJUN&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;Akt&quot; ,&quot;AKT&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;Btk&quot; ,&quot;BTK&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;p-Akt&quot; ,&quot;p-AKT&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;p-Syk&quot; ,&quot;p-SYK&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;Erk1/2&quot; ,&quot;ERK1/2&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;p-Erk1/2&quot; ,&quot;p-ERK1/2&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;p-Myc&quot; ,&quot;p-MYC&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;p-Btk&quot; ,&quot;p-BTK&quot;,x), how = &quot;replace&quot;)
+featurenamesmofa &lt;- rapply(featurenamesmofa,function(x) ifelse(x==&quot;Bcl-6&quot; ,&quot;BCL6&quot;,x), how = &quot;replace&quot;)
+
+features_names(mofa) &lt;- featurenamesmofa</code></pre>
 <pre class="r"><code># Export Factor 1 and 3 weights for Cytoscape plot
 data_weights_prot &lt;- get_weights(object = mofa, views = &quot;PROT&quot;, factors = c(1,3), as.data.frame = TRUE)
 
@@ -1086,7 +1139,7 @@ PCA.PROTPC1.data &lt;- data.frame(rank = 1:80,
                                protein = names(sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1])),
                                weight.PC1 = sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1]),
                                highlights = c(names(sort(seu_combined_selectsamples@reductions$pca.PROT@feature.loadings[,1]))[1:4],rep(&quot;&quot;,76))
-                               ) 
+                               )
 
 plot.PCA.PROTweightsPC1 &lt;- ggplot(PCA.PROTPC1.data, aes(x=weight.PC1, y = rank, label = highlights)) +
   geom_point(size=0.1) +
@@ -1351,7 +1404,7 @@ plot.violin.factor3 &lt;- plot.factor.group1.Factor3 +
 
 #### protein Loadings factor 1
 
-list.bcellpathway.protein &lt;- c(&quot;p-CD79a&quot;, &quot;p-Syk&quot;, &quot;p-Src&quot;, &quot;p-Erk1/2&quot;, &quot;p-PLC-y2&quot;, &quot;p-BLNK&quot;,&quot;p-PLC-y2Y759&quot;,&quot;p-PKC-b1&quot;, &quot;p-p38&quot;, &quot;p-Akt&quot;, &quot;p-S6&quot;, &quot;p-TOR&quot;, &quot;CD79a&quot;) # , &quot;p-PLC-y2&quot;, &quot;p-PKC-b1&quot;, &quot;p-IKKa/b&quot;,&quot;p-JNK&quot;, &quot;p-p38&quot;, &quot;p-p65&quot;,&quot;p-Akt&quot;, &quot;p-S6&quot;, &quot;p-TOR&quot;
+list.bcellpathway.protein &lt;- c(&quot;p-CD79a&quot;, &quot;p-SYK&quot;, &quot;p-SRC&quot;, &quot;p-ERK1/2&quot;, &quot;p-PLC-y2&quot;, &quot;p-BLNK&quot;,&quot;p-PLC-y2Y759&quot;,&quot;p-PKC-b1&quot;, &quot;p-p38&quot;, &quot;p-AKT&quot;, &quot;p-S6&quot;, &quot;p-TOR&quot;, &quot;CD79a&quot;) # , &quot;p-PLC-y2&quot;, &quot;p-PKC-b1&quot;, &quot;p-IKKa/b&quot;,&quot;p-JNK&quot;, &quot;p-p38&quot;, &quot;p-p65&quot;,&quot;p-Akt&quot;, &quot;p-S6&quot;, &quot;p-TOR&quot;
 list.top20 &lt;- topnegprots.factor1$feature[1:20]
 ## protein factor 1
 plotdata.rank.PROT.1 &lt;-plot_weights(mofa, 
@@ -1369,7 +1422,7 @@ plotdata.rank.PROT.1 &lt;- plotdata.rank.PROT.1 %&gt;%
          Weight = value, 
          colorvalue = ifelse(labelling_group == 2 &amp; value &lt;= -0.2,&quot;grey&quot;, ifelse(labelling_group == 3 &amp; value &lt;= -0.2, &quot;blue4&quot;, ifelse(labelling_group == 4 &amp; value &lt;= -0.2, &quot;red&quot;, &quot;grey&quot;))),
          highlights = ifelse(labelling_group &gt;= 1 &amp; value &lt;= -0.25, as.character(feature), &quot;&quot;)
-         )
+         ) 
 
 plot.rank.PROT.1 &lt;- ggplot(plotdata.rank.PROT.1, aes(x=Weight, y = Rank, label = highlights)) +
   labs(title = &quot;(Phospho-)Proteins: &lt;p&gt;&lt;span style=&#39;color:blue4&#39;&gt;BCR &lt;/span&gt;&amp;&lt;span style=&#39;color:red&#39;&gt; JAK1&lt;/span&gt; signaling&quot;, #&lt;span style=&#39;color:blue4&#39;&gt;BCR signaling&lt;/span&gt; and &lt;span style=&#39;color:red&#39;&gt;p-JAK1&lt;/span&gt;
@@ -1443,7 +1496,7 @@ assign(paste0(&quot;plot.violin.&quot;, i), f.violin.prot(data = proteindata ,pr
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
         axis.ticks.x=element_blank(),) +
-  labs(x = &quot;p-SYK&quot;) 
+  scale_y_continuous(name = &quot;p-SYK&quot;)
 
 `plot.violin.p-JAK1` &lt;-`plot.violin.p-JAK1` +
   add.textsize +
@@ -1565,7 +1618,7 @@ plot.rank.RNA.3 &lt;- ggplot(plotdata.rank.RNA.3, aes(x=Weight, y = Rank, label 
 
 #### Protein loadings factor 3
 
-list.highlight.prot.fct3 &lt;- c(&quot;p-p38&quot;, &quot;p-Akt&quot;, &quot;p-S6&quot;, &quot;p-TOR&quot;, &quot;XBP1_PROT&quot;, &quot;p-STAT5&quot;)
+list.highlight.prot.fct3 &lt;- c(&quot;p-p38&quot;, &quot;p-AKT&quot;, &quot;p-S6&quot;, &quot;p-TOR&quot;, &quot;XBP1_PROT&quot;, &quot;p-STAT5&quot;)
 list.top20 &lt;- topnegprots.factor1$feature[1:20]
 
 plotdata.rank.PROT.3 &lt;-plot_weights(mofa, 
@@ -1583,7 +1636,9 @@ plotdata.rank.PROT.3 &lt;- plotdata.rank.PROT.3 %&gt;%
          Weight = value, 
          colorvalue = ifelse(labelling_group == 3 &amp;value &gt;= 0.25,&quot;blue4&quot;, ifelse(labelling_group == 2&amp;value &gt;= 0.4, &quot;grey&quot;, &quot;grey&quot;)),
          highlights = ifelse(labelling_group &gt;= 1&amp;value &gt;= 0.25, as.character(feature), &quot;&quot;)
-         )
+         )  %&gt;%
+  mutate(highlights = case_when(as.character(highlights) == &quot;XBP1_PROT&quot; ~ &quot;XBP1&quot;,
+                           TRUE ~ highlights))
 
 plot.rank.PROT.3 &lt;- ggplot(plotdata.rank.PROT.3, aes(x=Weight, y = Rank, label = highlights)) +
   labs(title = &quot;Signaling implicated in &lt;p&gt;&lt;span style=&#39;color:blue4&#39;&gt;Unfolded protein response&lt;/span&gt;&quot;, 
