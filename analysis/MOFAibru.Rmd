@@ -26,7 +26,7 @@ colorgradient7 <- c(colorgradient6,"orange2")
 colorsibru <- c(colorgradient7[c(1,2)],"#E69F00", colorgradient7[c(6)], "#D55E00","#ff0000")
 
 
-labels.withibru <- c(0, 6, "6 \n+ibru", 180, "180\n+ibru")
+labels.withibru <- c(0, 6, "6 \n+Ibru", 180, "180\n+Ibru")
 labels.withibru.selected <- c(0, 6, "6 \n+Ibru", 180, "180\n+Ibru","180**\n+Ibru")
 
 
