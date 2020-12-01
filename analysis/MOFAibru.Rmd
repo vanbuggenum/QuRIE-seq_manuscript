@@ -130,7 +130,7 @@ plot.umap.all <- ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
   add.textsize +
   scale_x_reverse()+
   scale_y_reverse()+
-  labs(title = "Ibrutinib affects signal transduction \nat minutes and hour time-scale", x = "UMAP 1", y = "UMAP 2")
+  labs(title = "Ibrutinib affects signal transduction \nat minutes and hour timescale", x = "UMAP 1", y = "UMAP 2")
 
 ## UMAP legend
 legend.umap <- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
@@ -176,10 +176,10 @@ f.violin <- function(data, feature){
   stat_summary(fun=median, geom="point", shape=95, size=2, inherit.aes = T, position = position_dodge(width = 0.9), color = "red")+
   theme_few()+
   labs(title = paste0(feature)) +
-  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = "Time aIg (Minutes)") +
+  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = "Time aIg (minutes)") +
   scale_y_continuous(expand = c(0,0), name = "Counts (scaled)") +
-  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",)+ 
-  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",) +
+  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (minutes)",)+ 
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (minutes)",) +
   add.textsize +
   theme(axis.ticks=element_line(color="black", size = 0.2),
         legend.position="none") 
@@ -200,10 +200,10 @@ f.violin.rectlarge <- function(data, feature){
   stat_summary(fun=median, geom="point", shape=95, size=2, inherit.aes = T, position = position_dodge(width = 0.9), color = "red")+
   theme_few()+
   labs(title = paste0(feature)) +
-  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = "Time aIg (Minutes)") +
+  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = "Time aIg (minutes)") +
   scale_y_continuous(expand = c(0,0), name = "Counts (scaled)") +
-  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",)+ 
-  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",) +
+  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (minutes)",)+ 
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (minutes)",) +
   add.textsize +
   theme(axis.ticks=element_line(color="black", size = 0.2),
         legend.position="none") 
@@ -225,10 +225,10 @@ f.violin.fact <- function(data = proteindata.subset, protein){
   stat_summary(fun=median, geom="point", shape=95, size=2, inherit.aes = T, position = position_dodge(width = 0.9), color = "red")+
   theme_few()+
   ylab(paste0(protein)) +
-  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = "Time aIg (Minutes)") +
+  scale_x_discrete(labels = labels.withibru, expand = c(0.1,0.1), name = "Time aIg (minutes)") +
     scale_y_continuous(expand = c(0,0), name = strsplit(protein, split = "\\.")[[1]][2]) +
-  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",)+ 
-  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (Minutes)",) +
+  scale_color_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (minutes)",)+ 
+  scale_fill_manual(values = colorsibru, labels = c(labels.withibru), name = "Time aIg (minutes)",) +
   add.textsize +
   theme(legend.position="none") 
 }
@@ -285,7 +285,7 @@ assign(paste0("plot.violin.prot.", i), f.violin(data = proteindata, feature = i)
 }
 
 `plot.violin.prot.p-Erk1/2` <- `plot.violin.prot.p-Erk1/2` +
-  labs(title = "p-ERK1/2") 
+  labs(title = "p-ERK 1/2") 
 
 `plot.violin.prot.p-Syk` <- `plot.violin.prot.p-Syk` +
   labs(title = "p-SYK")   
@@ -351,7 +351,7 @@ plotdata.rank.PROT.5<- plotdata.rank.PROT.5%>%
                            TRUE ~ highlights))
 
 plot.rank.PROT.5<- ggplot(plotdata.rank.PROT.5, aes(x=Rank, y = Weight, label = highlights)) +
-  labs(title = "<p><span style='color:black'></span>  phospho-proteins<span style='color:black'><span style='color:blue4'></span> ",  #
+  labs(title = "<p><span style='color:black'></span>  (Phospho)proteins<span style='color:black'><span style='color:blue4'></span> ",  #
        x= "Loading rank\n",
        y= "Factor 5 loading value") +
   geom_point(size=0.1, color =plotdata.rank.PROT.5$colorvalue) +
