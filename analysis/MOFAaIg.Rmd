@@ -134,7 +134,7 @@ plot.umap.all <- ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
   scale_x_reverse()+
   scale_y_reverse()+
   add.textsize +
-  labs(title = "UMAP on MOFA+ factors shows minute and \nhour time-scale signal transductions", x = "UMAP 1", y = "UMAP 2")
+  labs(title = "UMAP on MOFA+ factors shows minute and \nhour timescale signal transductions", x = "UMAP 1", y = "UMAP 2")
 
 ## UMAP legend
 legend.umap <- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
@@ -142,7 +142,7 @@ legend.umap <- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = color_b
   theme_half_open() +
   scale_fill_manual(values = colorgradient6_manual, labels = c(labels), name = "Time aIg \n(minutes)",)+
   add.textsize +
-  labs(title = "UMAP on MOFA+ factors shows minute and \nhour time-scale signal transductions", x = "UMAP 1", "y = UMAP 2"))
+  labs(title = "UMAP on MOFA+ factors shows minute and \nhour timescale signal transductions", x = "UMAP 1", "y = UMAP 2"))
 legend.umap <- as_ggplot(legend.umap)
 
 ```
@@ -169,14 +169,14 @@ seu_combined_selectsamples <- RunPCA(seu_combined_selectsamples, assay = "PROT",
 
 plot.PCA.RNA <- DimPlot(seu_combined_selectsamples, reduction = "pca.RNA", group.by = "condition", pt.size =0.2) +
   scale_color_manual(values = colorgradient6_manual2, labels = c(labels), name = "Time aIg",)+
-  labs(title = "RNA PCA separates cells \nat hour time-scale", x= "RNA PC 1", y = " RNA PC 2") +
+  labs(title = "RNA PCA separates cells \nat hour timescale", x= "RNA PC 1", y = " RNA PC 2") +
   add.textsize +
   theme(legend.position = "none")
 
 
 plot.PCA.PROT <- DimPlot(seu_combined_selectsamples, reduction = "pca.PROT", group.by = "condition", pt.size = 0.2) +
   scale_color_manual(values = colorgradient6_manual2, labels = c(labels), name = "Time aIg",)+
-  labs(title = "(phospho-)protein PCA separates cells\nat minutes time-scale", x= "Protein PC 1", y = "Protein PC 2") +
+  labs(title = "(Phospho)protein PCA separates cells\nat minutes timescale", x= "Protein PC 1", y = "Protein PC 2") +
   add.textsize +
   #  scale_x_reverse()+
   theme(legend.position = "none")
@@ -473,7 +473,7 @@ plot.violin.factor3 <- plot.factor.group1.Factor3 +
   annotate(geom="text", x=1.5, y=4.3, label="minutes", size = 2,
               color="grey3") +
   scale_y_continuous(expand = c(0,0), name = "Factor 3 value")+
-  labs(title = "Factor 3 captures \nhour time-scale signal transduction")
+  labs(title = "Factor 3 captures \nhour timescale signal transduction")
 
 #### protein Loadings factor 1
 
@@ -498,7 +498,7 @@ plotdata.rank.PROT.1 <- plotdata.rank.PROT.1 %>%
          ) 
 
 plot.rank.PROT.1 <- ggplot(plotdata.rank.PROT.1, aes(x=Weight, y = Rank, label = highlights)) +
-  labs(title = "(Phospho-)Proteins: <p><span style='color:blue4'>BCR </span>&<span style='color:red'> JAK1</span> signaling", #<span style='color:blue4'>BCR signaling</span> and <span style='color:red'>p-JAK1</span>
+  labs(title = "(Phospho)proteins: <p><span style='color:blue4'>BCR </span>&<span style='color:red'> JAK1</span> signaling", #<span style='color:blue4'>BCR signaling</span> and <span style='color:red'>p-JAK1</span>
        x= "Factor 1 loading value",
        y= "Factor 1 loading rank") +
   geom_point(size=0.1, color =plotdata.rank.PROT.1$colorvalue, size =1) +
@@ -829,7 +829,7 @@ assign(paste0("plot.violin.rna.", i), f.violin.rna(data = rnadata ,protein = i))
 }
 
 plot.violin.rna.NEAT1 <- plot.violin.rna.NEAT1 +
-  labs(title = "Expression upregulated genes\n")+
+  labs(title = "Expression of upregulated genes\n")+
   add.textsize+
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
