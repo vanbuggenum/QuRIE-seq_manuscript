@@ -465,7 +465,7 @@ plot.violin.factor1 <- plot.factor.group1.Factor1 +
               color="grey3") +
   annotate(geom="text", x=5.5, y=-4.3, label="hours", size = 2,
               color="grey3") +
-  labs(title = "Factor 1 captures \nminute times-scale signal transduction")
+  labs(title = "Factor 1 captures \nminute timescale signal transduction")
 
 plot.violin.factor3 <- plot.factor.group1.Factor3 +
   annotate(geom="text", x=5.5, y=4.3, label="hours", size = 2,
