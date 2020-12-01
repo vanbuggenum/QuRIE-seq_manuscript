@@ -154,7 +154,7 @@ plot.correlation.covariates.withibru <- correlate_factors_with_covariates(mofa,
 plot.correlation.covariates.withibru <- ggcorrplot(plot.correlation.covariates.withibru, tl.col = "black", method = "square", lab = TRUE, ggtheme = theme_void, colors = c("orange3", "white", "orange3"), lab_size = 2.5) +
   add.textsize +
   labs(title = "Correlation\ncoefficient\n", y = "") +
-  scale_y_discrete(labels = c("time\naIg\n","ibrutinib\ntreatment\n")) +
+  scale_y_discrete(labels = c("Time\naIg\n","Ibrutinib\ntreatment\n")) +
   coord_flip() +
   theme(axis.text.x=element_text(angle =0,hjust = 0.5), 
         axis.text.y=element_text(size = 5),
