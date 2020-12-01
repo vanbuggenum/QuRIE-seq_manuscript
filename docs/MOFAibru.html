@@ -524,16 +524,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree5ba7d07f3eccf08f24d4bdf318dd2a6f2d4d0c16targetblank5ba7d07a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/5ba7d07f3eccf08f24d4bdf318dd2a6f2d4d0c16" target="_blank">5ba7d07</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreeb7053b801d60d245f4c24fd02b34c0bdcec69c0ctargetblankb7053b8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/b7053b801d60d245f4c24fd02b34c0bdcec69c0c" target="_blank">b7053b8</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree5ba7d07f3eccf08f24d4bdf318dd2a6f2d4d0c16targetblank5ba7d07a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreeb7053b801d60d245f4c24fd02b34c0bdcec69c0ctargetblankb7053b8a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/5ba7d07f3eccf08f24d4bdf318dd2a6f2d4d0c16" target="_blank">5ba7d07</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/b7053b801d60d245f4c24fd02b34c0bdcec69c0c" target="_blank">b7053b8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -592,6 +592,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/b7053b801d60d245f4c24fd02b34c0bdcec69c0c/analysis/MOFAibru.Rmd" target="_blank">b7053b8</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-12-01
+</td>
+<td>
+small typo edits panel titles
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/73a9ca0b21e177be9b7655d84820c077f067a7f7/docs/MOFAibru.html" target="_blank">73a9ca0</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-12-01
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1076,7 +1110,7 @@ plot.correlation.covariates.withibru &lt;- correlate_factors_with_covariates(mof
 <pre class="r"><code>plot.correlation.covariates.withibru &lt;- ggcorrplot(plot.correlation.covariates.withibru, tl.col = &quot;black&quot;, method = &quot;square&quot;, lab = TRUE, ggtheme = theme_void, colors = c(&quot;orange3&quot;, &quot;white&quot;, &quot;orange3&quot;), lab_size = 2.5) +
   add.textsize +
   labs(title = &quot;Correlation\ncoefficient\n&quot;, y = &quot;&quot;) +
-  scale_y_discrete(labels = c(&quot;time\naIg\n&quot;,&quot;ibrutinib\ntreatment\n&quot;)) +
+  scale_y_discrete(labels = c(&quot;Time\naIg\n&quot;,&quot;Ibrutinib\ntreatment\n&quot;)) +
   coord_flip() +
   theme(axis.text.x=element_text(angle =0,hjust = 0.5), 
         axis.text.y=element_text(size = 5),
