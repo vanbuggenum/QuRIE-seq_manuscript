@@ -433,7 +433,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-11-26
+<strong>Last updated:</strong> 2020-12-01
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -524,16 +524,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree1d2b544254b3c41a666d5f2ffb29ce4f28601809targetblank1d2b544a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/1d2b544254b3c41a666d5f2ffb29ce4f28601809" target="_blank">1d2b544</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreef6b2e5d25419be3fd893e3e088ac924a2cec69batargetblankf6b2e5da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/f6b2e5d25419be3fd893e3e088ac924a2cec69ba" target="_blank">f6b2e5d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree1d2b544254b3c41a666d5f2ffb29ce4f28601809targetblank1d2b544a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistreef6b2e5d25419be3fd893e3e088ac924a2cec69batargetblankf6b2e5da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/1d2b544254b3c41a666d5f2ffb29ce4f28601809" target="_blank">1d2b544</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/f6b2e5d25419be3fd893e3e088ac924a2cec69ba" target="_blank">f6b2e5d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -542,7 +542,6 @@ Note that you need to be careful to ensure that all relevant files for the analy
 Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    analysis/figure/
     Ignored:    data/raw/
     Ignored:    output/MOFA_aIg.hdf5
     Ignored:    output/MOFA_aIg.rds
@@ -593,6 +592,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/f6b2e5d25419be3fd893e3e088ac924a2cec69ba/analysis/MOFAaIg.Rmd" target="_blank">f6b2e5d</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-12-01
+</td>
+<td>
+small edits panel titles
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/d8ba888f410990268a92e0b3549a7990a82037db/docs/MOFAaIg.html" target="_blank">d8ba888</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-11-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1125,7 +1158,7 @@ plot.umap.all &lt;- ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
   scale_x_reverse()+
   scale_y_reverse()+
   add.textsize +
-  labs(title = &quot;UMAP on MOFA+ factors shows minute and \nhour time-scale signal transductions&quot;, x = &quot;UMAP 1&quot;, y = &quot;UMAP 2&quot;)
+  labs(title = &quot;UMAP on MOFA+ factors shows minute and \nhour timescale signal transductions&quot;, x = &quot;UMAP 1&quot;, y = &quot;UMAP 2&quot;)
 
 ## UMAP legend
 legend.umap &lt;- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = color_by))+
@@ -1133,7 +1166,7 @@ legend.umap &lt;- get_legend( ggplot(plot.umap.data, aes(x=x, y = y, fill = colo
   theme_half_open() +
   scale_fill_manual(values = colorgradient6_manual, labels = c(labels), name = &quot;Time aIg \n(minutes)&quot;,)+
   add.textsize +
-  labs(title = &quot;UMAP on MOFA+ factors shows minute and \nhour time-scale signal transductions&quot;, x = &quot;UMAP 1&quot;, &quot;y = UMAP 2&quot;))
+  labs(title = &quot;UMAP on MOFA+ factors shows minute and \nhour timescale signal transductions&quot;, x = &quot;UMAP 1&quot;, &quot;y = UMAP 2&quot;))
 legend.umap &lt;- as_ggplot(legend.umap)</code></pre>
 <pre class="r"><code>plot_fig1_umap &lt;- plot_grid(plot.umap.all,legend.umap, labels = c(&quot;&quot;), label_size = 10, ncol = 2, rel_widths = c(1, 0.2))
 
@@ -1151,14 +1184,14 @@ seu_combined_selectsamples &lt;- RunPCA(seu_combined_selectsamples, assay = &quo
 
 plot.PCA.RNA &lt;- DimPlot(seu_combined_selectsamples, reduction = &quot;pca.RNA&quot;, group.by = &quot;condition&quot;, pt.size =0.2) +
   scale_color_manual(values = colorgradient6_manual2, labels = c(labels), name = &quot;Time aIg&quot;,)+
-  labs(title = &quot;RNA PCA separates cells \nat hour time-scale&quot;, x= &quot;RNA PC 1&quot;, y = &quot; RNA PC 2&quot;) +
+  labs(title = &quot;RNA PCA separates cells \nat hour timescale&quot;, x= &quot;RNA PC 1&quot;, y = &quot; RNA PC 2&quot;) +
   add.textsize +
   theme(legend.position = &quot;none&quot;)
 
 
 plot.PCA.PROT &lt;- DimPlot(seu_combined_selectsamples, reduction = &quot;pca.PROT&quot;, group.by = &quot;condition&quot;, pt.size = 0.2) +
   scale_color_manual(values = colorgradient6_manual2, labels = c(labels), name = &quot;Time aIg&quot;,)+
-  labs(title = &quot;(phospho-)protein PCA separates cells\nat minutes time-scale&quot;, x= &quot;Protein PC 1&quot;, y = &quot;Protein PC 2&quot;) +
+  labs(title = &quot;(Phospho)protein PCA separates cells\nat minutes timescale&quot;, x= &quot;Protein PC 1&quot;, y = &quot;Protein PC 2&quot;) +
   add.textsize +
   #  scale_x_reverse()+
   theme(legend.position = &quot;none&quot;)
@@ -1440,7 +1473,7 @@ plot.violin.factor3 &lt;- plot.factor.group1.Factor3 +
   annotate(geom=&quot;text&quot;, x=1.5, y=4.3, label=&quot;minutes&quot;, size = 2,
               color=&quot;grey3&quot;) +
   scale_y_continuous(expand = c(0,0), name = &quot;Factor 3 value&quot;)+
-  labs(title = &quot;Factor 3 captures \nhour time-scale signal transduction&quot;)
+  labs(title = &quot;Factor 3 captures \nhour timescale signal transduction&quot;)
 
 #### protein Loadings factor 1
 
@@ -1465,7 +1498,7 @@ plotdata.rank.PROT.1 &lt;- plotdata.rank.PROT.1 %&gt;%
          ) 
 
 plot.rank.PROT.1 &lt;- ggplot(plotdata.rank.PROT.1, aes(x=Weight, y = Rank, label = highlights)) +
-  labs(title = &quot;(Phospho-)Proteins: &lt;p&gt;&lt;span style=&#39;color:blue4&#39;&gt;BCR &lt;/span&gt;&amp;&lt;span style=&#39;color:red&#39;&gt; JAK1&lt;/span&gt; signaling&quot;, #&lt;span style=&#39;color:blue4&#39;&gt;BCR signaling&lt;/span&gt; and &lt;span style=&#39;color:red&#39;&gt;p-JAK1&lt;/span&gt;
+  labs(title = &quot;(Phospho)proteins: &lt;p&gt;&lt;span style=&#39;color:blue4&#39;&gt;BCR &lt;/span&gt;&amp;&lt;span style=&#39;color:red&#39;&gt; JAK1&lt;/span&gt; signaling&quot;, #&lt;span style=&#39;color:blue4&#39;&gt;BCR signaling&lt;/span&gt; and &lt;span style=&#39;color:red&#39;&gt;p-JAK1&lt;/span&gt;
        x= &quot;Factor 1 loading value&quot;,
        y= &quot;Factor 1 loading rank&quot;) +
   geom_point(size=0.1, color =plotdata.rank.PROT.1$colorvalue, size =1) +
@@ -1787,7 +1820,7 @@ assign(paste0(&quot;plot.violin.rna.&quot;, i), f.violin.rna(data = rnadata ,pro
 }
 
 plot.violin.rna.NEAT1 &lt;- plot.violin.rna.NEAT1 +
-  labs(title = &quot;Expression upregulated genes\n&quot;)+
+  labs(title = &quot;Expression of upregulated genes\n&quot;)+
   add.textsize+
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
