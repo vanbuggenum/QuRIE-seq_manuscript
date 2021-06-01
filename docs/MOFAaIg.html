@@ -13,6 +13,7 @@
 
 <title>MOFA model on aIg stimulated BJAB cells</title>
 
+<script src="site_libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
@@ -37,6 +38,8 @@ div.section {
 }
 </style>
 
+
+
 <style type="text/css">
   code{white-space: pre-wrap;}
   span.smallcaps{font-variant: small-caps;}
@@ -44,7 +47,7 @@ div.section {
   div.column{display: inline-block; vertical-align: top; width: 50%;}
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
-      </style>
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -90,6 +93,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -386,7 +390,7 @@ div.tocify {
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/jessievb/QuRIE-seq_manuscript">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
     Source code
   </a>
@@ -433,7 +437,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-12-01
+<strong>Last updated:</strong> 2021-06-01
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -443,7 +447,7 @@ div.tocify {
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.1). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -524,16 +528,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0ac5ddb20dc35dd454ab2017ca02d5c96bc6366atargetblank0ac5ddba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0ac5ddb20dc35dd454ab2017ca02d5c96bc6366a" target="_blank">0ac5ddb</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0f790122aacb60e0fa2e54b240213a59ee964fb5targetblank0f79012a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0f790122aacb60e0fa2e54b240213a59ee964fb5" target="_blank">0f79012</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0ac5ddb20dc35dd454ab2017ca02d5c96bc6366atargetblank0ac5ddba" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomjessievbQuRIEseqanalysistree0f790122aacb60e0fa2e54b240213a59ee964fb5targetblank0f79012a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0ac5ddb20dc35dd454ab2017ca02d5c96bc6366a" target="_blank">0ac5ddb</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/jessievb/QuRIEseq_analysis/tree/0f790122aacb60e0fa2e54b240213a59ee964fb5" target="_blank">0f79012</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -549,11 +553,15 @@ Ignored files:
     Ignored:    output/MOFA_ibru.rds
     Ignored:    output/data_weights_prot_fact1and3.csv
     Ignored:    output/metadata.csv
+    Ignored:    output/metadata_Ricard.csv
     Ignored:    output/paper_figures/
     Ignored:    output/seu_aIG_samples.rds
     Ignored:    output/seu_combined_filtered_normalized.rds
     Ignored:    output/seu_combined_raw.rds
     Ignored:    output/seu_ibru_samples.rds
+
+Unstaged changes:
+    Modified:   analysis/revisions.rmd
 
 </code></pre>
 <p>
@@ -592,6 +600,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/jessievb/QuRIEseq_analysis/blob/0f790122aacb60e0fa2e54b240213a59ee964fb5/analysis/MOFAaIg.Rmd" target="_blank">0f79012</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2021-06-01
+</td>
+<td>
+Added WNN and pJAK1 high vs low supplementary figures revisions
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/jessievb/QuRIEseq_analysis/372d628d77e4b8a979369e2092792b87bc3f2156/docs/MOFAaIg.html" target="_blank">372d628</a>
+</td>
+<td>
+Jessie van Buggenum
+</td>
+<td>
+2020-12-01
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1077,7 +1119,7 @@ Publish the initial files for this website
 </div>
 <pre class="r"><code>source(&quot;code/load_packages.R&quot;)
 seu_combined_selectsamples &lt;- readRDS(&quot;output/seu_aIG_samples.rds&quot;)
-
+library(ggrepel)
 
 panellabels &lt;- c(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;,&#39;d&#39; , &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;, &#39;k&#39;)
 
@@ -1210,8 +1252,8 @@ ggsave(plot_fig1_umap, filename = &quot;output/paper_figures/Fig1_UMAP.png&quot;
 plot_fig1_umap</code></pre>
 <p><img src="figure/MOFAaIg.Rmd/Fig1_UMAP-1.png" width="288" style="display: block; margin: auto;" /> <em>Figure 1.</em> UMAP of 7 MOFA factors, integrating phospho-protein and RNA measurements</p>
 </div>
-<div id="suppl-pca" class="section level3">
-<h3>Suppl PCA</h3>
+<div id="suppl-pca-wnn" class="section level3">
+<h3>Suppl PCA &amp; WNN</h3>
 <pre class="r"><code>seu_combined_selectsamples &lt;- RunPCA(seu_combined_selectsamples,assay = &quot;SCT.RNA&quot;, features = genes.variable, verbose = FALSE, ndims.print = 0, reduction.name = &quot;pca.RNA&quot;)
 seu_combined_selectsamples &lt;- RunPCA(seu_combined_selectsamples, assay = &quot;PROT&quot;, features = proteins.all, verbose = FALSE, ndims.print = 0,reduction.name = &quot;pca.PROT&quot;)</code></pre>
 <pre class="r"><code>## PCA analysis
@@ -1304,10 +1346,43 @@ plot_ridge_PC1RNA &lt;- ggplot(PC1.data, aes(x = PC1_RNA, y = condition, fill = 
   theme_half_open() +
   add.textsize+
   theme(legend.position = &quot;none&quot;)</code></pre>
-<pre class="r"><code>Fig1.pca &lt;- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1, labels = c(panellabels[1:2], &quot;&quot;,panellabels[3:4],&quot;&quot;,panellabels[5:7]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3))
+<pre class="r"><code>seu_combined_selectsamples &lt;- FindMultiModalNeighbors(
+  seu_combined_selectsamples, reduction.list = list(&quot;pca.RNA&quot;, &quot;pca.PROT&quot;), 
+  dims.list = list(c(1:7), c(1:7)), modality.weight.name = &quot;RNA.weight&quot;
+)</code></pre>
+<pre><code>Calculating cell-specific modality weights</code></pre>
+<pre><code>Finding 20 nearest neighbors for each modality.</code></pre>
+<pre><code>Warning: Keys should be one or more alphanumeric characters followed by an
+underscore, setting key from normpca.prot_ to normpcaprot_</code></pre>
+<pre><code>Warning: All keys should be one or more alphanumeric characters followed by an
+underscore &#39;_&#39;, setting key to normpcaprot_</code></pre>
+<pre><code>Calculating kernel bandwidths</code></pre>
+<pre><code>Warning in FindMultiModalNeighbors(seu_combined_selectsamples, reduction.list
+= list(&quot;pca.RNA&quot;, : The number of provided modality.weight.name is not equal
+to the number of modalities. SCT.RNA.weight PROT.weight are used to store the
+modality weights</code></pre>
+<pre><code>Finding multimodal neighbors</code></pre>
+<pre><code>Constructing multimodal KNN graph</code></pre>
+<pre><code>Constructing multimodal SNN graph</code></pre>
+<pre class="r"><code>seu_combined_selectsamples &lt;- RunUMAP(seu_combined_selectsamples, nn.name = &quot;weighted.nn&quot;, reduction.name = &quot;wnn.umap&quot;, reduction.key = &quot;wnnUMAP_&quot;)</code></pre>
+<pre><code>Warning: The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric
+To use Python UMAP via reticulate, set umap.method to &#39;umap-learn&#39; and metric to &#39;correlation&#39;
+This message will be shown once per session</code></pre>
+<pre><code>10:33:58 UMAP embedding parameters a = 0.9922 b = 1.112</code></pre>
+<pre><code>10:33:58 Commencing smooth kNN distance calibration using 1 thread</code></pre>
+<pre><code>10:33:59 Initializing from normalized Laplacian + noise</code></pre>
+<pre><code>10:33:59 Commencing optimization for 500 epochs, with 142922 positive edges</code></pre>
+<pre><code>10:34:10 Optimization finished</code></pre>
+<pre class="r"><code>WNN.Dimplot &lt;- DimPlot(seu_combined_selectsamples, reduction = &#39;wnn.umap&#39;, label = FALSE, repel = TRUE, label.size = 2.5) +
+  scale_color_manual(values = colorgradient6_manual2, labels = c(labels), name = &quot;Time aIg&quot;,)+
+  labs(title = &quot;Seurats WNN on PC&#39;s results in similar\nUMAP as MOFA+ based UMAP&quot;, x= &quot;wnnUMAP 1&quot;, y = &quot;wnnUMAP 2&quot;) +
+  add.textsize +
+  #  scale_x_reverse()+
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<pre class="r"><code>Fig1.pca &lt;- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1,NULL,WNN.Dimplot,legend, labels = c(panellabels[1:2], &quot;&quot;,panellabels[3:4],&quot;&quot;,panellabels[5:6],&quot;&quot;,panellabels[7]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3,1))
 
-ggsave(filename = &quot;output/paper_figures/Suppl_PCA_aIg.pdf&quot;, width = 143, height = 170, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
-ggsave(filename = &quot;output/paper_figures/Suppl_PCA_aIg.png&quot;, width = 143, height = 170, units = &quot;mm&quot;,  dpi = 300)
+ggsave(filename = &quot;output/paper_figures/Suppl_PCA_aIg_wnn.pdf&quot;, width = 143, height = 226, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(filename = &quot;output/paper_figures/Suppl_PCA_aIg_wnn.png&quot;, width = 143, height = 226, units = &quot;mm&quot;,  dpi = 300)
 
 Fig1.pca</code></pre>
 <p><img src="figure/MOFAaIg.Rmd/Figure_1_supplementary-1.png" width="537.6" style="display: block; margin: auto;" /> <em>Supplementary Figure.</em> PCA analysis on RNA and Protein datasets separately.</p>
@@ -1673,8 +1748,7 @@ plot.enriched.go.bp.factor3_50 &lt;- ggplot(go.pb.fct3.pos.dplyr, showCategory =
   ylab(NULL) + 
   ggtitle(&quot;Enriched Biological Processes&quot;) </code></pre>
 <pre class="r"><code>message(c(&quot;Significance protein folding GO term: \n&quot;,go.pb.fct3.pos.dplyr@result[which(go.pb.fct3.pos.dplyr@result$Description == &quot;protein folding&quot;),&quot;p.adjust&quot;]))</code></pre>
-<pre><code>Significance protein folding GO term: 
-0.0457794707358827</code></pre>
+<pre><code>Significance protein folding GO term: </code></pre>
 <pre class="r"><code>##For RNA loadings panels
 topgeneset.fct3&lt;- unlist(str_split(go.pb.fct3.pos.dplyr@result[1:10,&quot;geneID&quot;], pattern = &quot;/&quot;))
 
@@ -1878,10 +1952,15 @@ Fig2.row3 &lt;- plot_grid(plot.enriched.go.bp.factor3,legend.plot.enriched.go.bp
 
 plot_fig2 &lt;- plot_grid(Fig2.row1, Fig2.row2,Fig2.row3, labels = c(&quot;&quot;, &quot;&quot;, &quot;&quot;), label_size = 10, ncol = 1, rel_heights = c(1,1,0.55))
 
-ggsave(plot_fig2, filename = &quot;output/paper_figures/Fig2.pdf&quot;, width = 183, height = 183, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
-ggsave(plot_fig2, filename = &quot;output/paper_figures/Fig2.png&quot;, width = 183, height = 183, units = &quot;mm&quot;,  dpi = 300)
-
-plot_fig2</code></pre>
+ggsave(plot_fig2, filename = &quot;output/paper_figures/Fig2.pdf&quot;, width = 183, height = 183, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)</code></pre>
+<pre><code>Warning: ggrepel: 12 unlabeled data points (too many overlaps). Consider
+increasing max.overlaps</code></pre>
+<pre class="r"><code>ggsave(plot_fig2, filename = &quot;output/paper_figures/Fig2.png&quot;, width = 183, height = 183, units = &quot;mm&quot;,  dpi = 300)</code></pre>
+<pre><code>Warning: ggrepel: 12 unlabeled data points (too many overlaps). Consider
+increasing max.overlaps</code></pre>
+<pre class="r"><code>plot_fig2</code></pre>
+<pre><code>Warning: ggrepel: 12 unlabeled data points (too many overlaps). Consider
+increasing max.overlaps</code></pre>
 <p><img src="figure/MOFAaIg.Rmd/plot_fig2-1.png" width="691.2" style="display: block; margin: auto;" /> <em>Figure 2.</em> Factor 1 and 3 exploration.</p>
 </div>
 <div id="suppl-enriched-fact-3" class="section level3">
@@ -1890,6 +1969,292 @@ plot_fig2</code></pre>
 ggsave(plot.enriched.go.bp.factor3_50, filename = &quot;output/paper_figures/Suppl_Enrichm_Fct3.png&quot;, width = 183, height = 183, units = &quot;mm&quot;,  dpi = 300)
 plot.enriched.go.bp.factor3_50</code></pre>
 <p><img src="figure/MOFAaIg.Rmd/Suppl-1.png" width="691.2" style="display: block; margin: auto;" /> <em>Supplementary Figure.</em> Top 50 enriched gene-sets in postive loadings factor 3.</p>
+</div>
+<div id="suppl-pjak1-high-vs-low" class="section level3">
+<h3>Suppl pJak1 High vs low</h3>
+<pre class="r"><code>proteindata_counts &lt;- as.data.frame(t(seu_combined_selectsamples@assays$PROT@scale.data)) %&gt;%
+  mutate(sample = rownames(t(seu_combined_selectsamples@assays$PROT@scale.data)))
+
+
+metadata.all &lt;- as.data.frame(seu_combined_selectsamples@meta.data) %&gt;%
+  mutate(sample = rownames((seu_combined_selectsamples@meta.data)))
+
+proteindata_counts &lt;- left_join(proteindata_counts, metadata.all)
+
+
+
+toppJAK1 &lt;- proteindata_counts %&gt;%
+  group_by(time) %&gt;%
+  top_frac(wt = `p-JAK1`, n = 0.05)
+
+bottompJAK1 &lt;- proteindata_counts %&gt;%
+  group_by(time) %&gt;%
+  top_frac(wt = `p-JAK1`, n = -0.05)
+
+proteindata_counts &lt;- proteindata_counts %&gt;%
+  mutate(highlowpJAK1 = ifelse(sample %in% toppJAK1$sample, &quot;p-JAK1 high&quot;, ifelse(sample %in% bottompJAK1$sample, &quot;p-JAK1 low&quot;,&quot;middle&quot;)))
+
+addmeta &lt;- proteindata_counts[,c(&quot;highlowpJAK1&quot;, &quot;sample&quot;)]
+rownames(addmeta) &lt;- proteindata_counts$sample
+
+seu_combined_selectsamples &lt;- AddMetaData(seu_combined_selectsamples, addmeta)
+
+seu.JAK1.180 &lt;- subset(seu_combined_selectsamples, condition == &quot;180.aIg.contr&quot; &amp; highlowpJAK1 != &quot;middle&quot;)
+
+seu.JAK1.180 &lt;- SetIdent(seu.JAK1.180, value = &quot;highlowpJAK1&quot;)</code></pre>
+<pre class="r"><code># Find differentially expressed features between CD14+ and FCGR3A+ Monocytes
+markers.180 &lt;- FindMarkers(seu.JAK1.180,ident.1 = &quot;p-JAK1 high&quot;, ident.2 = &quot;p-JAK1 low&quot;, assay = &quot;PROT&quot;, slot = &quot;scale.data&quot;, logfc.threshold = 0, return.thresh = 1, only.pos = F)
+# view results
+#markers.180 &lt;- filter(markers.180, cluster == &quot;p-JAK1 high&quot;)
+#markers.180
+
+
+# Find differentially expressed features between CD14+ and FCGR3A+ Monocytes
+markers.180.RNA &lt;-  FindAllMarkers(seu.JAK1.180,assay = &quot;RNA&quot;, slot = &quot;data&quot;, logfc.threshold = 0.3, return.thresh = 0.01, only.pos = T,min.pct = 0.1)
+markers.180.RNA &lt;-   FindMarkers(seu.JAK1.180,ident.1 = &quot;p-JAK1 high&quot;, ident.2 = &quot;p-JAK1 low&quot;, assay = &quot;SCT.RNA&quot;, slot = &quot;scale.data&quot;, logfc.threshold = 0, return.thresh = 1, only.pos = F)
+# view results
+#markers.180.RNA
+
+markers.180$protein &lt;-rownames(markers.180)
+# add a column of NAs
+markers.180$diffexpressed &lt;- &quot;NO&quot;
+# if log2Foldchange &gt; 0.6 and pvalue &lt; 0.05, set as &quot;UP&quot; 
+markers.180$diffexpressed[markers.180$avg_diff &gt; 0.25 &amp; markers.180$p_val_adj &lt; 0.01] &lt;- &quot;UP&quot;
+# if log2Foldchange &lt; -0.6 and pvalue &lt; 0.05, set as &quot;DOWN&quot;
+markers.180$diffexpressed[markers.180$avg_diff  &lt; -0.25 &amp; markers.180$p_val_adj &lt; 0.01] &lt;- &quot;DOWN&quot;
+
+mycolors &lt;- c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)
+names(mycolors) &lt;- c(&quot;DOWN&quot;, &quot;UP&quot;, &quot;NO&quot;)
+
+
+markers.180$delabel &lt;- NA
+markers.180$delabel[markers.180$diffexpressed != &quot;NO&quot;] &lt;- markers.180$protein[markers.180$diffexpressed != &quot;NO&quot;]
+
+# Finally, we can organize the labels nicely using the &quot;ggrepel&quot; package and the geom_text_repel() function
+# load library
+
+# plot adding up all layers we have seen so far
+plot.vulcano.180min &lt;- ggplot(data=markers.180, aes(x=avg_diff , y=-log10(p_val_adj), col=diffexpressed, label=delabel)) +
+        geom_point(size=0.5) + 
+        theme_minimal() +
+        geom_text_repel(size=2.2) +
+        scale_color_manual(values=c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)) +
+        geom_vline(xintercept=c(-0.25, 0.25), col=&quot;red&quot;) +
+        geom_hline(yintercept=-log10(0.01), col=&quot;red&quot;) +
+  labs(x = expression(&quot;Log&quot;[2]*&quot; Fold Change&quot;), y = expression(&quot;-log&quot;[10]*&quot; adjusted p-value&quot;), title = &quot;p-JAK1 high vs p-JAK1 low (t = 180 min)&quot;) &amp;
+  add.textsize
+
+sign.markers180 &lt;- markers.180$protein[markers.180$avg_diff &gt; 0.25 &amp; markers.180$p_val_adj &lt; 0.01 | markers.180$avg_diff  &lt; -0.25 &amp; markers.180$p_val_adj &lt; 0.01] 
+
+plot.vln.180min &lt;- VlnPlot(seu.JAK1.180,assay = &quot;PROT&quot;,slot = &quot;scale.data&quot;, features =  sign.markers180, group.by = &quot;highlowpJAK1&quot;,ncol = 6, pt.size = 0.5) &amp;
+  add.textsize
+
+## RNA
+markers.180.RNA$protein &lt;-rownames(markers.180.RNA)
+# add a column of NAs
+markers.180.RNA$diffexpressed &lt;- &quot;NO&quot;
+# if log2Foldchange &gt; 0.6 and pvalue &lt; 0.05, set as &quot;UP&quot; 
+markers.180.RNA$diffexpressed[markers.180.RNA$avg_diff &gt; 0.25 &amp; markers.180.RNA$p_val &lt; 0.05] &lt;- &quot;UP&quot;
+# if log2Foldchange &lt; -0.6 and pvalue &lt; 0.05, set as &quot;DOWN&quot;
+markers.180.RNA$diffexpressed[markers.180.RNA$avg_diff &lt; -0.25 &amp; markers.180.RNA$p_val &lt; 0.05] &lt;- &quot;DOWN&quot;
+
+mycolors &lt;- c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)
+names(mycolors) &lt;- c(&quot;DOWN&quot;, &quot;UP&quot;, &quot;NO&quot;)
+
+
+markers.180.RNA$delabel &lt;- NA
+markers.180.RNA$delabel[markers.180.RNA$diffexpressed != &quot;NO&quot;] &lt;- markers.180.RNA$protein[markers.180.RNA$diffexpressed != &quot;NO&quot;]
+
+# plot adding up all layers we have seen so far
+plot.vulcano.180min.RNA &lt;- ggplot(data=markers.180.RNA, aes(x=avg_diff, y=-log10(p_val), col=diffexpressed, label=delabel)) +
+        geom_point() + 
+        theme_minimal() +
+        geom_text_repel(size=2.2) +
+        scale_color_manual(values=c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)) +
+        geom_vline(xintercept=c(-0.25, 0.25), col=&quot;red&quot;) +
+        geom_hline(yintercept=-log10(0.05), col=&quot;red&quot;) +
+  labs(x = expression(&quot;Log&quot;[2]*&quot; Fold Change&quot;), y = expression(&quot;-log&quot;[10]*&quot; p-value&quot;), title = &quot;p-JAK1 high vs p-JAK1 low (t = 180 min)&quot;) &amp;
+  add.textsize
+
+sign.markers180.RNA &lt;- markers.180.RNA$protein[markers.180.RNA$avg_diff &gt; 0.25 &amp; markers.180.RNA$p_val &lt; 0.05] 
+
+plot.vln.180min.RNA &lt;- VlnPlot(seu.JAK1.180,assay = &quot;RNA&quot;, features =  sign.markers180.RNA[1:20], group.by = &quot;highlowpJAK1&quot;,ncol = 10) &amp;
+  add.textsize
+
+plot_180min &lt;- plot_grid(plot.vulcano.180min, plot.vln.180min, labels = panellabels[c(5,6)], label_size = 10, ncol = 2, rel_widths = c(1,2))
+
+## 6 minutes
+seu.JAK1.006 &lt;- subset(seu_combined_selectsamples, condition == &quot;006.aIg.contr&quot; &amp; highlowpJAK1 != &quot;middle&quot;)
+
+seu.JAK1.006 &lt;- SetIdent(seu.JAK1.006, value = &quot;highlowpJAK1&quot;)
+
+# Find differentially expressed features between CD14+ and FCGR3A+ Monocytes
+markers.006 &lt;- FindMarkers(seu.JAK1.006,ident.1 = &quot;p-JAK1 high&quot;, ident.2 = &quot;p-JAK1 low&quot;, assay = &quot;PROT&quot;, slot = &quot;scale.data&quot;, logfc.threshold = 0, return.thresh = 1, only.pos = F)
+# view results
+#markers.006 &lt;- filter(markers.006, cluster == &quot;p-JAK1 high&quot;)
+#markers.006
+
+
+# Find differentially expressed features between CD14+ and FCGR3A+ Monocytes
+markers.006.RNA &lt;-  FindAllMarkers(seu.JAK1.006,assay = &quot;RNA&quot;, slot = &quot;data&quot;, logfc.threshold = 0.3, return.thresh = 0.01, only.pos = T,min.pct = 0.1)
+markers.006.RNA &lt;-   FindMarkers(seu.JAK1.006,ident.1 = &quot;p-JAK1 high&quot;, ident.2 = &quot;p-JAK1 low&quot;, assay = &quot;SCT.RNA&quot;, slot = &quot;scale.data&quot;, logfc.threshold = 0, return.thresh = 1, only.pos = F)
+# view results
+#markers.006.RNA
+
+markers.006$protein &lt;-rownames(markers.006)
+# add a column of NAs
+markers.006$diffexpressed &lt;- &quot;NO&quot;
+# if log2Foldchange &gt; 0.6 and pvalue &lt; 0.05, set as &quot;UP&quot; 
+markers.006$diffexpressed[markers.006$avg_diff &gt; 0.25 &amp; markers.006$p_val_adj &lt; 0.01] &lt;- &quot;UP&quot;
+# if log2Foldchange &lt; -0.6 and pvalue &lt; 0.05, set as &quot;DOWN&quot;
+markers.006$diffexpressed[markers.006$avg_diff  &lt; -0.25 &amp; markers.006$p_val_adj &lt; 0.01] &lt;- &quot;DOWN&quot;
+
+mycolors &lt;- c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)
+names(mycolors) &lt;- c(&quot;DOWN&quot;, &quot;UP&quot;, &quot;NO&quot;)
+
+
+markers.006$delabel &lt;- NA
+markers.006$delabel[markers.006$diffexpressed != &quot;NO&quot;] &lt;- markers.006$protein[markers.006$diffexpressed != &quot;NO&quot;]
+
+# Finally, we can organize the labels nicely using the &quot;ggrepel&quot; package and the geom_text_repel() function
+# load library
+# plot adding up all layers we have seen so far
+plot.vulcano.006min &lt;- ggplot(data=markers.006, aes(x=avg_diff , y=-log10(p_val_adj), col=diffexpressed, label=delabel)) +
+        geom_point(size=0.5) + 
+        theme_minimal() +
+        geom_text_repel(size=2.2) +
+        scale_color_manual(values=c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)) +
+        geom_vline(xintercept=c(-0.25, 0.25), col=&quot;red&quot;) +
+        geom_hline(yintercept=-log10(0.01), col=&quot;red&quot;) +
+  labs(x = expression(&quot;Log&quot;[2]*&quot; Fold Change&quot;), y = expression(&quot;-log&quot;[10]*&quot; adjusted p-value&quot;), title = &quot;p-JAK1 high vs p-JAK1 low (t = 006 min)&quot;) &amp;
+  add.textsize
+
+sign.markers006 &lt;- markers.006$protein[markers.006$avg_diff &gt; 0.25 &amp; markers.006$p_val_adj &lt; 0.01 | markers.006$avg_diff  &lt; -0.25 &amp; markers.006$p_val_adj &lt; 0.01] 
+
+plot.vln.006min &lt;- VlnPlot(seu.JAK1.006,assay = &quot;PROT&quot;,slot = &quot;scale.data&quot;, features =  sign.markers006, group.by = &quot;highlowpJAK1&quot;,ncol = 6, pt.size = 0.5) &amp;
+  add.textsize
+
+markers.006.RNA$protein &lt;-rownames(markers.006.RNA)
+# add a column of NAs
+markers.006.RNA$diffexpressed &lt;- &quot;NO&quot;
+# if log2Foldchange &gt; 0.6 and pvalue &lt; 0.05, set as &quot;UP&quot; 
+markers.006.RNA$diffexpressed[markers.006.RNA$avg_diff &gt; 0.25 &amp; markers.006.RNA$p_val &lt; 0.05] &lt;- &quot;UP&quot;
+# if log2Foldchange &lt; -0.6 and pvalue &lt; 0.05, set as &quot;DOWN&quot;
+markers.006.RNA$diffexpressed[markers.006.RNA$avg_diff &lt; -0.25 &amp; markers.006.RNA$p_val &lt; 0.05] &lt;- &quot;DOWN&quot;
+
+mycolors &lt;- c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)
+names(mycolors) &lt;- c(&quot;DOWN&quot;, &quot;UP&quot;, &quot;NO&quot;)
+
+
+markers.006.RNA$delabel &lt;- NA
+markers.006.RNA$delabel[markers.006.RNA$diffexpressed != &quot;NO&quot;] &lt;- markers.006.RNA$protein[markers.006.RNA$diffexpressed != &quot;NO&quot;]
+
+# Finally, we can organize the labels nicely using the &quot;ggrepel&quot; package and the geom_text_repel() function
+# load library
+# plot adding up all layers we have seen so far
+plot.vulcano.006min.RNA &lt;- ggplot(data=markers.006.RNA, aes(x=avg_diff, y=-log10(p_val), col=diffexpressed, label=delabel)) +
+        geom_point() + 
+        theme_minimal() +
+        geom_text_repel(size=2.2) +
+        scale_color_manual(values=c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)) +
+        geom_vline(xintercept=c(-0.25, 0.25), col=&quot;red&quot;) +
+        geom_hline(yintercept=-log10(0.05), col=&quot;red&quot;) +
+  labs(x = expression(&quot;Log&quot;[2]*&quot; Fold Change&quot;), y = expression(&quot;-log&quot;[10]*&quot; p-value&quot;), title = &quot;p-JAK1 high vs p-JAK1 low (t = 006 min)&quot;) &amp;
+  add.textsize
+
+sign.markers006.RNA &lt;- markers.006.RNA$protein[markers.006.RNA$avg_diff &gt; 0.25 &amp; markers.006.RNA$p_val &lt; 0.05] 
+
+plot.vln.006min.RNA &lt;- VlnPlot(seu.JAK1.006,assay = &quot;RNA&quot;, features =  sign.markers006.RNA[1:20], group.by = &quot;highlowpJAK1&quot;,ncol = 10) &amp;
+  add.textsize
+
+plot_006min &lt;- plot_grid(plot.vulcano.006min, plot.vln.006min, labels = panellabels[c(3,4)], label_size = 10, ncol = 2, rel_widths = c(1,2))
+
+## 2 minutes
+seu.JAK1.002 &lt;- subset(seu_combined_selectsamples, condition == &quot;002.aIg.contr&quot; &amp; highlowpJAK1 != &quot;middle&quot;)
+
+seu.JAK1.002 &lt;- SetIdent(seu.JAK1.002, value = &quot;highlowpJAK1&quot;)
+
+# Find differentially expressed features between CD14+ and FCGR3A+ Monocytes
+markers.002 &lt;- FindMarkers(seu.JAK1.002,ident.1 = &quot;p-JAK1 high&quot;, ident.2 = &quot;p-JAK1 low&quot;, assay = &quot;PROT&quot;, slot = &quot;scale.data&quot;, logfc.threshold = 0, return.thresh = 1, only.pos = F)
+# view results
+#markers.002 &lt;- filter(markers.002, cluster == &quot;p-JAK1 high&quot;)
+#markers.002
+
+
+# Find differentially expressed features between CD14+ and FCGR3A+ Monocytes
+markers.002.RNA &lt;-  FindAllMarkers(seu.JAK1.002,assay = &quot;RNA&quot;, slot = &quot;data&quot;, logfc.threshold = 0.3, return.thresh = 0.01, only.pos = T,min.pct = 0.1)
+markers.002.RNA &lt;-   FindMarkers(seu.JAK1.002,ident.1 = &quot;p-JAK1 high&quot;, ident.2 = &quot;p-JAK1 low&quot;, assay = &quot;SCT.RNA&quot;, slot = &quot;scale.data&quot;, logfc.threshold = 0, return.thresh = 1, only.pos = F)
+# view results
+#markers.002.RNA
+
+markers.002$protein &lt;-rownames(markers.002)
+# add a column of NAs
+markers.002$diffexpressed &lt;- &quot;NO&quot;
+# if log2Foldchange &gt; 0.6 and pvalue &lt; 0.05, set as &quot;UP&quot; 
+markers.002$diffexpressed[markers.002$avg_diff &gt; 0.25 &amp; markers.002$p_val_adj &lt; 0.01] &lt;- &quot;UP&quot;
+# if log2Foldchange &lt; -0.6 and pvalue &lt; 0.05, set as &quot;DOWN&quot;
+markers.002$diffexpressed[markers.002$avg_diff  &lt; -0.25 &amp; markers.002$p_val_adj &lt; 0.01] &lt;- &quot;DOWN&quot;
+
+mycolors &lt;- c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)
+names(mycolors) &lt;- c(&quot;DOWN&quot;, &quot;UP&quot;, &quot;NO&quot;)
+
+
+markers.002$delabel &lt;- NA
+markers.002$delabel[markers.002$diffexpressed != &quot;NO&quot;] &lt;- markers.002$protein[markers.002$diffexpressed != &quot;NO&quot;]
+
+plot.vulcano.002min &lt;- ggplot(data=markers.002, aes(x=avg_diff , y=-log10(p_val_adj), col=diffexpressed, label=delabel)) +
+        geom_point(size=0.5) + 
+        theme_minimal() +
+        geom_text_repel(size=2.2) +
+        scale_color_manual(values=c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)) +
+        geom_vline(xintercept=c(-0.25, 0.25), col=&quot;red&quot;) +
+        geom_hline(yintercept=-log10(0.01), col=&quot;red&quot;) +
+  labs(x = expression(&quot;Log&quot;[2]*&quot; Fold Change&quot;), y = expression(&quot;-log&quot;[10]*&quot; adjusted p-value&quot;), title = &quot;p-JAK1 high vs p-JAK1 low (t = 002 min)&quot;) &amp;
+  add.textsize
+
+sign.markers002 &lt;- markers.002$protein[markers.002$avg_diff &gt; 0.25 &amp; markers.002$p_val_adj &lt; 0.01 | markers.002$avg_diff  &lt; -0.25 &amp; markers.002$p_val_adj &lt; 0.01] 
+
+plot.vln.002min &lt;- VlnPlot(seu.JAK1.002,assay = &quot;PROT&quot;,slot = &quot;scale.data&quot;, features =  sign.markers002, group.by = &quot;highlowpJAK1&quot;,ncol = 6, pt.size = 0.5) &amp;
+  add.textsize
+
+markers.002.RNA$protein &lt;-rownames(markers.002.RNA)
+# add a column of NAs
+markers.002.RNA$diffexpressed &lt;- &quot;NO&quot;
+# if log2Foldchange &gt; 0.6 and pvalue &lt; 0.05, set as &quot;UP&quot; 
+markers.002.RNA$diffexpressed[markers.002.RNA$avg_diff &gt; 0.25 &amp; markers.002.RNA$p_val &lt; 0.05] &lt;- &quot;UP&quot;
+# if log2Foldchange &lt; -0.6 and pvalue &lt; 0.05, set as &quot;DOWN&quot;
+markers.002.RNA$diffexpressed[markers.002.RNA$avg_diff &lt; -0.25 &amp; markers.002.RNA$p_val &lt; 0.05] &lt;- &quot;DOWN&quot;
+
+mycolors &lt;- c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)
+names(mycolors) &lt;- c(&quot;DOWN&quot;, &quot;UP&quot;, &quot;NO&quot;)
+
+
+markers.002.RNA$delabel &lt;- NA
+markers.002.RNA$delabel[markers.002.RNA$diffexpressed != &quot;NO&quot;] &lt;- markers.002.RNA$protein[markers.002.RNA$diffexpressed != &quot;NO&quot;]
+
+plot.vulcano.002min.RNA &lt;- ggplot(data=markers.002.RNA, aes(x=avg_diff, y=-log10(p_val), col=diffexpressed, label=delabel)) +
+        geom_point() + 
+        theme_minimal() +
+        geom_text_repel(size=2.2) +
+        scale_color_manual(values=c(&quot;blue&quot;, &quot;red&quot;, &quot;black&quot;)) +
+        geom_vline(xintercept=c(-0.25, 0.25), col=&quot;red&quot;) +
+        geom_hline(yintercept=-log10(0.05), col=&quot;red&quot;) +
+  labs(x = expression(&quot;Log&quot;[2]*&quot; Fold Change&quot;), y = expression(&quot;-log&quot;[10]*&quot; p-value&quot;), title = &quot;p-JAK1 high vs p-JAK1 low (t = 002 min)&quot;) &amp;
+  add.textsize
+
+sign.markers002.RNA &lt;- markers.002.RNA$protein[markers.002.RNA$avg_diff &gt; 0.25 &amp; markers.002.RNA$p_val &lt; 0.05] 
+
+plot.vln.002min.RNA &lt;- VlnPlot(seu.JAK1.002,assay = &quot;RNA&quot;, features =  sign.markers002.RNA[1:20], group.by = &quot;highlowpJAK1&quot;,ncol = 10) &amp;
+  add.textsize
+
+plot_002min &lt;- plot_grid(plot.vulcano.002min, plot.vln.002min, labels = panellabels[c(1,2)], label_size = 10, ncol = 2, rel_widths = c(1,2))</code></pre>
+<pre class="r"><code>plot_all &lt;- plot_grid(plot_002min,plot_006min,plot_180min , labels =c(&quot;&quot;, &quot;&quot;, &quot;&quot;), ncol = 1, rel_heights = c(1,1,1))
+
+ggsave(plot_all, filename = &quot;output/paper_figures/Suppl_pJAK1_highlow.pdf&quot;, width = 183, height = 140, units = &quot;mm&quot;,  dpi = 300, useDingbats = FALSE)
+ggsave(plot_all, filename = &quot;output/paper_figures/Suppl_pJAK1_highlow.png&quot;, width = 183, height = 140, units = &quot;mm&quot;,  dpi = 300)
+
+plot_all</code></pre>
+<p><img src="figure/MOFAaIg.Rmd/plot_all-1.png" width="691.2" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -1898,9 +2263,9 @@ plot.enriched.go.bp.factor3_50</code></pre>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 3.6.3 (2020-02-29)
+<pre><code>R version 4.0.3 (2020-10-10)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
-Running under: Windows 10 x64 (build 17763)
+Running under: Windows 10 x64 (build 19042)
 
 Matrix products: default
 
@@ -1914,77 +2279,81 @@ attached base packages:
  [8] datasets  methods   base     
 
 other attached packages:
- [1] png_0.1-7                   forcats_0.5.0              
- [3] clusterProfiler_3.14.3      clusterProfiler.dplyr_0.0.2
- [5] enrichplot_1.6.1            org.Hs.eg.db_3.10.0        
- [7] AnnotationDbi_1.48.0        IRanges_2.20.2             
- [9] S4Vectors_0.24.4            Biobase_2.46.0             
-[11] BiocGenerics_0.32.0         ggridges_0.5.2             
-[13] cowplot_1.1.0               ggtext_0.1.0               
+ [1] png_0.1-7                   forcats_0.5.1              
+ [3] clusterProfiler_3.18.1      clusterProfiler.dplyr_0.0.2
+ [5] enrichplot_1.10.2           org.Hs.eg.db_3.12.0        
+ [7] AnnotationDbi_1.52.0        IRanges_2.24.1             
+ [9] S4Vectors_0.28.1            Biobase_2.50.0             
+[11] BiocGenerics_0.36.0         ggridges_0.5.3             
+[13] cowplot_1.1.1               ggtext_0.1.1               
 [15] ggplotify_0.0.5             ggcorrplot_0.1.3           
-[17] ggrepel_0.8.2               ggpubr_0.4.0               
-[19] scico_1.2.0                 MOFA2_1.1                  
-[21] extrafont_0.17              patchwork_1.0.1            
+[17] ggrepel_0.9.1               ggpubr_0.4.0               
+[19] scico_1.2.0                 MOFA2_1.1.17               
+[21] extrafont_0.17              patchwork_1.1.1            
 [23] RColorBrewer_1.1-2          viridis_0.5.1              
 [25] viridisLite_0.3.0           ggsci_2.9                  
-[27] sctransform_0.3.1           ggthemes_4.2.0             
-[29] matrixStats_0.57.0          kableExtra_1.2.1           
-[31] gridExtra_2.3               Seurat_3.2.2               
-[33] ggplot2_3.3.2               scales_1.1.1               
-[35] tidyr_1.1.2                 dplyr_1.0.2                
-[37] stringr_1.4.0               workflowr_1.6.1            
+[27] sctransform_0.3.2           ggthemes_4.2.4             
+[29] matrixStats_0.57.0          kableExtra_1.3.1           
+[31] gridExtra_2.3               SeuratObject_4.0.0         
+[33] Seurat_4.0.0                ggplot2_3.3.3              
+[35] scales_1.1.1                tidyr_1.1.2                
+[37] dplyr_1.0.3                 stringr_1.4.0              
+[39] workflowr_1.6.2            
 
 loaded via a namespace (and not attached):
-  [1] reticulate_1.16       tidyselect_1.1.0      RSQLite_2.2.1        
-  [4] htmlwidgets_1.5.2     BiocParallel_1.20.1   Rtsne_0.15           
-  [7] munsell_0.5.0         codetools_0.2-16      ica_1.0-2            
- [10] future_1.19.1         miniUI_0.1.1.1        withr_2.3.0          
- [13] GOSemSim_2.12.1       colorspace_1.4-1      knitr_1.30           
- [16] rstudioapi_0.11       ROCR_1.0-11           ggsignif_0.6.0       
- [19] tensor_1.5            DOSE_3.12.0           Rttf2pt1_1.3.8       
- [22] listenv_0.8.0         labeling_0.4.2        git2r_0.27.1         
- [25] urltools_1.7.3        mnormt_2.0.2          polyclip_1.10-0      
- [28] farver_2.0.3          bit64_4.0.5           pheatmap_1.0.12      
- [31] rhdf5_2.30.1          rprojroot_1.3-2       vctrs_0.3.4          
- [34] generics_0.0.2        xfun_0.18             markdown_1.1         
- [37] R6_2.4.1              graphlayouts_0.7.0    rsvd_1.0.3           
- [40] fgsea_1.12.0          spatstat.utils_1.17-0 gridGraphics_0.5-0   
- [43] DelayedArray_0.12.3   promises_1.1.0        ggraph_2.0.3         
- [46] gtable_0.3.0          globals_0.13.1        goftest_1.2-2        
- [49] tidygraph_1.2.0       rlang_0.4.8           splines_3.6.3        
- [52] rstatix_0.6.0         extrafontdb_1.0       lazyeval_0.2.2       
- [55] europepmc_0.4         broom_0.7.1           BiocManager_1.30.10  
- [58] yaml_2.2.1            reshape2_1.4.4        abind_1.4-5          
- [61] backports_1.1.10      httpuv_1.5.2          qvalue_2.18.0        
- [64] gridtext_0.1.1        tools_3.6.3           psych_2.0.9          
- [67] ellipsis_0.3.1        Rcpp_1.0.4.6          plyr_1.8.6           
- [70] progress_1.2.2        purrr_0.3.4           prettyunits_1.1.1    
- [73] rpart_4.1-15          deldir_0.1-29         pbapply_1.4-3        
- [76] zoo_1.8-8             haven_2.3.1           cluster_2.1.0        
- [79] fs_1.4.1              magrittr_1.5          data.table_1.13.0    
- [82] DO.db_2.9             openxlsx_4.2.2        triebeard_0.3.0      
- [85] lmtest_0.9-38         RANN_2.6.1            tmvnsim_1.0-2        
- [88] whisker_0.4           fitdistrplus_1.1-1    hms_0.5.3            
- [91] mime_0.9              evaluate_0.14         xtable_1.8-4         
- [94] rio_0.5.16            readxl_1.3.1          compiler_3.6.3       
- [97] tibble_3.0.4          KernSmooth_2.23-16    crayon_1.3.4         
-[100] htmltools_0.5.0       mgcv_1.8-31           later_1.0.0          
-[103] DBI_1.1.0             tweenr_1.0.1          corrplot_0.84        
-[106] MASS_7.3-53           rappdirs_0.3.1        Matrix_1.2-18        
-[109] car_3.0-10            igraph_1.2.6          pkgconfig_2.0.3      
-[112] rvcheck_0.1.8         foreign_0.8-75        plotly_4.9.2.1       
-[115] xml2_1.3.2            webshot_0.5.2         rvest_0.3.6          
-[118] digest_0.6.26         RcppAnnoy_0.0.16      spatstat.data_1.4-3  
-[121] fastmatch_1.1-0       rmarkdown_2.4         cellranger_1.1.0     
-[124] leiden_0.3.3          uwot_0.1.8            curl_4.3             
-[127] shiny_1.5.0           lifecycle_0.2.0       nlme_3.1-144         
-[130] jsonlite_1.7.1        Rhdf5lib_1.8.0        carData_3.0-4        
-[133] pillar_1.4.6          lattice_0.20-38       GO.db_3.10.0         
-[136] fastmap_1.0.1         httr_1.4.2            survival_3.1-8       
-[139] glue_1.4.2            zip_2.1.1             spatstat_1.64-1      
-[142] bit_4.0.4             ggforce_0.3.2         stringi_1.4.6        
-[145] HDF5Array_1.14.4      blob_1.2.1            memoise_1.1.0        
-[148] irlba_2.3.3           future.apply_1.6.0   </code></pre>
+  [1] rappdirs_0.3.2       scattermore_0.7      bit64_4.0.5         
+  [4] knitr_1.31           irlba_2.3.3          DelayedArray_0.16.1 
+  [7] data.table_1.13.6    rpart_4.1-15         generics_0.1.0      
+ [10] RSQLite_2.2.3        shadowtext_0.0.7     RANN_2.6.1          
+ [13] future_1.21.0        bit_4.0.4            spatstat.data_2.1-0 
+ [16] webshot_0.5.2        xml2_1.3.2           httpuv_1.5.5        
+ [19] assertthat_0.2.1     xfun_0.20            hms_1.0.0           
+ [22] evaluate_0.14        promises_1.1.1       readxl_1.3.1        
+ [25] tmvnsim_1.0-2        igraph_1.2.6         DBI_1.1.1           
+ [28] htmlwidgets_1.5.3    purrr_0.3.4          ellipsis_0.3.1      
+ [31] RSpectra_0.16-0      corrplot_0.84        backports_1.2.1     
+ [34] markdown_1.1         deldir_0.2-10        MatrixGenerics_1.2.0
+ [37] vctrs_0.3.6          ROCR_1.0-11          abind_1.4-5         
+ [40] cachem_1.0.1         withr_2.4.1          ggforce_0.3.2       
+ [43] mnormt_2.0.2         goftest_1.2-2        cluster_2.1.0       
+ [46] DOSE_3.16.0          lazyeval_0.2.2       crayon_1.3.4        
+ [49] basilisk.utils_1.2.1 pkgconfig_2.0.3      labeling_0.4.2      
+ [52] tweenr_1.0.1         nlme_3.1-149         rlang_0.4.10        
+ [55] globals_0.14.0       lifecycle_0.2.0      miniUI_0.1.1.1      
+ [58] downloader_0.4       filelock_1.0.2       extrafontdb_1.0     
+ [61] cellranger_1.1.0     rprojroot_2.0.2      polyclip_1.10-0     
+ [64] lmtest_0.9-38        Matrix_1.2-18        carData_3.0-4       
+ [67] Rhdf5lib_1.12.1      zoo_1.8-8            whisker_0.4         
+ [70] pheatmap_1.0.12      KernSmooth_2.23-17   rhdf5filters_1.2.0  
+ [73] blob_1.2.1           qvalue_2.22.0        parallelly_1.23.0   
+ [76] rstatix_0.6.0        gridGraphics_0.5-1   ggsignif_0.6.0      
+ [79] memoise_2.0.0        magrittr_2.0.1       plyr_1.8.6          
+ [82] ica_1.0-2            compiler_4.0.3       scatterpie_0.1.5    
+ [85] fitdistrplus_1.1-3   listenv_0.8.0        pbapply_1.4-3       
+ [88] MASS_7.3-53          mgcv_1.8-33          tidyselect_1.1.0    
+ [91] stringi_1.5.3        highr_0.8            yaml_2.2.1          
+ [94] GOSemSim_2.16.1      fastmatch_1.1-0      tools_4.0.3         
+ [97] future.apply_1.7.0   rio_0.5.16           rstudioapi_0.13     
+[100] foreign_0.8-80       git2r_0.28.0         farver_2.0.3        
+[103] Rtsne_0.15           ggraph_2.0.5         digest_0.6.27       
+[106] rvcheck_0.1.8        BiocManager_1.30.10  shiny_1.6.0         
+[109] Rcpp_1.0.6           gridtext_0.1.4       car_3.0-10          
+[112] broom_0.7.3          later_1.1.0.1        RcppAnnoy_0.0.18    
+[115] httr_1.4.2           psych_2.0.12         colorspace_2.0-0    
+[118] rvest_0.3.6          fs_1.5.0             tensor_1.5          
+[121] reticulate_1.18      splines_4.0.3        uwot_0.1.10         
+[124] spatstat.utils_2.1-0 graphlayouts_0.7.1   basilisk_1.2.1      
+[127] plotly_4.9.3         xtable_1.8-4         jsonlite_1.7.2      
+[130] spatstat_1.64-1      tidygraph_1.2.0      R6_2.5.0            
+[133] pillar_1.4.7         htmltools_0.5.1.1    mime_0.9            
+[136] glue_1.4.2           fastmap_1.1.0        BiocParallel_1.24.1 
+[139] codetools_0.2-16     fgsea_1.16.0         lattice_0.20-41     
+[142] tibble_3.0.5         curl_4.3             leiden_0.3.7        
+[145] zip_2.1.1            GO.db_3.12.1         openxlsx_4.2.3      
+[148] Rttf2pt1_1.3.8       limma_3.46.0         survival_3.2-7      
+[151] rmarkdown_2.6        munsell_0.5.0        DO.db_2.9           
+[154] rhdf5_2.34.0         HDF5Array_1.18.0     haven_2.3.1         
+[157] reshape2_1.4.4       gtable_0.3.0        </code></pre>
 </div>
 </div>
 </div>
@@ -2003,6 +2372,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+
+
 </div>
 </div>
 
@@ -2012,7 +2383,7 @@ footer is added to webpages before the MathJax javascript. -->
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
