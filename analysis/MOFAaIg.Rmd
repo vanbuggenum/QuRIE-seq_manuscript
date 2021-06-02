@@ -270,16 +270,38 @@ seu_combined_selectsamples <- RunUMAP(seu_combined_selectsamples, nn.name = "wei
 
 WNN.Dimplot <- DimPlot(seu_combined_selectsamples, reduction = 'wnn.umap', label = FALSE, repel = TRUE, label.size = 2.5) +
   scale_color_manual(values = colorgradient6_manual2, labels = c(labels), name = "Time aIg",)+
-  labs(title = "Seurats WNN on PC's results in similar\nUMAP as MOFA+ based UMAP", x= "wnnUMAP 1", y = "wnnUMAP 2") +
+  labs(title = "WNN UMAP similar to \n MOFA+ based UMAP", x= "wnnUMAP 1", y = "wnnUMAP 2") +
   add.textsize +
   #  scale_x_reverse()+
-  theme(legend.position = "none")
+  theme(legend.position = "right")
 
 
 ```
 
+```{r}
+Factorvalues <- data.frame(get_factors(mofa)[1])[,1:4]
+colnames(Factorvalues) <- c(paste0("Factor", 1:4))
+Factorvalues
+seu_combined_selectsamples <- AddMetaData(seu_combined_selectsamples, Factorvalues)
+
+plot.wnn.Factor1  <- FeaturePlot(seu_combined_selectsamples, reduction = "wnn.umap", features = "Factor1") +
+  scale_color_gradient2(name = "Factor 1 \nvalue") +
+  labs(title = "MOFA+ Factor 1 & 3 overlap \nwith WNN UMAP", x= "wnnUMAP 1", y = "wnnUMAP 2") +
+  add.textsize +
+  theme(legend.position = "right") 
+plot.wnn.Factor3  <- FeaturePlot(seu_combined_selectsamples, reduction = "wnn.umap", features = "Factor3") +
+  scale_color_gradient2(name = "Factor 3 \nvalue") +
+  labs(title = "", x= "wnnUMAP 1", y = "wnnUMAP 2") +
+  add.textsize +
+  #  scale_x_reverse()+
+  theme(legend.position = "right")
+
+
+```
+
+
 ```{r Figure_1_supplementary, fig.width=5.6, fig.height=8.92, message = FALSE, warning=FALSE}
-Fig1.pca <- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1,NULL,WNN.Dimplot,legend, labels = c(panellabels[1:2], "",panellabels[3:4],"",panellabels[5:6],"",panellabels[7]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3,1))
+Fig1.pca <- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1,NULL,WNN.Dimplot,NULL,NULL,plot.wnn.Factor1,plot.wnn.Factor3, labels = c(panellabels[1:2], "",panellabels[3:4],"",panellabels[5:6],"",panellabels[7],"","",panellabels[8]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3,1))
 
 ggsave(filename = "output/paper_figures/Suppl_PCA_aIg_wnn.pdf", width = 143, height = 226, units = "mm",  dpi = 300, useDingbats = FALSE)
 ggsave(filename = "output/paper_figures/Suppl_PCA_aIg_wnn.png", width = 143, height = 226, units = "mm",  dpi = 300)
