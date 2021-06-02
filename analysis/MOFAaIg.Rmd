@@ -203,7 +203,7 @@ plot.PCA.PROTweightsPC1 <- ggplot(PCA.PROTPC1.data, aes(x=weight.PC1, y = rank, 
   geom_point(size=0.1) +
   labs(title = "Top 4 protein loadings \n", x= "Weight Protein PC1") +
   geom_point(color = ifelse(PCA.PROTPC1.data$highlights == "", "grey50", "red")) +
-  geom_text_repel(size = 2, segment.size = 0.25)+
+  geom_text_repel(size = 1.5, segment.size = 0.25)+
   theme_half_open()+
   add.textsize +
   theme(axis.title.y=element_blank(),
@@ -224,7 +224,7 @@ plot.PCA.RNAweightsPC1 <- ggplot(PCA.RNAPC1.data, aes(x=weight.PC1, y = rank, la
   geom_point(size=0.1) +
   labs(title = "Top 4 RNA loadings \n", x= "Weight RNA PC1") +
   geom_point(color = ifelse(PCA.RNAPC1.data$highlights == "", "grey50", "red")) +
-  geom_text_repel(size = 2, segment.size = 0.25)+
+  geom_text_repel(size = 1.5, segment.size = 0.25)+
   theme_half_open()+
   add.textsize +
   theme(axis.title.y=element_blank(),
@@ -288,10 +288,24 @@ plot.wnn.Factor1  <- FeaturePlot(seu_combined_selectsamples, reduction = "wnn.um
   scale_color_gradient2(name = "Factor 1 \nvalue") +
   labs(title = "MOFA+ Factor 1 & 3 overlap \nwith WNN UMAP", x= "wnnUMAP 1", y = "wnnUMAP 2") +
   add.textsize +
-  theme(legend.position = "right") 
+  theme(legend.position = "right")
+
 plot.wnn.Factor3  <- FeaturePlot(seu_combined_selectsamples, reduction = "wnn.umap", features = "Factor3") +
   scale_color_gradient2(name = "Factor 3 \nvalue") +
   labs(title = "", x= "wnnUMAP 1", y = "wnnUMAP 2") +
+  add.textsize +
+  #  scale_x_reverse()+
+  theme(legend.position = "right")
+
+plot.wnn.Factor1  <- FeaturePlot(seu_combined_selectsamples, reduction = "wnn.umap", features = "Factor1") +
+  scale_color_gradient2(name = "Factor 1 \nvalue") +
+  labs(title = "MOFA+ Factor 1 & 3 overlap \nwith WNN UMAP", x= "wnnUMAP 1", y = "wnnUMAP 2") +
+  add.textsize +
+  theme(legend.position = "right")
+
+plot.wnn.pSYK  <- FeaturePlot(seu_combined_selectsamples, reduction = "wnn.umap", features = "p-Syk", slot = "scale.data") +
+  scale_color_gradient2(name = "p-SYK \nscaled counts") +
+  labs(title = "\n", x= "wnnUMAP 1", y = "wnnUMAP 2") +
   add.textsize +
   #  scale_x_reverse()+
   theme(legend.position = "right")
@@ -301,7 +315,7 @@ plot.wnn.Factor3  <- FeaturePlot(seu_combined_selectsamples, reduction = "wnn.um
 
 
 ```{r Figure_1_supplementary, fig.width=5.6, fig.height=8.92, message = FALSE, warning=FALSE}
-Fig1.pca <- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1,NULL,WNN.Dimplot,NULL,NULL,plot.wnn.Factor1,plot.wnn.Factor3, labels = c(panellabels[1:2], "",panellabels[3:4],"",panellabels[5:6],"",panellabels[7],"","",panellabels[8]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3,1))
+Fig1.pca <- plot_grid(plot.PCA.PROT,plot.PCA.RNA,legend, plot_ridge_PC1Prot, plot_ridge_PC1RNA,NULL,  plot.PCA.PROTweightsPC1, plot.PCA.RNAweightsPC1,NULL,WNN.Dimplot,plot.wnn.pSYK,NULL,plot.wnn.Factor1,plot.wnn.Factor3, labels = c(panellabels[1:2], "",panellabels[3:4],"",panellabels[5:6],"",panellabels[7:8],"",panellabels[9:10]), label_size = 10, ncol = 3, rel_widths = c(0.9,0.9,0.2,0.9,0.9), rel_heights = c(1,0.8,1.3,1))
 
 ggsave(filename = "output/paper_figures/Suppl_PCA_aIg_wnn.pdf", width = 143, height = 226, units = "mm",  dpi = 300, useDingbats = FALSE)
 ggsave(filename = "output/paper_figures/Suppl_PCA_aIg_wnn.png", width = 143, height = 226, units = "mm",  dpi = 300)
