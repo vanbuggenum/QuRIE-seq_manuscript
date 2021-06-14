@@ -8,13 +8,11 @@ Current high-throughput single-cell multi-omics methods cannot concurrently map 
 
 ### Folder structure
 
-Build according to a [workflowr][] project.
+Build using [workflowr](https://github.com/jdblischak/workflowr) project.
 
-[workflowr]: https://github.com/jdblischak/workflowr
+A nice html-page that is generated from the Rmd files in the analysis folder can be accessed [here](https://vanbuggenum.github.io/QuRIE-seq_manuscript/index.html)
 
-To run the code: clone the repository. Download the raw count tables from (GSE162461)[https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162461] and save in data/raw/ folder. 
-
-First run the QC.Rmd file. After that either MOFAaIg or MOFAibru Rmd files can be used. 
+To run the Rmd files: 1) clone the repository. 2) Download the raw count tables from [GSE162461](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162461) and save in data/raw/ folder. 3) First run the QC.Rmd file. After that either MOFAaIg or MOFAibru Rmd files can be used. 
 
 ### Github page 
 
@@ -22,8 +20,8 @@ The docs folder contains the actual github page.
 
 Three pages contain code to process, analyse and create figures:
 
-* [QC](QC.html) processes count tables (available at GEO####): filter high quality cells; normalize and scale counts.   
-* [MOFA aIg](MOFAaIg.html) computes a model of cells stimulates with aIg molecule.   
-* [MOFA ibru](MOFAibru.html) computes a model of cells stimulates with aIg molecule with or without prescence of ibrutinib.  
+* [QC](https://vanbuggenum.github.io/QuRIE-seq_manuscript/QC.html) processes count tables (available at [GSE162461](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162461): filter high quality cells; normalize and scale counts.   
+* [MOFA aIg](https://vanbuggenum.github.io/QuRIE-seq_manuscript/MOFAaIg.html) computes a model of cells stimulates with aIg molecule.   
+* [MOFA ibru](https://vanbuggenum.github.io/QuRIE-seq_manuscript/MOFAibru.html) computes a model of cells stimulates with aIg molecule with or without prescence of ibrutinib.  
 
 
