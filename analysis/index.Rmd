@@ -18,7 +18,7 @@ Current high-throughput single-cell multi-omics methods cannot concurrently map 
 
 Three pages contain code to process, analyse and create figures:
 
-* [QC](QC.html) processes count tables (available at GEO####): filter high quality cells; normalize and scale counts.   
+* [QC](QC.html) processes count tables (available at [GSE162461](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162461)): filter high quality cells; normalize and scale counts.   
 * [MOFA aIg](MOFAaIg.html) computes a model of cells stimulates with aIg molecule.   
 * [MOFA ibru](MOFAibru.html) computes a model of cells stimulates with aIg molecule with or without prescence of ibrutinib.  
 
