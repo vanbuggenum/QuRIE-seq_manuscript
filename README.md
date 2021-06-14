@@ -12,7 +12,7 @@ Build according to a [workflowr][] project.
 
 [workflowr]: https://github.com/jdblischak/workflowr
 
-To run the code: clone the repository. Download the raw count tables from GEO #### and save in data/raw/ folder. 
+To run the code: clone the repository. Download the raw count tables from (GSE162461)[https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162461] and save in data/raw/ folder. 
 
 First run the QC.Rmd file. After that either MOFAaIg or MOFAibru Rmd files can be used. 
 
