@@ -1,7 +1,7 @@
 name: QuRIE-seq_manuscript
 output_dir: ../docs
 navbar:
-  title: QuRIE-seq_manuscript
+  title: Manuscript QuRIE-seq
   left:
   - text: Home
     href: index.html
