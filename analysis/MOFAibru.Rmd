@@ -548,10 +548,12 @@ Suppl_mofa
 *Supplementary Figure.* MOFA model additional information
 
 Enrichment genes factor 5 positve loadings (> 0.2).
-```{r}
+```{r }
 # print positive enrichment
-subset(enriched.go.bp.fct5.clusterdposneg@compareClusterResult, sign == "pos")
-
+subset(enriched.go.bp.fct5.clusterdposneg@compareClusterResult, sign == "pos") %>%
+  kable() %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), font_size = 10) %>%
+  scroll_box(width = "100%", height = "400px")
 ```
 
 ### Supplementary violins
