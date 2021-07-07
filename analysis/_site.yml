@@ -11,6 +11,8 @@ navbar:
     href: MOFAaIg.html
   - text: MOFA ibru
     href: MOFAibru.html
+  - text: License and citation
+    href: license.html
   right:
   - icon: fa-github
     text: Source code

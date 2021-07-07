@@ -16,9 +16,24 @@ Current high-throughput single-cell multi-omics methods cannot concurrently map 
 
 ## In this repository
 
-Three pages contain code to process, analyse and create figures:
+Three pages contain code to process, analyse and create figures from the QuRIE-seq manuscript:
 
 * [QC](QC.html) processes count tables (available at [GSE162461](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE162461)): filter high quality cells; normalize and scale counts.   
 * [MOFA aIg](MOFAaIg.html) computes a model of cells stimulates with aIg molecule.   
 * [MOFA ibru](MOFAibru.html) computes a model of cells stimulates with aIg molecule with or without prescence of ibrutinib.  
+
+## Attribution
+
+
+We are very thankful for the effords made by developers of [MOFA+](https://biofam.github.io/MOFA2/) and  [workflowr](https://github.com/jdblischak/workflowr). These (well documented) R-packages enable respectively extensive multimodal data-analysis and reproducible code documentation. 
+
+------ 
+
+The content in this repository is available under the [CC BY 4.0](https://github.com/vanbuggenum/QuRIE-seq_manuscript/blob/master/LICENSE.md) license. 
+
+For proper attribution, please [cite](https://github.com/vanbuggenum/QuRIE-seq_manuscript/blob/master/CITATION.bib) our [publication (bioRxiv)](https://www.biorxiv.org/content/10.1101/2020.12.02.408120v1) containing description and analysis of all presented data and results.
+
+------
+
+
 
