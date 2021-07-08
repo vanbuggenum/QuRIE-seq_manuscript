@@ -9,6 +9,11 @@ editor_options:
 ---
 
 ```{r setup, warning=FALSE, message=FALSE}
+
+knitr::opts_chunk$set(
+  message = F, warning = F, echo = T, eval = T
+)
+
 source("code/load_packages.R")
 seu_combined_selectsamples <- readRDS("output/seu_aIG_samples.rds")
 library(ggrepel)
@@ -48,6 +53,8 @@ meta.allcells <- seu_combined_selectsamples@meta.data %>%
 
 #### MOFA model
 
+Note, if mofa object was generated before, it will read the generated rds file. (this will speed-up the process of generating this html document if edits are required)
+
 ```{r Mofa object}
 ## Note, if mofa object was generated before, it will read the generated rds file. (this will speed-up the process of generating this html document if edits are required)
 
@@ -84,9 +91,9 @@ mofa
 ```
 
 ```{r}
-## Rename protein names
-featurenamesmofa <- features_names(mofa)
 
+## Hack to rename protein names for visualization
+featurenamesmofa <- features_names(mofa)
 
 ## todo cleanup/more efficient
 featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Src" ,"p-SRC",x), how = "replace")
@@ -101,6 +108,12 @@ featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Erk1/2" ,"p
 featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Myc" ,"p-MYC",x), how = "replace")
 featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="p-Btk" ,"p-BTK",x), how = "replace")
 featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="Bcl-6" ,"BCL6",x), how = "replace")
+
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="CD53-PROT" ,"CD53",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="CD70-PROT" ,"CD70",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="KLF6-PROT" ,"KLF6",x), how = "replace")
+featurenamesmofa <- rapply(featurenamesmofa,function(x) ifelse(x=="XBP1-PROT" ,"XBP1",x), how = "replace")
+
 
 features_names(mofa) <- featurenamesmofa
 
@@ -281,7 +294,6 @@ WNN.Dimplot <- DimPlot(seu_combined_selectsamples, reduction = 'wnn.umap', label
 ```{r}
 Factorvalues <- data.frame(get_factors(mofa)[1])[,1:4]
 colnames(Factorvalues) <- c(paste0("Factor", 1:4))
-Factorvalues
 seu_combined_selectsamples <- AddMetaData(seu_combined_selectsamples, Factorvalues)
 
 plot.wnn.Factor1  <- FeaturePlot(seu_combined_selectsamples, reduction = "wnn.umap", features = "Factor1") +

@@ -148,6 +148,18 @@ seu_combined_filtered <- subset(seu_combined, subset = nFeature_RNA > 150 & nCou
 
 ```
 
+```{r}
+## Small hack to prevent mofa error with duplicate gene or protein names
+double <- c("CD53", "CD70", "KLF6", "XBP1")
+PROT.counts <-as.data.frame(seu_combined_filtered[["PROT"]]@counts)
+prot.rownames <- rownames(PROT.counts)
+row.names(PROT.counts) <- ifelse(prot.rownames %in% double, paste0(prot.rownames, "-PROT"), paste0(prot.rownames))
+
+seu_combined_filtered[["PROT"]] <- CreateAssayObject(counts = PROT.counts)
+
+```
+
+
 ## Normalize and scale
 
 
