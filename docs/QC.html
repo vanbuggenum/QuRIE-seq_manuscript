@@ -388,6 +388,9 @@ div.tocify {
 <li>
   <a href="MOFAibru.html">MOFA ibru</a>
 </li>
+<li>
+  <a href="license.html">License and citation</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -439,7 +442,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-06-14
+<strong>Last updated:</strong> 2021-07-08
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -530,16 +533,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomvanbuggenumQuRIEseqmanuscripttree35e992e5806317757989c30ab619479690c0cad1targetblank35e992ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/vanbuggenum/QuRIE-seq_manuscript/tree/35e992e5806317757989c30ab619479690c0cad1" target="_blank">35e992e</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomvanbuggenumQuRIEseqmanuscripttree4f4828dc0b105e22d522002a43d0f6b17d11bacdtargetblank4f4828da"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/vanbuggenum/QuRIE-seq_manuscript/tree/4f4828dc0b105e22d522002a43d0f6b17d11bacd" target="_blank">4f4828d</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomvanbuggenumQuRIEseqmanuscripttree35e992e5806317757989c30ab619479690c0cad1targetblank35e992ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomvanbuggenumQuRIEseqmanuscripttree4f4828dc0b105e22d522002a43d0f6b17d11bacdtargetblank4f4828da" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/vanbuggenum/QuRIE-seq_manuscript/tree/35e992e5806317757989c30ab619479690c0cad1" target="_blank">35e992e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/vanbuggenum/QuRIE-seq_manuscript/tree/4f4828dc0b105e22d522002a43d0f6b17d11bacd" target="_blank">4f4828d</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -550,17 +553,9 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    data/raw/
     Ignored:    output/MOFA_aIg.hdf5
-    Ignored:    output/MOFA_aIg.rds
     Ignored:    output/MOFA_ibru.hdf5
-    Ignored:    output/MOFA_ibru.rds
     Ignored:    output/data_weights_prot_fact1and3.csv
-    Ignored:    output/metadata.csv
     Ignored:    output/metadata_Ricard.csv
-    Ignored:    output/paper_figures/
-    Ignored:    output/seu_aIG_samples.rds
-    Ignored:    output/seu_combined_filtered_normalized.rds
-    Ignored:    output/seu_combined_raw.rds
-    Ignored:    output/seu_ibru_samples.rds
 
 Unstaged changes:
     Modified:   analysis/revisions.rmd
@@ -602,6 +597,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/vanbuggenum/QuRIE-seq_manuscript/blob/4f4828dc0b105e22d522002a43d0f6b17d11bacd/analysis/QC.Rmd" target="_blank">4f4828d</a>
+</td>
+<td>
+jessievb
+</td>
+<td>
+2021-07-08
+</td>
+<td>
+update header and small edits html output
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/vanbuggenum/QuRIE-seq_manuscript/c51a9e773353e491548a8cd9e2985235d0b8cce8/docs/QC.html" target="_blank">c51a9e7</a>
+</td>
+<td>
+jessievb
+</td>
+<td>
+2021-06-14
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1247,6 +1276,13 @@ ggsave(plot.QC, filename = &quot;output/paper_figures/Suppl_QC_filters.png&quot;
 <p><img src="figure/QC.Rmd/Suppl_QC_filters-1.png" width="691.65312" style="display: block; margin: auto;" /> <em>Supplementary Figure</em> Thresholds for selection of high-quality samples and cells from the QuRIE-seq datasets.</p>
 <p>Based on the indicated cut-offs, high-quality cells are filtered for further analysis.</p>
 <pre class="r fold-show"><code>seu_combined_filtered &lt;- subset(seu_combined, subset = nFeature_RNA &gt; 150 &amp; nCount_RNA &lt; 4000 &amp; nFeature_PROT &gt; 45 &amp; nCount_PROT &lt; 3000 &amp; percent.mt &lt; 15)</code></pre>
+<pre class="r"><code>## Small hack to prevent mofa error with duplicate gene or protein names
+double &lt;- c(&quot;CD53&quot;, &quot;CD70&quot;, &quot;KLF6&quot;, &quot;XBP1&quot;)
+PROT.counts &lt;-as.data.frame(seu_combined_filtered[[&quot;PROT&quot;]]@counts)
+prot.rownames &lt;- rownames(PROT.counts)
+row.names(PROT.counts) &lt;- ifelse(prot.rownames %in% double, paste0(prot.rownames, &quot;-PROT&quot;), paste0(prot.rownames))
+
+seu_combined_filtered[[&quot;PROT&quot;]] &lt;- CreateAssayObject(counts = PROT.counts)</code></pre>
 </div>
 <div id="normalize-and-scale" class="section level2">
 <h2>Normalize and scale</h2>
