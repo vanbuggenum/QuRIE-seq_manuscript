@@ -9,6 +9,6 @@ editor_options:
 
 The content in this repository is available under the [CC BY 4.0](https://github.com/vanbuggenum/QuRIE-seq_manuscript/blob/master/LICENSE.md) license. 
 
-For proper attribution, please [cite](https://github.com/vanbuggenum/QuRIE-seq_manuscript/blob/master/CITATION.bib) our [publication (bioRxiv)](https://www.biorxiv.org/content/10.1101/2020.12.02.408120v1) containing description and analysis of all presented data and results.
+For proper attribution, please [cite](https://github.com/vanbuggenum/QuRIE-seq_manuscript/blob/master/CITATION.bib) our [publication (Cell Reports Methods)](https://doi.org/10.1016/j.crmeth.2021.100070) containing description and analysis of all presented data and results.
 
 
